@@ -1,5 +1,7 @@
 # GEME -- Generative Economy Memory Entity
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20059553.svg)](https://doi.org/10.5281/zenodo.20059553)
+
 | 中文 | English |
 |------|---------|
 | GEME 是你我之间的事情。它不是竞赛。是种子。 | GEME is between you and me. Not a competition. A seed. |
