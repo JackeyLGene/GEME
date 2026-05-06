@@ -1,0 +1,73 @@
+======================================================================
+GEME — CODE REVIEW PACKAGE
+Phase Ouroboros | 2026-05-04
+======================================================================
+
+This package contains all materials for external code review of
+the GEME (Genetic Economy Memory Entity) project.
+
+CONTENTS:
+---------
+
+1. CORE ENGINE
+   docs/po_geme_core_code.txt
+     -> Full source code (~200 lines, Python)
+     -> File: src/gira/phase6/geme_v6.py
+     -> Key classes: Frame, Memory, GEME
+     -> Key functions: symbol_vector, vec_dist, observe, induction_clean
+
+2. DESIGN OVERVIEW
+   docs/po_geme_design_overview.txt
+     -> System architecture (6 chapters)
+     -> Mechanism explanations (merge, co-occur, induction)
+     -> Parameter configuration
+     -> Relation to Hebb/Piaget/Godel/Hofstadter
+
+3. FINAL VALIDATION REPORT
+   docs/po_final_validation.txt
+     -> All 4 experiments + statistical significance
+     -> 50/100 run validation
+     -> Baseline comparison (frequency + K-means)
+     -> Philosophical framework
+
+4. EXPERIMENT REPORTS (Full Format)
+   docs/po_exp0_report.txt  — Autonomous concept classification
+   docs/po_exp1_report.txt  — Commutativity emergence + review response
+   docs/po_exp2_report.txt  — Successor wall (50-run stats)
+   docs/po_exp3_report.txt  — Tarski wall + automated vocabulary
+
+5. EXPERIMENT SCRIPTS (Reproducible)
+   scripts/_exp_phase0.py       — Exp 0
+   scripts/_exp_e1_algebra.py   — Exp 1
+   scripts/_exp_e2_induction.py — Exp 2
+   scripts/_exp_e3_true.py      — Exp 3 (Tarski wall)
+   scripts/_exp_e3_shapes.py    — Exp 3 (control)
+
+6. PAPER FIGURES
+   figures/fig1_frame_vectors.png  — t-SNE of concept vs instance
+   figures/fig2_weight_curve.png   — Weight growth over training
+   figures/fig3_data_flow.png      — Layer 1->2 data flow diagram
+   figures/index.txt               — Figure descriptions
+
+7. REVIEW RESPONSE
+   docs/po_exp1_review_response.txt — Response to review comments
+   docs/po_core_changes.md          — 6 engine changes documented
+
+8. PHILOSOPHICAL FOUNDATION
+   (Separate documents, not in this package)
+   -> 本体论: 哥德尔定理的生成性转化
+   -> 认知论: 认知的生成性复杂化
+   -> 价值论: 逻辑即价值
+
+======================================================================
+TO REPRODUCE ANY EXPERIMENT:
+
+  cd g:\GEME
+  python scripts/_exp_e1_algebra.py    # Exp 1
+  python scripts/_exp_e2_induction.py  # Exp 2
+  python scripts/_exp_e3_true.py       # Exp 3
+
+  Requirements: Python 3.x, numpy (optional, for visualization)
+  No ML libraries needed. No GPU. No pretrained models.
+
+======================================================================

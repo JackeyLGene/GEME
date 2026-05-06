@@ -1,0 +1,115 @@
+======================================================================
+WHAT GEME CAN DO — A TRANSPARENT ASSESSMENT
+======================================================================
+
+GEME's architecture (competitive memory + co-occurrence + induction)
+is general. It is not limited to the four experiments reported in
+this paper. The experiments tested specific narrow claims. The
+architecture's potential is broader.
+
+This section separates three categories: demonstrated, architecturally
+supported, and speculation.
+
+
+DEMONSTRATED (reproduced in ≥50 runs across 4 experiments)
+----------------------------------------------------------------------
+
+  • Domain separation without labels.
+    Input streams with different structural signatures form
+    separate frame clusters. No domain tags needed.
+
+  • Concept-instance hierarchy.
+    Instance frames (concrete patterns) and association frames
+    (abstract patterns) form at different layers automatically.
+
+  • Wall detection.
+    The system encounters structural limits where evaluation
+    functions cannot distinguish valid from invalid instances.
+    These walls are not data artifacts — they are architectural.
+
+  • Cross-layer vocabulary generation (prototype).
+    Layer 2 can use Layer 1's own signatures to form distinctions
+    Layer 1 could not make. This was demonstrated with automated
+    vocabulary extraction (conn → conn_2, conn_3).
+
+
+ARCHITECTURALLY SUPPORTED (will work; not tested in these experiments)
+----------------------------------------------------------------------
+
+  • N domains (not just 2).
+    The co-occurrence mechanism is domain-agnostic. There is no
+    architectural limit on the number of separable domains. N=2
+    was tested; N=100 would use the same mechanism.
+
+  • Continuous input streams (not just discrete experiments).
+    GEME is designed for streaming input. It does not require
+    epoch-based training. It consolidates (induction) when stress
+    exceeds threshold — fully online.
+
+  • Variable memory capacity.
+    memory_cap from 4 to 16 was tested; 4 is the functional minimum.
+    Larger capacities enable more distinctions but require more
+    induction pressure. There is no architectural upper bound.
+
+  • Variable co-occurrence windows.
+    window=30 to 120 was tested. Smaller windows → faster concept
+    formation but more noise. Larger windows → slower but cleaner
+    associations. The window size controls the "attention span."
+
+  • Chain depth.
+    max_chains=5 was tested to prevent explosion. Higher limits
+    would enable longer inference chains. There is no architectural
+    limit — the cap is a control parameter, not a structural one.
+
+  • Induction frequency.
+    induction_interval=15 steps was used. Faster induction →
+    more aggressive pruning. Slower → more concepts retained.
+    Tuneable per application.
+
+
+SPECULATIVE (requires additional experiments)
+----------------------------------------------------------------------
+
+  • Cross-symbol abstraction.
+    Experiment 1 showed cross-symbol associations (swap──pair)
+    forming. Whether this generalizes to arbitrary symbol sets
+    is untested.
+
+  • Real-world input (images, text).
+    GEME operates on structured formulas, not raw data. A bridge
+    from perception to formulas is needed. This is a separate
+    engineering challenge, not an architecture limitation.
+
+  • Temporal pattern learning.
+    GEME processes each formula independently. Sequence-level
+    concepts (rhythm, periodicity, causation) would require
+    temporal encoding in the input.
+
+  • Multiple interacting Geurons.
+    The matrix architecture (multiple Geurons in parallel/series)
+    has been designed but not implemented. This is Phase Ouroboros,
+    next iteration.
+
+
+CLARIFYING MISCONCEPTIONS
+----------------------------------------------------------------------
+
+  GEME is NOT:
+    • A reinforcement learning system — it has no rewards.
+    • A deep network — it has no layers in the neural sense.
+    • A symbolic reasoner — it has no inference rules.
+    • A probabilistic model — it has no distributions.
+    • A memory network — it has no explicit read/write addressing.
+
+  GEME IS:
+    • A competitive economy: frames live or die by weight.
+    • A self-observing system: co-occurrence is self-reference.
+    • A compressor: it replaces many inputs with few frames.
+    • A wall-finder: its own evaluation function reveals its limits.
+
+The architecture is not "simple" in the sense of limited.
+It is simple in the sense of fundamental — like a Turing machine
+is simple. The experiments in this paper walk through the first
+few states of the machine. The full tape is much longer.
+
+======================================================================

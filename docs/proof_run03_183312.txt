@@ -1,0 +1,33 @@
+============================================================
+  Proof Viewer — Run #3
+============================================================
+
+Memory: 2/8  stress=0.2453  median=106.1
+[0] [E] w=106.1  #################################################
+     ((((∠A C B ≡ ∠D F E) ∧ (seg(A, B) ≡ seg(D, E))) ∧ (∠A B C ≡ 
+[1] [ ] w=1.0  #
+     ((((seg(A, B) ≡ seg(D, E)) ∧ (∠A C B ≡ ∠D F E)) ∧ (seg(A, C) ≡ seg(D, F))) → ((∠A B C ≡ ∠D E F) ∧ (∠A C B ≡ ∠D F E)))
+
+── Proof Chain ──
+[1] AXIOM: ((((seg(A, B) ≡ seg(D, E)) ∧ (∠A C B ≡ ∠D F E)) ∧ (seg(A, C) ≡ seg(D, F))) → ((∠A B C ≡ ∠D E F) ∧ (∠A C B ≡ ∠D F E)))
+       initial weight: 1.0
+
+[2] DERIVED: ((((∠A C B ≡ ∠D F E) ∧ (seg(A, B) ≡ seg(D, E))) ∧ 
+       weight: 30.1
+       weight: 1.0 -> 30.1
+
+[3] DERIVED: ((((∠A C B ≡ ∠D F E) ∧ (seg(A, B) ≡ seg(D, E))) ∧ 
+       weight: 56.1
+       weight: 30.1 -> 56.1
+
+[4] DERIVED: ((((∠A C B ≡ ∠D F E) ∧ (seg(A, B) ≡ seg(D, E))) ∧ 
+       weight: 81.1
+       weight: 56.1 -> 81.1
+
+[5] DERIVED: ((((∠A C B ≡ ∠D F E) ∧ (seg(A, B) ≡ seg(D, E))) ∧ 
+       weight: 106.1
+       weight: 81.1 -> 106.1
+
+── Emerged ──
+[E] w=106.1  ((((∠A C B ≡ ∠D F E) ∧ (seg(A, B) ≡ seg(D, E))) ∧ (∠A B C ≡ 
+============================================================

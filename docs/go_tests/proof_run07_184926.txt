@@ -1,0 +1,61 @@
+============================================================
+  Proof Viewer — Run #7
+============================================================
+
+Memory: 5/8  stress=0.3735  median=27.7
+[0] [E] w=97.0  #################################################
+     ((((PC ≡ SF) ∧ (CP ≡ FS)) ∧ (PP ≡ SS)) → (△PCP ≡ △SFS))
+[1] [E] w=38.8  #################
+     (△CDG ≡ △BGD)
+[2] [E] w=27.7  #############
+     (DC ≡ BF)
+[3] [ ] w=25.9  ###########
+     ((AP ≡ AC) → (∠P ≡ ∠C))
+[4] [ ] w=5.1  #
+     (∠C ≡ ∠H)
+
+── Proof Chain ──
+[1] AXIOM: ((((AB ≡ DE) ∧ (∠A ≡ ∠D)) ∧ (AC ≡ DF)) → (△ABC ≡ △DEF))
+       initial weight: 1.0
+
+[2] DERIVED: ((((RP ≡ US) ∧ (PR ≡ SU)) ∧ (RR ≡ UU)) → (△RPR ≡ △USU))
+       weight: 19.0
+       weight: 1.0 -> 19.0
+
+[3] DERIVED: ((((QC ≡ TF) ∧ (CA ≡ FD)) ∧ (AQ ≡ DT)) → (△QCA ≡ △TFD))
+       weight: 31.0
+       weight: 19.0 -> 31.0
+
+[4] DERIVED: ((((PC ≡ SF) ∧ (CP ≡ FS)) ∧ (PP ≡ SS)) → (△PCP ≡ △SFS))
+       weight: 41.0
+       weight: 31.0 -> 41.0
+
+[5] DERIVED: ((((PC ≡ SF) ∧ (CP ≡ FS)) ∧ (PP ≡ SS)) → (△PCP ≡ △SFS))
+       weight: 49.0
+       weight: 41.0 -> 49.0
+
+[6] DERIVED: ((((BR ≡ EU) ∧ (RA ≡ UD)) ∧ (AB ≡ DE)) → (△BRA ≡ △EUD))
+       weight: 61.0
+       weight: 49.0 -> 61.0
+
+[7] DERIVED: ((((QC ≡ TF) ∧ (CA ≡ FD)) ∧ (AQ ≡ DT)) → (△QCA ≡ △TFD))
+       weight: 71.0
+       weight: 61.0 -> 71.0
+
+[8] DERIVED: ((((RA ≡ UD) ∧ (AC ≡ DF)) ∧ (CR ≡ FU)) → (△RAC ≡ △UDF))
+       weight: 80.0
+       weight: 71.0 -> 80.0
+
+[9] DERIVED: ((((RA ≡ UD) ∧ (AC ≡ DF)) ∧ (CR ≡ FU)) → (△RAC ≡ △UDF))
+       weight: 88.0
+       weight: 80.0 -> 88.0
+
+[10] DERIVED: ((((RA ≡ UD) ∧ (AC ≡ DF)) ∧ (CR ≡ FU)) → (△RAC ≡ △UDF))
+       weight: 96.0
+       weight: 88.0 -> 96.0
+
+── Emerged ──
+[E] w=97.0  ((((PC ≡ SF) ∧ (CP ≡ FS)) ∧ (PP ≡ SS)) → (△PCP ≡ △SFS))
+[E] w=38.8  (△CDG ≡ △BGD)
+[E] w=27.7  (DC ≡ BF)
+============================================================

@@ -1,0 +1,31 @@
+Core Finding: GEME as a Unified Computational Instance of GR-QM Intersection
+
+System: GEME (Generative Ententional Memory Engine)
+- Competitive memory economy: 27-dim vectors, merge threshold δ
+- Inputs within δ merge into same frame (weight+1, centroid shifts)
+- Inputs beyond δ form new frames
+- δ adapts to input density: dense regions → finer δ, sparse regions → coarser δ
+
+Result 1: Time Dilation (GR analogue)
+- High-density regions (more inputs per unit time) → finer δ → more frames generated
+- Low-density regions → coarser δ → fewer frames
+- Frame generation ratio (high-density/low-density): 1.85x
+- Correspondence: density = mass, frame generation rate = proper time
+- GEME naturally produces a GR-like time dilation curve without being programmed to
+
+Result 2: Quantum Measurement (QM analogue)
+- Merge = projective measurement: input collapses into nearest frame
+- Deterministic merge: nearest frame always wins → classical
+- Probabilistic merge (quantum_mode): Boltzmann-weighted random selection among candidates
+- Zeno variant (centroid unchanged during merge): 49.5%/50.5% split for equidistant inputs
+- Measurement doesn't disturb the state → uncertainty preserved
+- Correspondence: frame = eigenstate, merge = collapse, weight = eigenvalue
+
+The Bridge: δ = time-resolution parameter determined by local input density
+- GR: mass density → spacetime curvature → time dilation
+- QM: measurement frequency → wavefunction collapse → Zeno effect
+- GEME: input density → merge threshold δ → frame generation rate
+
+The mechanism is the same in all three: local density determines temporal resolution.
+
+This is not a simulation. This is a single system that produces both GR-like and QM-like behaviors from one competitive memory mechanism.

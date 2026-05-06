@@ -1,0 +1,65 @@
+============================================================
+  Proof Viewer — Run #2
+============================================================
+
+Memory: 5/8  stress=0.3763  median=27.3
+[0] [E] w=97.0  #################################################
+     ((((∠P ≡ ∠S) ∧ (PC ≡ SF)) ∧ (∠C ≡ ∠F)) → (△PCP ≡ △SFS))
+[1] [E] w=38.5  #################
+     (△CDG ≡ △BGD)
+[2] [E] w=27.3  #############
+     (DC ≡ BF)
+[3] [ ] w=25.6  ###########
+     ((AP ≡ AC) → (∠P ≡ ∠C))
+[4] [ ] w=5.1  #
+     (∠C ≡ ∠H)
+
+── Proof Chain ──
+[1] AXIOM: ((((AB ≡ DE) ∧ (∠A ≡ ∠D)) ∧ (AC ≡ DF)) → (△ABC ≡ △DEF))
+       initial weight: 1.0
+
+[2] DERIVED: ((((∠P ≡ ∠S) ∧ (PB ≡ SE)) ∧ (∠B ≡ ∠E)) → (△PBB ≡ △SEE))
+       weight: 14.0
+       weight: 1.0 -> 14.0
+
+[3] DERIVED: ((((∠P ≡ ∠S) ∧ (PC ≡ SF)) ∧ (∠C ≡ ∠F)) → (△PCP ≡ △SFS))
+       weight: 25.0
+       weight: 14.0 -> 25.0
+
+[4] DERIVED: ((((∠R ≡ ∠U) ∧ (RA ≡ UD)) ∧ (∠A ≡ ∠D)) → (△RAB ≡ △UDE))
+       weight: 34.0
+       weight: 25.0 -> 34.0
+
+[5] DERIVED: ((((∠P ≡ ∠S) ∧ (PB ≡ SE)) ∧ (∠B ≡ ∠E)) → (△PBB ≡ △SEE))
+       weight: 46.0
+       weight: 34.0 -> 46.0
+
+[6] DERIVED: ((((∠Q ≡ ∠T) ∧ (QC ≡ TF)) ∧ (∠C ≡ ∠F)) → (△QCA ≡ △TFD))
+       weight: 55.0
+       weight: 46.0 -> 55.0
+
+[7] DERIVED: ((((∠R ≡ ∠U) ∧ (RA ≡ UD)) ∧ (∠A ≡ ∠D)) → (△RAC ≡ △UDF))
+       weight: 64.0
+       weight: 55.0 -> 64.0
+
+[8] DERIVED: ((((∠R ≡ ∠U) ∧ (RA ≡ UD)) ∧ (∠A ≡ ∠D)) → (△RAC ≡ △UDF))
+       weight: 72.0
+       weight: 64.0 -> 72.0
+
+[9] DERIVED: ((((∠P ≡ ∠S) ∧ (PC ≡ SF)) ∧ (∠C ≡ ∠F)) → (△PCP ≡ △SFS))
+       weight: 81.0
+       weight: 72.0 -> 81.0
+
+[10] DERIVED: ((((∠P ≡ ∠S) ∧ (PC ≡ SF)) ∧ (∠C ≡ ∠F)) → (△PCP ≡ △SFS))
+       weight: 89.0
+       weight: 81.0 -> 89.0
+
+[11] DERIVED: ((((∠P ≡ ∠S) ∧ (PC ≡ SF)) ∧ (∠C ≡ ∠F)) → (△PCP ≡ △SFS))
+       weight: 97.0
+       weight: 89.0 -> 97.0
+
+── Emerged ──
+[E] w=97.0  ((((∠P ≡ ∠S) ∧ (PC ≡ SF)) ∧ (∠C ≡ ∠F)) → (△PCP ≡ △SFS))
+[E] w=38.5  (△CDG ≡ △BGD)
+[E] w=27.3  (DC ≡ BF)
+============================================================

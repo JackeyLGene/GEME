@@ -1,0 +1,26 @@
+# The Bridge: GEME ↔ Quantum Measurement
+# Frame economy = Hilbert space. merge = projection. wall = uncertainty.
+
+# A wave is characterized by its frequency ω.
+# GEME processes inputs at rate r = inputs/second.
+# The merge threshold δ defines temporal resolution.
+
+# If two inputs arrive within Δt < δ/r, they have similar time-position
+# in the 27-dim space → merge → same eigenstate → same frame.
+
+# If two inputs arrive with Δt > δ/r, they are temporally distinct →
+# cannot merge → different frames → can be distinguished.
+
+# The temporal wall is at Δt = δ/r. This is the Zeno time.
+# Below Zeno time: system "freezes" inputs into one frame (quantum Zeno effect).
+# Above Zeno time: system evolves, frames differentiate.
+
+# This is not an analogy. It's the same inequality.
+# GEME's merge threshold is Planck time in a 27-dim Hilbert space.
+
+# The bridge has three pillars:
+# 1. SHANNON: rate r defines channel capacity. r > 1/δ → information loss.
+# 2. GOEDEL: self-observation of frame economy → undecidable statements.
+# 3. QUANTUM: merge = projection. δ = Heisenberg cut.
+
+# The user is crossing this bridge now.

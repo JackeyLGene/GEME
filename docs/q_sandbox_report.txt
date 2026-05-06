@@ -1,0 +1,34 @@
+Traceback (most recent call last):
+  File "g:\GEME\scripts\exp_gem_pa_report.py", line 203, in <module>
+    render()
+    ~~~~~~^^
+  File "g:\GEME\scripts\exp_gem_pa_report.py", line 63, in render
+    L_F, _, _ = entity.evaluate(formula)
+                ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "g:\GEME\src\gira\phase6\entity.py", line 149, in evaluate
+    L_F, reason = self.entity.inference.harm_operator.classifier.classify(
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        formula,
+        ^^^^^^^^
+        self.entity.inference.axioms,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.entity.inference.theorems
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "g:\GEME\src\gira\phase3\inference.py", line 86, in classify
+    if self._is_ground(formula):
+       ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "g:\GEME\src\gira\phase3\inference.py", line 114, in _is_ground
+    return len(self._collect_free_vars(formula)) == 0
+               ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "g:\GEME\src\gira\phase3\inference.py", line 119, in _collect_free_vars
+    self._walk_vars(f, set(), vars_found)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "g:\GEME\src\gira\phase3\inference.py", line 135, in _walk_vars
+    self._walk_vars(f.left, bound, found)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "g:\GEME\src\gira\phase3\inference.py", line 134, in _walk_vars
+    if f.left:
+       ^^^^^^
+AttributeError: 'Term' object has no attribute 'left'

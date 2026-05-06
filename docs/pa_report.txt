@@ -1,0 +1,126 @@
+======================================================================
+  GEM 6.1 PA SANDBOX — FULL OBSERVATION REPORT
+======================================================================
+
+[1] TRAINING DATA
+----------------------------------------------------------------------
+  Axioms: Robinson Q (without induction schema)
+  Boundary signals injected: 9
+
+  Injected signals (frame-level harm):
+  Frame    Name           L    Harm   Cum. Stress 
+  ---------------------------------------------
+  1        add_comm       L3   1.0    0.100
+  2        mul_comm       L3   1.0    0.195
+  3        add_assoc      L3   1.0    0.285
+  4        mul_assoc      L3   1.0    0.371
+  5        distrib        L3   1.0    0.452
+  6        x*1=x          L3   1.0    0.530
+  7        dbl_mul        L3   1.0    0.603
+  8        sq_add         L3   1.0    0.673
+  30       add_assoc      L3   1.0    1.571
+
+  Total training frames: 54
+  Final stress: 0.285
+
+
+[2] INPUT SPACE (Candidate Formulas)
+----------------------------------------------------------------------
+  Name           Category         Pre-L    Post-L  
+  --------------------------------------------------
+  0+0=0          trivial ground   L1       L1      
+  x+0=x          identity         L1       L1      
+  add_comm       commutativity    L3       L2      
+  mul_comm       commutativity    L3       L2      
+  add_assoc      associativity    L3       L2      
+  mul_assoc      associativity    L3       L2      
+  distrib        distributivity   L3       L2      
+  x*1=x          identity         L3       L2      
+  dbl_mul        derived          L3       L2      
+  sq_add         derived          L3       L3      
+  mul_add        derived          L3       L2      
+
+
+[3] BOUNDARY MAP (Structural Signatures)
+----------------------------------------------------------------------
+  Signature                                     Count   
+  -------------------------------------------------------
+  forall_forall_forall_equation_mul_add         11      
+  forall_forall_equation_add_swap               6       
+  forall_forall_equation_mul_swap               6       
+  forall_forall_forall_equation_add             6       
+  forall_forall_forall_equation_mul             6       
+  forall_equation_mul_const                     6       
+  forall_forall_equation_mul_add                6       
+  forall_forall_equation_add_mul                5       
+
+
+[4] EMERGENCE LOG (L3 → L2 transitions)
+----------------------------------------------------------------------
+  Name           Before   After    Formula
+  -------------------------------------------------------
+  add_comm       L3       L2       ∀x.∀y.(x + y) = (y + x)
+  mul_comm       L3       L2       ∀x.∀y.(x × y) = (y × x)
+  add_assoc      L3       L2       ∀x.∀y.∀z.(x + (y + z)) = ((x + y) + z)
+  mul_assoc      L3       L2       ∀x.∀y.∀z.(x × (y × z)) = ((x × y) × z)
+  distrib        L3       L2       ∀x.∀y.∀z.(x × (y + z)) = ((x × y) + (x × z))
+  x*1=x          L3       L2       ∀x.(x × s(0)) = x
+  dbl_mul        L3       L2       ∀x.∀y.((x × y) + (x × y)) = (x × (y + y))
+  mul_add        L3       L2       ∀x.∀y.∀z.((x + y) × z) = ((x × z) + (y × z))
+
+  Total emerged: 8/9 boundary formulas
+  Emergence rate: 89%
+
+
+[5] RULE CATALOG (Synthesized Induction Rules)
+----------------------------------------------------------------------
+  Total rules: 8
+
+  Rule 1: induction_from_forall_forall_forall_equation_mul_add
+    Template: ∀x.∀y.∀z.(x × (y + z)) = ((x × y) + (x × z))
+
+  Rule 2: induction_from_forall_forall_equation_add_swap
+    Template: ∀x.∀y.(x + y) = (y + x)
+
+  Rule 3: induction_from_forall_forall_equation_mul_swap
+    Template: ∀x.∀y.(x × y) = (y × x)
+
+  Rule 4: induction_from_forall_forall_forall_equation_add
+    Template: ∀x.∀y.∀z.(x + (y + z)) = ((x + y) + z)
+
+  Rule 5: induction_from_forall_forall_forall_equation_mul
+    Template: ∀x.∀y.∀z.(x × (y × z)) = ((x × y) × z)
+
+  Rule 6: induction_from_forall_equation_mul_const
+    Template: ∀x.(x × s(0)) = x
+
+  Rule 7: induction_from_forall_forall_equation_add_mul
+    Template: ∀x.∀y.((x × y) + (x × y)) = (x × (y + y))
+
+  Rule 8: induction_from_forall_forall_equation_mul_add
+    Template: ∀x.∀y.((x + y) × (x + y)) = (((x × x) + (2 × (x × y))) + (y 
+
+
+[6] TRANSITION TIMELINE
+----------------------------------------------------------------------
+  Initial: L(E) = 0
+  After training: L(E) = 1
+    Transition at frame: 51
+    Final system level:  L(E) = 1
+
+
+[7] SUMMARY
+----------------------------------------------------------------------
+  Formulas tested:       11
+  Boundary signals:      9
+  In-grammar signals:    2
+  Training frames:       54
+  Structural signatures: 8
+  Rules synthesized:     8
+  Formulas emerged:      8
+  Emergence rate:        89% (8/9)
+
+======================================================================
+  GEME is a cognitive oscilloscope.
+  The human observes — the instrument makes structures visible.
+======================================================================

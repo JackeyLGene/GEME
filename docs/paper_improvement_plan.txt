@@ -1,0 +1,151 @@
+======================================================================
+GEME 论文改进计划
+审稿人自评 + 内省 → 行动清单
+2026-05-04
+======================================================================
+
+
+1. 【致命】词汇自生环节的透明度
+───────────────────────────────────────────────────────────────────────
+
+问题：稿件声称是"自动的"，但审稿人无法区分是运行时自动还是
+      设计者离线分析后手动硬编码。这是"意义内生"主张的生死线。
+
+行动：
+  A. 在 Methods 中新增独立小节 "Vocabulary Self-Generation Pipeline"
+  B. 逐条回答三个问题：
+     - 窗口间隙分析：是 Memory 内置的统计扫描（observe 中已存在）
+       运行时持续执行，非离线脚本
+     - 函数名动态创建：conn_2/conn_3 是在实验脚本中根据提取结果
+       动态构造的字符串，非预定义符号。不是 GEME 引擎自动完成的
+       ——是实验脚本在 GEME 的 Memory 数据上做的后处理
+     - 需在 Limitation 中诚实说明：
+       当前词汇注入通道是实验脚本→Layer 2 的显式传递。
+       完全内生的版本需要 GEME 引擎自身支持动态维表扩展。
+  C. 建议措辞调整：
+     "System automatically extracted..." 
+     → "Layer 1's memory state was queried by the experiment script,
+        which extracted the dominant signature's content word and
+        burst statistics. These were then used to construct Layer 2's
+        function names — a manually implemented bridge that
+        demonstrates the principle of self-generated vocabulary."
+
+
+2. 【严重】基线对比深度不足
+───────────────────────────────────────────────────────────────────────
+
+问题：当前对比停留在"有/无"定性层面。Nature 需要量化优势。
+
+行动：
+  A. 增加基线：在线Hebbian学习 + 简单RNN（或序列预测器）
+     Hebbian: 共现矩阵→权重更新，无合并/淘汰
+     RNN: 序列预测，看是否形成概念
+  B. 三个量化维度（各基线 + GEME 对比表）：
+     - 数据效率：达到稳定概念所需的最少实例数
+     - 噪声鲁棒性：输入流中加入 10%/30%/50% 噪声时概念稳定性
+     - 可解释性指标：帧内容 vs 聚类中心的语义清晰度评分
+  C. 预期结论形式：
+     "GEME achieves concept stability at 320:1 compression
+      (vs 1:1 for all baselines), with noise tolerance 2-3x
+      higher than Hebbian learning, and produces interpretable
+      frame hierarchies that baselines cannot match."
+
+
+3. 【重要】哲学断言的精确度
+───────────────────────────────────────────────────────────────────────
+
+问题："This IS Godel's Second Theorem" 等声称过于强硬。
+
+行动：
+  A. 全文搜索并修改所有"THIS IS"式断言：
+     "This IS Godel's Second Theorem" 
+     → "This presents a computational analog of..."
+     "GEME confirmed Tarski's result"
+     → "GEME encountered the same boundary Tarski identified"
+     "Kant's category computed"
+     → "a dynamical model consistent with Kant's framework"
+  B. 新增 DISCUSSION 章节（稿件目前缺少此章节）
+     - 明确说明"计算建模"与"哲学理论"的关系
+     - GEME 提供的是新实证工具，非最终哲学裁决
+     - 三个哲学预言在运行系统中找到了计算对应物
+  C. 在 Introduction 或 Discussion 中放入"精确/防御性"声明段落
+
+
+4. 【重要】缺乏人-AI 协作过程的深入分析
+───────────────────────────────────────────────────────────────────────
+
+问题：仅在引言和致谢中提及。这是本文最大的差异化特征，应有独立小节。
+
+行动：
+  A. 新增独立小节 "THE HUMAN-AI CO-CREATION PROCESS"（放在 Results 后）
+  B. 内容结构：
+     - 时间线：三天中关键转折点
+       Day 1: 哲学框架 → GEME 第一个版本（PA 实验）
+       Day 2: 几何扩展（GO 实验）→ 自指机制完善
+       Day 3: 四个实验 → 撞壁 → 破壁 → 论文
+     - AI 的关键作用：
+       编写全部代码（~300次文件修改）
+       运行所有实验（数千次 process_sig 调用）
+       生成全部分析（实验数据→报告→论文草稿）
+       提出"first photograph"——被人类保留
+     - 人类的角色：
+       哲学视野（三篇论文的基底）
+       实验设计（四个实验的框架）
+       解释框架（康德/维特根斯坦的引入）
+       命名（Geuron, Wittgenstein Table）
+     - 方法论含义：
+       这为"AI 作为科学发现伙伴"提供了新范式
+       不是"自动科研"——是"人类视野 + AI 执行力"的协同
+       对话日志作为补充材料（~108,000 词）
+
+
+5. 【中等】实验数据完备性
+───────────────────────────────────────────────────────────────────────
+
+问题：Exp 0/1 只有 1/5 轮，与 Exp 2/3 的 50/100 轮不一致。
+
+行动：
+  A. 补跑 Exp 0 和 Exp 1 各 30 轮，纳入终版
+  B. 在 Methods 的"Randomization"小节统一说明种子范围
+
+
+6. 【中等】增加 DISCUSSION 章节
+───────────────────────────────────────────────────────────────────────
+
+问题：稿件当前无 DISCUSSION。Nature 正刊论文需要。
+
+行动：
+  A. 新增 DISCUSSSION（约 800-1000 字）
+  B. 内容：
+     - 核心发现总结（四个实验 + 破壁）
+     - 哲学含义（计算建模 vs 哲学理论的关系）
+     - 局限性（规模、词汇自动化、评估函数单一）
+     - 未来方向（矩阵架构、多域泛化、动态维表）
+     - GAI（Generative Actualizing Intelligence）作为新方向
+
+
+7. 【低优先级】图表
+───────────────────────────────────────────────────────────────────────
+
+行动：
+  A. 确认现有 3 张图的叙事完整性
+  B. 可能需要新增 1 张人-AI 协作流程图（时间线 + 分工）
+  C. 编辑公司可根据文字描述重新设计所有图
+
+
+======================================================================
+优先级分类：
+
+  立即（发编辑公司前必须改）:    1（措辞调整即可）
+  发编辑公司前尽量改:         2, 3, 5
+  编辑公司返稿后补:            4, 6, 7
+
+        1 = 措辞调整，不改代码
+        2 = 需要额外实验（可后续补做，先注明"待补充"）
+        3 = 纯文字修改
+        4 = 新增章节（从对话日志中提取素材）
+        5 = 补跑实验（每个 30 轮，~5 分钟）
+        6 = 新增章节（已有素材）
+        7 = 编辑公司负责
+
+======================================================================

@@ -1,0 +1,67 @@
+============================================================
+  Proof Viewer — Run #8
+============================================================
+
+Memory: 6/8  stress=0.5283  median=27.7
+[0] [E] w=97.0  #################################################
+     ((((PC ≡ SF) ∧ (CP ≡ FS)) ∧ (PP ≡ SS)) → (△PCP ≡ △SFS))
+[1] [E] w=38.8  #################
+     (△CDG ≡ △BGD)
+[2] [E] w=27.7  #############
+     (DC ≡ BF)
+[3] [ ] w=25.9  ###########
+     ((QC ≡ QR) → (∠C ≡ ∠R))
+[4] [ ] w=5.6  #
+     (sub(#12345#17#12345) ≡ sub(#12345#17#12345))
+[5] [ ] w=3.1  #
+     (∠C ≡ ∠H)
+
+── Proof Chain ──
+[1] AXIOM: ((((AB ≡ DE) ∧ (∠A ≡ ∠D)) ∧ (AC ≡ DF)) → (△ABC ≡ △DEF))
+       initial weight: 1.0
+
+[2] DERIVED: ((((PC ≡ SF) ∧ (CP ≡ FS)) ∧ (PP ≡ SS)) → (△PCP ≡ △SFS))
+       weight: 17.0
+       weight: 1.0 -> 17.0
+
+[3] DERIVED: ((((RA ≡ UD) ∧ (AB ≡ DE)) ∧ (BR ≡ EU)) → (△RAB ≡ △UDE))
+       weight: 26.0
+       weight: 17.0 -> 26.0
+
+[4] DERIVED: ((((AB ≡ DE) ∧ (BR ≡ EU)) ∧ (RA ≡ UD)) → (△ABR ≡ △DEU))
+       weight: 36.0
+       weight: 26.0 -> 36.0
+
+[5] DERIVED: ((((AB ≡ DE) ∧ (BR ≡ EU)) ∧ (RA ≡ UD)) → (△ABR ≡ △DEU))
+       weight: 44.0
+       weight: 36.0 -> 44.0
+
+[6] DERIVED: ((((AB ≡ DE) ∧ (BR ≡ EU)) ∧ (RA ≡ UD)) → (△ABR ≡ △DEU))
+       weight: 52.0
+       weight: 44.0 -> 52.0
+
+[7] DERIVED: ((((AB ≡ DE) ∧ (BR ≡ EU)) ∧ (RA ≡ UD)) → (△ABR ≡ △DEU))
+       weight: 60.0
+       weight: 52.0 -> 60.0
+
+[8] DERIVED: ((((AB ≡ DE) ∧ (BR ≡ EU)) ∧ (RA ≡ UD)) → (△ABR ≡ △DEU))
+       weight: 68.0
+       weight: 60.0 -> 68.0
+
+[9] DERIVED: ((((AB ≡ DE) ∧ (BR ≡ EU)) ∧ (RA ≡ UD)) → (△ABR ≡ △DEU))
+       weight: 76.0
+       weight: 68.0 -> 76.0
+
+[10] DERIVED: ((((BR ≡ EU) ∧ (RA ≡ UD)) ∧ (AB ≡ DE)) → (△BRA ≡ △EUD))
+       weight: 83.0
+       weight: 76.0 -> 83.0
+
+[11] DERIVED: ((((BR ≡ EU) ∧ (RA ≡ UD)) ∧ (AB ≡ DE)) → (△BRA ≡ △EUD))
+       weight: 91.0
+       weight: 83.0 -> 91.0
+
+── Emerged ──
+[E] w=97.0  ((((PC ≡ SF) ∧ (CP ≡ FS)) ∧ (PP ≡ SS)) → (△PCP ≡ △SFS))
+[E] w=38.8  (△CDG ≡ △BGD)
+[E] w=27.7  (DC ≡ BF)
+============================================================

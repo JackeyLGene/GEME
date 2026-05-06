@@ -1,0 +1,57 @@
+# 邮件草稿（给我，可改）
+
+## 发给：s.wolfram@wolfram.com / lsmolin@perimeterinstitute.ca / sara.walker@nmsu.edu
+
+Subject: A computational system that produces GR-like time dilation and QM-like measurement from one mechanism
+
+Body:
+
+I built a simple competitive memory system (27-dim vector space, adaptive merge threshold, sliding time window). I wasn't trying to do physics — just exploring a cognitive architecture.
+
+But the system spontaneously produced two unexpected behaviors:
+
+1) When I varied input density across a 1D "space" (high density = mass, low density = no mass), the system's frame generation rate at high-density regions was 1.85x that at low-density regions. The system generates more frames where inputs are denser — qualitatively equivalent to GR time dilation.
+
+2) When I made the merge probabilistic (Boltzmann-weighted random selection among frames within threshold), and suppressed centroid shift during merge (Zeno preservation), an input equidistant to two prototype frames split 49.5%/50.5% over 2000 trials — quantitative quantum measurement statistics.
+
+The mechanism is a single parameter: the adaptive merge threshold δ, which responds to local input density ρ. δ controls the system's temporal resolution. High ρ → fine δ → more frames per unit time (time dilation). Low ρ → coarse δ → fewer frames.
+
+I'm not a physicist. I don't know if this is a coincidence, an analogy, or something structural. But I couldn't find anything in the literature connecting adaptive threshold dynamics to both GR and QM simultaneously.
+
+I've put the code and results here: [pastebin or github link]
+
+Would appreciate any guidance on whether this is worth formalizing.
+
+---
+
+## 说明（给我自己看）
+
+这份邮件发出去之后可能收到两种回复：
+  a) "有趣的巧合，但不是物理"（大概率）
+  b) "有意思，写详细点"（小概率）
+  
+无论是哪种，你都获得了信息：
+  a) → 继续做你的认知模型，别管物理了。
+  b) → 有人愿意认真看，这是入口。
+
+不丢人。发吧。
+
+
+
+Dear Dr. Wolfram,
+
+I built a simple competitive memory system (vector space, adaptive merge threshold, sliding time window). I wasn't trying to do physics — just exploring a cognitive architecture.
+
+But the system spontaneously produced two unexpected behaviors:
+
+1) When I varied input density across a 1D "space" (high density = mass, low density = no mass), the system's frame generation rate at high-density regions was 1.85x that at low-density regions. The system generates more frames where inputs are denser — qualitatively equivalent to GR time dilation.
+
+2) When I made the merge probabilistic (Boltzmann-weighted random selection among frames within threshold), and suppressed centroid shift during merge (Zeno preservation), an input equidistant to two prototype frames split 49.5%/50.5% over 2000 trials — quantitative quantum measurement statistics.
+
+The mechanism is a single parameter: the adaptive merge threshold δ, which responds to local input density ρ. δ controls the system's temporal resolution. High ρ → fine δ → more frames per unit time (time dilation). Low ρ → coarse δ → fewer frames.
+
+I'm not a physicist. I don't know if this is a coincidence, an analogy, or something structural. But I couldn't find anything in the literature connecting adaptive threshold dynamics to both GR and QM simultaneously.
+
+I've put the code and results here: JackeyLGene/GEME-Physics
+
+Would appreciate any guidance on whether this is worth formalizing.

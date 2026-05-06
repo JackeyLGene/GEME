@@ -1,0 +1,59 @@
+# GEME: A Computational System Exhibiting GR-like and QM-like Behaviors from a Single Mechanism
+
+## System Description
+
+GEME (Generative Ententional Memory Engine) is a competitive memory system operating on a fixed-dimension vector space (27-dim). It maintains a set of **frames** — memory structures each with a centroid vector and a scalar weight. When a new input vector arrives:
+
+1. Find the frame with the closest centroid (cosine/Euclidean distance)
+2. If distance ≤ **merge threshold δ**, merge the input into that frame (weight + 1, centroid shifts toward input)
+3. If distance > δ, create a new frame
+
+The merge threshold δ is not static — it adapts to the local density of inputs. In regions of higher input density, δ decreases, making the system more discriminating. In regions of lower density, δ increases.
+
+The system has a sliding time window of configurable size. Frame weights decay over time; low-weight frames are periodically pruned.
+
+## Finding 1: Density-Driven Time Dilation (GR analogue)
+
+Setup: A 1D spatial line (x = 0 to 100) with a "mass" at the origin. Input density at position x is ρ(x) = M / (1 + 0.1·x), where M is a mass parameter. Higher density = more inputs per unit time = closer to the mass.
+
+The system receives inputs distributed across this space in proportion to ρ(x). After ~30,000 inputs:
+
+- The **frame generation rate γ** (total weight of frames per spatial region) is higher in high-density regions (near mass) than low-density regions (far from mass).
+- Ratio γ_high / γ_low ≈ 1.85 for M = 5.0.
+- This is qualitatively equivalent to gravitational time dilation in general relativity, where proper time τ slows near a mass: dτ/dt = √(1 − r_s/r).
+
+The mechanism: Local input density ρ → adaptive threshold δ → temporal resolution (frames per unit time). Higher density drives finer temporal resolution, producing more frames — the system's analogue of "more time."
+
+## Finding 2: Probabilistic Merge as Quantum Measurement (QM analogue)
+
+The merge operation can be made probabilistic: when multiple frames are within δ of the input vector, selection follows a Boltzmann distribution:
+P(frame_i | input) = exp(−d_i / δ) / Σⱼ exp(−d_j / δ)
+where d_i is the distance between input and frame_i's centroid.
+
+**Classical regime** (default): centroid moves toward input after merge. This creates positive feedback — once one frame receives a merge, it becomes closer for subsequent inputs, reinforcing the selection.
+
+**Zeno regime** (centroid invariant during merge): the centroid does not shift. Only the weight increases. This preserves the system's state across measurements.
+
+Test: Two orthogonal prototype frames, input vector equidistant to both (distances equal). In the Zeno regime over 2000 trials:
+- Frame A: 49.5%
+- Frame B: 50.5%
+- Mean over 5 random seeds: 49.3% ± 2.0%
+
+The system reproduces the Born rule statistics of quantum measurement without being calibrated to do so.
+
+## The Unified Parameter
+
+Both findings are controlled by the same parameter — the **adaptive merge threshold δ**, which responds to local input density:
+
+- Under high density → δ decreases → fine temporal resolution → more frames → time dilation (GR)
+- Under measurement → δ determines the probability landscape for frame selection → quantum statistics (QM)
+- When centroid is frozen (Zeno) → measurement does not perturb the state → quantum uncertainty preserved
+
+## Code and Results
+
+Repository: [to be added]
+Core implementation: ~400 lines in Python. All experiments runnable from a single file.
+
+## Request
+
+I am not a physicist by training. I built this system for cognitive architecture research and observed these behaviors unexpectedly. I would appreciate guidance on whether this is a known phenomenon, a coincidence, or something worth formalizing further.

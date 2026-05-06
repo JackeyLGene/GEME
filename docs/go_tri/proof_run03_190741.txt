@@ -1,0 +1,108 @@
+============================================================
+  Proof Viewer — Run #3
+============================================================
+
+── Current Memory ──
+  occupied: 4/8  stress: 0.2868  median: 170.1
+  [0] [E] w=302.0  ((((∠C ≡ ∠F) ∧ (BC ≡ EF)) ∧ (∠B ≡ ∠E)) → (△ABC ≡ △DEF))
+       ##############################
+  [1] [E] w=170.1  ((((∠B ≡ ∠E) ∧ (BC ≡ EF)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+       ################..............
+  [2] [.] w= 94.0  ((((BC ≡ EF) ∧ (∠A ≡ ∠D)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+       #########.....................
+  [3] [.] w= 33.9  ((((∠C ≡ ∠F) ∧ (∠B ≡ ∠E)) ∧ (∠A ≡ ∠D)) → (△ABC ≡ △DEF))
+       ###...........................
+
+── Weight History (48 snapshots) ──
+  @frame 540:
+    w=264.0 #################...  ((((∠B ≡ ∠E) ∧ (BC ≡ EF)) ∧ (∠C ≡ ∠F)) → (△ABC ≡ △DEF))
+    w=156.1 ##########..........  ((((∠B ≡ ∠E) ∧ (∠C ≡ ∠F)) ∧ (BC ≡ EF)) → (△ABC ≡ △DEF))
+    w= 88.0 #####...............  ((((BC ≡ EF) ∧ (∠B ≡ ∠E)) ∧ (AB ≡ DE)) → (△ABC ≡ △DEF))
+    w= 31.9 ##..................  ((((∠C ≡ ∠F) ∧ (∠A ≡ ∠D)) ∧ (∠B ≡ ∠E)) → (△ABC ≡ △DEF))
+  @frame 557:
+    w=278.0 ##################..  ((((∠B ≡ ∠E) ∧ (BC ≡ EF)) ∧ (∠C ≡ ∠F)) → (△ABC ≡ △DEF))
+    w=159.1 ##########..........  ((((∠A ≡ ∠D) ∧ (∠B ≡ ∠E)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+    w= 88.0 #####...............  ((((BC ≡ EF) ∧ (∠B ≡ ∠E)) ∧ (AB ≡ DE)) → (△ABC ≡ △DEF))
+    w= 31.9 ##..................  ((((∠C ≡ ∠F) ∧ (∠A ≡ ∠D)) ∧ (∠B ≡ ∠E)) → (△ABC ≡ △DEF))
+  @frame 570:
+    w=285.0 ##################..  ((((AB ≡ DE) ∧ (BC ≡ EF)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+    w=162.1 ##########..........  ((((∠A ≡ ∠D) ∧ (∠B ≡ ∠E)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+    w= 90.0 #####...............  ((((AB ≡ DE) ∧ (∠A ≡ ∠D)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+    w= 32.9 ##..................  ((((∠A ≡ ∠D) ∧ (∠C ≡ ∠F)) ∧ (∠B ≡ ∠E)) → (△ABC ≡ △DEF))
+  @frame 579:
+    w=290.0 ###################.  ((((∠B ≡ ∠E) ∧ (AB ≡ DE)) ∧ (∠A ≡ ∠D)) → (△ABC ≡ △DEF))
+    w=164.1 ##########..........  ((((∠A ≡ ∠D) ∧ (∠B ≡ ∠E)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+    w= 92.0 ######..............  ((((AB ≡ DE) ∧ (∠A ≡ ∠D)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+    w= 32.9 ##..................  ((((∠A ≡ ∠D) ∧ (∠C ≡ ∠F)) ∧ (∠B ≡ ∠E)) → (△ABC ≡ △DEF))
+  @frame 600:
+    w=302.0 ####################  ((((∠C ≡ ∠F) ∧ (BC ≡ EF)) ∧ (∠B ≡ ∠E)) → (△ABC ≡ △DEF))
+    w=170.1 ###########.........  ((((∠B ≡ ∠E) ∧ (BC ≡ EF)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+    w= 94.0 ######..............  ((((BC ≡ EF) ∧ (∠A ≡ ∠D)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+    w= 33.9 ##..................  ((((∠C ≡ ∠F) ∧ (∠B ≡ ∠E)) ∧ (∠A ≡ ∠D)) → (△ABC ≡ △DEF))
+
+── Stability ──
+  [unst] w= 16.0  ((((∠A ≡ ∠D) ∧ (AB ≡ DE)) ∧ (∠B ≡ ∠E)) → (△ABC ≡ △DEF))
+  [unst] w=  7.1  ((((∠A ≡ ∠D) ∧ (BC ≡ EF)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+  [unst] w=  2.0  ((((BC ≡ EF) ∧ (∠B ≡ ∠E)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+  [STABLE] w=  2.0  ((((∠A ≡ ∠D) ∧ (∠B ≡ ∠E)) ∧ (∠C ≡ ∠F)) → (△ABC ≡ △DEF))
+  [STABLE] w= 18.0  ((((AB ≡ DE) ∧ (∠A ≡ ∠D)) ∧ (∠C ≡ ∠F)) → (△ABC ≡ △DEF))
+  [unst] w=  8.1  ((((∠B ≡ ∠E) ∧ (∠C ≡ ∠F)) ∧ (AB ≡ DE)) → (△ABC ≡ △DEF))
+  [unst] w= 26.0  ((((∠B ≡ ∠E) ∧ (CA ≡ FD)) ∧ (∠C ≡ ∠F)) → (△ABC ≡ △DEF))
+  [unst] w= 12.1  ((((∠B ≡ ∠E) ∧ (∠C ≡ ∠F)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+  [unst] w=  4.0  ((((BC ≡ EF) ∧ (∠B ≡ ∠E)) ∧ (AB ≡ DE)) → (△ABC ≡ △DEF))
+  [STABLE] w= 17.1  ((((∠A ≡ ∠D) ∧ (∠C ≡ ∠F)) ∧ (BC ≡ EF)) → (△ABC ≡ △DEF))
+  [unst] w=  7.0  ((((AB ≡ DE) ∧ (∠B ≡ ∠E)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+  [STABLE] w=  3.9  ((((∠A ≡ ∠D) ∧ (∠C ≡ ∠F)) ∧ (∠B ≡ ∠E)) → (△ABC ≡ △DEF))
+  [STABLE] w= 19.1  ((((∠A ≡ ∠D) ∧ (∠C ≡ ∠F)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+  [unst] w= 43.0  ((((BC ≡ EF) ∧ (CA ≡ FD)) ∧ (∠A ≡ ∠D)) → (△ABC ≡ △DEF))
+  [unst] w=  8.0  ((((CA ≡ FD) ∧ (∠A ≡ ∠D)) ∧ (BC ≡ EF)) → (△ABC ≡ △DEF))
+  [unst] w=  4.9  ((((∠B ≡ ∠E) ∧ (∠C ≡ ∠F)) ∧ (∠A ≡ ∠D)) → (△ABC ≡ △DEF))
+  [unst] w= 47.0  ((((AB ≡ DE) ∧ (CA ≡ FD)) ∧ (∠B ≡ ∠E)) → (△ABC ≡ △DEF))
+  [STABLE] w= 28.1  ((((∠A ≡ ∠D) ∧ (∠B ≡ ∠E)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+  [unst] w=  9.0  ((((CA ≡ FD) ∧ (∠A ≡ ∠D)) ∧ (AB ≡ DE)) → (△ABC ≡ △DEF))
+  [unst] w=  5.9  ((((∠B ≡ ∠E) ∧ (∠A ≡ ∠D)) ∧ (∠C ≡ ∠F)) → (△ABC ≡ △DEF))
+  [unst] w= 52.0  ((((BC ≡ EF) ∧ (∠C ≡ ∠F)) ∧ (∠B ≡ ∠E)) → (△ABC ≡ △DEF))
+  [unst] w= 29.1  ((((∠C ≡ ∠F) ∧ (AB ≡ DE)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+  [unst] w=  6.9  ((((∠C ≡ ∠F) ∧ (∠B ≡ ∠E)) ∧ (∠A ≡ ∠D)) → (△ABC ≡ △DEF))
+  [unst] w= 63.0  ((((AB ≡ DE) ∧ (BC ≡ EF)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+  [unst] w= 42.1  ((((∠B ≡ ∠E) ∧ (∠C ≡ ∠F)) ∧ (BC ≡ EF)) → (△ABC ≡ △DEF))
+  [STABLE] w= 45.1  ((((∠A ≡ ∠D) ∧ (∠B ≡ ∠E)) ∧ (BC ≡ EF)) → (△ABC ≡ △DEF))
+  [unst] w= 17.0  ((((BC ≡ EF) ∧ (∠A ≡ ∠D)) ∧ (AB ≡ DE)) → (△ABC ≡ △DEF))
+  [unst] w= 79.0  ((((∠A ≡ ∠D) ∧ (CA ≡ FD)) ∧ (∠C ≡ ∠F)) → (△ABC ≡ △DEF))
+  [unst] w= 50.1  ((((∠B ≡ ∠E) ∧ (BC ≡ EF)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+  [unst] w= 87.0  ((((AB ≡ DE) ∧ (BC ≡ EF)) ∧ (∠C ≡ ∠F)) → (△ABC ≡ △DEF))
+  [unst] w= 22.0  ((((BC ≡ EF) ∧ (∠A ≡ ∠D)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+  [unst] w= 89.0  ((((∠B ≡ ∠E) ∧ (AB ≡ DE)) ∧ (∠A ≡ ∠D)) → (△ABC ≡ △DEF))
+  [unst] w= 98.0  ((((AB ≡ DE) ∧ (∠C ≡ ∠F)) ∧ (∠B ≡ ∠E)) → (△ABC ≡ △DEF))
+  [STABLE] w= 62.1  ((((∠A ≡ ∠D) ∧ (∠C ≡ ∠F)) ∧ (AB ≡ DE)) → (△ABC ≡ △DEF))
+  [unst] w=107.0  ((((CA ≡ FD) ∧ (BC ≡ EF)) ∧ (∠A ≡ ∠D)) → (△ABC ≡ △DEF))
+  [STABLE] w= 27.0  ((((AB ≡ DE) ∧ (∠A ≡ ∠D)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+  [unst] w= 32.0  ((((AB ≡ DE) ∧ (∠C ≡ ∠F)) ∧ (BC ≡ EF)) → (△ABC ≡ △DEF))
+  [unst] w=140.0  ((((CA ≡ FD) ∧ (∠C ≡ ∠F)) ∧ (∠B ≡ ∠E)) → (△ABC ≡ △DEF))
+  [unst] w= 76.1  ((((∠B ≡ ∠E) ∧ (CA ≡ FD)) ∧ (BC ≡ EF)) → (△ABC ≡ △DEF))
+  [unst] w= 36.0  ((((AB ≡ DE) ∧ (∠B ≡ ∠E)) ∧ (BC ≡ EF)) → (△ABC ≡ △DEF))
+  [unst] w= 79.1  ((((∠B ≡ ∠E) ∧ (AB ≡ DE)) ∧ (BC ≡ EF)) → (△ABC ≡ △DEF))
+  [unst] w=154.0  ((((BC ≡ EF) ∧ (∠A ≡ ∠D)) ∧ (∠C ≡ ∠F)) → (△ABC ≡ △DEF))
+  [unst] w= 83.1  ((((∠C ≡ ∠F) ∧ (∠A ≡ ∠D)) ∧ (AB ≡ DE)) → (△ABC ≡ △DEF))
+  [unst] w= 91.1  ((((∠B ≡ ∠E) ∧ (∠A ≡ ∠D)) ∧ (BC ≡ EF)) → (△ABC ≡ △DEF))
+  [unst] w=165.0  ((((CA ≡ FD) ∧ (∠A ≡ ∠D)) ∧ (∠B ≡ ∠E)) → (△ABC ≡ △DEF))
+  [unst] w= 95.1  ((((∠A ≡ ∠D) ∧ (AB ≡ DE)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+  [unst] w= 48.0  ((((BC ≡ EF) ∧ (∠C ≡ ∠F)) ∧ (AB ≡ DE)) → (△ABC ≡ △DEF))
+  [unst] w=100.1  ((((∠B ≡ ∠E) ∧ (AB ≡ DE)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+  [unst] w=107.1  ((((∠B ≡ ∠E) ∧ (∠A ≡ ∠D)) ∧ (CA ≡ FD)) → (△ABC ≡ △DEF))
+  [STABLE] w= 55.0  ((((AB ≡ DE) ∧ (∠A ≡ ∠D)) ∧ (BC ≡ EF)) → (△ABC ≡ △DEF))
+  [unst] w=108.1  ((((∠C ≡ ∠F) ∧ (CA ≡ FD)) ∧ (BC ≡ EF)) → (△ABC ≡ △DEF))
+  [unst] w=207.0  ((((∠C ≡ ∠F) ∧ (CA ≡ FD)) ∧ (∠B ≡ ∠E)) → (△ABC ≡ △DEF))
+  [STABLE] w=113.1  ((((∠A ≡ ∠D) ∧ (∠B ≡ ∠E)) ∧ (AB ≡ DE)) → (△ABC ≡ △DEF))
+  [unst] w= 62.0  ((((CA ≡ FD) ∧ (∠B ≡ ∠E)) ∧ (AB ≡ DE)) → (△ABC ≡ △DEF))
+  [unst] w=121.1  ((((∠C ≡ ∠F) ∧ (∠B ≡ ∠E)) ∧ (AB ≡ DE)) → (△ABC ≡ △DEF))
+  [unst] w=130.1  ((((∠C ≡ ∠F) ∧ (∠A ≡ ∠D)) ∧ (BC ≡ EF)) → (△ABC ≡ △DEF))
+  [unst] w=231.0  ((((CA ≡ FD) ∧ (AB ≡ DE)) ∧ (∠B ≡ ∠E)) → (△ABC ≡ △DEF))
+  [unst] w= 28.9  ((((∠C ≡ ∠F) ∧ (∠A ≡ ∠D)) ∧ (∠B ≡ ∠E)) → (△ABC ≡ △DEF))
+  [unst] w=246.0  ((((AB ≡ DE) ∧ (∠B ≡ ∠E)) ∧ (∠A ≡ ∠D)) → (△ABC ≡ △DEF))
+  [unst] w=149.1  ((((∠A ≡ ∠D) ∧ (AB ≡ DE)) ∧ (BC ≡ EF)) → (△ABC ≡ △DEF))
+  [unst] w=248.0  ((((∠C ≡ ∠F) ∧ (BC ≡ EF)) ∧ (∠B ≡ ∠E)) → (△ABC ≡ △DEF))
+  [unst] w=150.1  ((((∠C ≡ ∠F) ∧ (∠B ≡ ∠E)) ∧ (BC ≡ EF)) → (△ABC ≡ △DEF))
+  [unst] w=264.0  ((((∠B ≡ ∠E) ∧ (BC ≡ EF)) ∧ (∠C ≡ ∠F)) → (△ABC ≡ △DEF))
+
+============================================================

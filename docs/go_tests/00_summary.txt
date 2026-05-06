@@ -1,0 +1,29 @@
+=================================================================
+  GEME GO — Test Summary
+  Run: 2026-05-03 18:56
+=================================================================
+
+Test                   ASA    SSS    stress   mid_w  ratio  file                                    
+  -----------------------------------------------------------------------------------------------
+  T01_baseline         E      E      0.364    25.9   4.67   proof_run01_185651.txt                  
+  T02_light_noise      E      E      0.376    27.3   3.55   proof_run02_185651.txt                  
+  T03_standard         E      E      0.284    39.7   1.58   proof_run03_185651.txt                  
+  T04_high_noise       -      -      0.254    39.7   2.19   proof_run04_185651.txt                  
+  T05_s4_on            E      E      0.471    32.8   1.58   proof_run05_185651.txt                  
+  T06_s4_off           E      E      0.284    39.7   1.58   proof_run06_185651.txt                  
+  T07_sss_baseline     -      E      0.373    27.7   3.51   proof_run07_185651.txt                  
+  T08_sss_s4           -      E      0.528    26.8   3.51   proof_run08_185651.txt                  
+  T09_extended_mem     E      E      0.276    39.5   2.57   proof_run09_185651.txt                  
+
+  Config:
+    T01_baseline         noise=0% pat=ASA   s2=10 s4=False cap=8
+    T02_light_noise      noise=30% pat=ASA   s2=8 s4=False cap=8
+    T03_standard         noise=50% pat=ASA   s2=5 s4=False cap=8
+    T04_high_noise       noise=70% pat=ASA   s2=3 s4=False cap=8
+    T05_s4_on            noise=50% pat=ASA   s2=5 s4=True cap=8
+    T06_s4_off           noise=50% pat=ASA   s2=5 s4=False cap=8
+    T07_sss_baseline     noise=30% pat=SSS   s2=8 s4=False cap=8
+    T08_sss_s4           noise=30% pat=SSS   s2=8 s4=True cap=8
+    T09_extended_mem     noise=50% pat=ASA   s2=8 s4=True cap=12
+
+=================================================================

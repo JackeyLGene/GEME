@@ -1,0 +1,48 @@
+============================================================
+  Proof Viewer — Run #1
+============================================================
+
+Memory: 3/8  stress=0.3636  median=25.9
+[0] [E] w=121.0  #################################################
+     ((((∠R ≡ ∠U) ∧ (RA ≡ UD)) ∧ (∠A ≡ ∠D)) → (△RAB ≡ △UDE))
+[1] [E] w=25.9  #########
+     ((QC ≡ QR) → (∠C ≡ ∠R))
+[2] [ ] w=1.0  #
+     ((((AB ≡ DE) ∧ (∠A ≡ ∠D)) ∧ (AC ≡ DF)) → (△ABC ≡ △DEF))
+
+── Proof Chain ──
+[1] AXIOM: ((((AB ≡ DE) ∧ (∠A ≡ ∠D)) ∧ (AC ≡ DF)) → (△ABC ≡ △DEF))
+       initial weight: 1.0
+
+[2] DERIVED: ((((∠R ≡ ∠U) ∧ (RA ≡ UD)) ∧ (∠A ≡ ∠D)) → (△RAB ≡ △UDE))
+       weight: 21.0
+       weight: 1.0 -> 21.0
+
+[3] DERIVED: ((((∠P ≡ ∠S) ∧ (PB ≡ SE)) ∧ (∠B ≡ ∠E)) → (△PBB ≡ △SEE))
+       weight: 37.0
+       weight: 21.0 -> 37.0
+
+[4] DERIVED: ((((∠R ≡ ∠U) ∧ (RA ≡ UD)) ∧ (∠A ≡ ∠D)) → (△RAB ≡ △UDE))
+       weight: 51.0
+       weight: 37.0 -> 51.0
+
+[5] DERIVED: ((((∠C ≡ ∠F) ∧ (CR ≡ FU)) ∧ (∠R ≡ ∠U)) → (△CRA ≡ △FUD))
+       weight: 66.0
+       weight: 51.0 -> 66.0
+
+[6] DERIVED: ((((∠A ≡ ∠D) ∧ (AB ≡ DE)) ∧ (∠B ≡ ∠E)) → (△ABR ≡ △DEU))
+       weight: 80.0
+       weight: 66.0 -> 80.0
+
+[7] DERIVED: ((((∠Q ≡ ∠T) ∧ (QC ≡ TF)) ∧ (∠C ≡ ∠F)) → (△QCA ≡ △TFD))
+       weight: 94.0
+       weight: 80.0 -> 94.0
+
+[8] DERIVED: ((((∠R ≡ ∠U) ∧ (RP ≡ US)) ∧ (∠P ≡ ∠S)) → (△RPR ≡ △USU))
+       weight: 108.0
+       weight: 94.0 -> 108.0
+
+── Emerged ──
+[E] w=121.0  ((((∠R ≡ ∠U) ∧ (RA ≡ UD)) ∧ (∠A ≡ ∠D)) → (△RAB ≡ △UDE))
+[E] w=25.9  ((QC ≡ QR) → (∠C ≡ ∠R))
+============================================================

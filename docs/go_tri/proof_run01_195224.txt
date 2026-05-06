@@ -1,0 +1,94 @@
+============================================================
+  Proof Viewer — Run #1
+============================================================
+
+── Current Memory ──
+  occupied: 10/10  stress: 0.9900  median: 31.5
+  [0] [E] w=602.8  (∠ABC ≡ ∠DEF)
+       ##############################
+  [1] [E] w=571.0  (△ABC ≡ △DEF)
+       ############################..
+  [2] [E] w=554.0  (parallel(AB) ≡ parallel(CD))
+       ###########################...
+  [3] [E] w=167.8  (GH ≡ EF)
+       ########......................
+  [4] [E] w= 31.5  [co-occur: eq_angle_angle × eq_parallel_par]
+       #.............................
+  [5] [E] w= 31.5  [co-occur: eq_parallel_par × eq_△_△]
+       #.............................
+  [6] [E] w= 31.5  [co-occur: eq_angle_angle × eq_△_△]
+       #.............................
+  [7] [E] w= 31.5  [co-occur: eq_angle_angle × eq_seg_seg]
+       #.............................
+  [8] [.] w= 30.7  [co-occur: eq_parallel_par × eq_seg_seg]
+       #.............................
+  [9] [.] w= 29.9  [co-occur: eq_seg_seg × eq_△_△]
+       #.............................
+
+── Weight History (187 snapshots) ──
+  @frame 1950:
+    w= 33.5 #...................  [co-occur: eq_angle_angle × eq_parallel_par]
+    w= 33.5 #...................  [co-occur: eq_parallel_par × eq_△_△]
+    w= 33.5 #...................  [co-occur: eq_angle_angle × eq_△_△]
+    w= 33.5 #...................  [co-occur: eq_angle_angle × eq_seg_seg]
+    w= 32.5 #...................  [co-occur: eq_parallel_par × eq_seg_seg]
+    w=590.8 ###################.  (∠ABC ≡ ∠DEF)
+    w= 31.6 #...................  [co-occur: eq_seg_seg × eq_△_△]
+    w=559.0 ##################..  (△ABC ≡ △DEF)
+    w=542.0 #################...  (parallel(AB) ≡ parallel(CD))
+    w=162.8 #####...............  (GH ≡ EF)
+  @frame 1958:
+    w= 30.0 #...................  [co-occur: eq_angle_angle × eq_parallel_par]
+    w= 30.0 #...................  [co-occur: eq_parallel_par × eq_△_△]
+    w= 30.0 #...................  [co-occur: eq_angle_angle × eq_△_△]
+    w= 30.0 #...................  [co-occur: eq_angle_angle × eq_seg_seg]
+    w= 29.2 #...................  [co-occur: eq_parallel_par × eq_seg_seg]
+    w=592.8 ###################.  (∠ABC ≡ ∠DEF)
+    w= 28.5 #...................  [co-occur: eq_seg_seg × eq_△_△]
+    w=561.0 ##################..  (△ABC ≡ △DEF)
+    w=545.0 ##################..  (parallel(AB) ≡ parallel(CD))
+    w=163.8 #####...............  (GH ≡ EF)
+  @frame 1973:
+    w= 30.0 #...................  [co-occur: eq_angle_angle × eq_parallel_par]
+    w= 30.0 #...................  [co-occur: eq_parallel_par × eq_△_△]
+    w= 30.0 #...................  [co-occur: eq_angle_angle × eq_△_△]
+    w= 30.0 #...................  [co-occur: eq_angle_angle × eq_seg_seg]
+    w= 29.0 #...................  [co-occur: eq_parallel_par × eq_seg_seg]
+    w=597.8 ###################.  (∠ABC ≡ ∠DEF)
+    w= 28.0 #...................  [co-occur: eq_seg_seg × eq_△_△]
+    w=565.0 ##################..  (△ABC ≡ △DEF)
+    w=549.0 ##################..  (parallel(AB) ≡ parallel(CD))
+    w=165.8 #####...............  (GH ≡ EF)
+  @frame 1980:
+    w= 33.5 #...................  [co-occur: eq_angle_angle × eq_parallel_par]
+    w= 33.5 #...................  [co-occur: eq_parallel_par × eq_△_△]
+    w= 33.5 #...................  [co-occur: eq_angle_angle × eq_△_△]
+    w= 33.5 #...................  [co-occur: eq_angle_angle × eq_seg_seg]
+    w= 32.5 #...................  [co-occur: eq_parallel_par × eq_seg_seg]
+    w=599.8 ###################.  (∠ABC ≡ ∠DEF)
+    w= 31.5 #...................  [co-occur: eq_seg_seg × eq_△_△]
+    w=568.0 ##################..  (△ABC ≡ △DEF)
+    w=551.0 ##################..  (parallel(AB) ≡ parallel(CD))
+    w=165.8 #####...............  (GH ≡ EF)
+  @frame 1988:
+    w= 30.0 #...................  [co-occur: eq_angle_angle × eq_parallel_par]
+    w= 30.0 #...................  [co-occur: eq_parallel_par × eq_△_△]
+    w= 30.0 #...................  [co-occur: eq_angle_angle × eq_△_△]
+    w= 30.0 #...................  [co-occur: eq_angle_angle × eq_seg_seg]
+    w= 29.2 #...................  [co-occur: eq_parallel_par × eq_seg_seg]
+    w=601.8 ###################.  (∠ABC ≡ ∠DEF)
+    w= 28.4 #...................  [co-occur: eq_seg_seg × eq_△_△]
+    w=570.0 ##################..  (△ABC ≡ △DEF)
+    w=553.0 ##################..  (parallel(AB) ≡ parallel(CD))
+    w=167.8 #####...............  (GH ≡ EF)
+
+── Stability ──
+  [STABLE] w=  9.0  (parallel(AB) ≡ parallel(CD))
+  [STABLE] w= 11.8  (∠ABC ≡ ∠DEF)
+  [STABLE] w= 10.8  (△ABC ≡ △DEF)
+  [STABLE] w=  6.8  (GH ≡ EF)
+  [STABLE] w= 10.0  [co-occur: eq_angle_angle × eq_parallel_par]
+  [STABLE] w= 10.0  [co-occur: eq_parallel_par × eq_△_△]
+  [STABLE] w= 10.0  [co-occur: eq_seg_seg × eq_△_△]
+
+============================================================

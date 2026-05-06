@@ -1,0 +1,187 @@
+============================================================
+  Proof Viewer — Run #1
+============================================================
+
+── Current Memory ──
+  occupied: 10/12  stress: 0.8250  median: 30.5
+  [0] [E] w=907.0  (LJ ≡ IG)
+       ##############################
+  [1] [E] w=611.8  (∠JLK ≡ ∠GIH)
+       ####################..........
+  [2] [E] w=479.0  (parallel(AB) ≡ parallel(JK))
+       ###############...............
+  [3] [E] w=464.0  (△ABC ≡ △GHI)
+       ###############...............
+  [4] [E] w= 30.5  [co-occur: eq_parallel_par × eq_seg_seg]
+       #.............................
+  [5] [.] w= 30.5  [co-occur: eq_angle_angle × eq_seg_seg]
+       #.............................
+  [6] [.] w= 30.5  [co-occur: eq_seg_seg × eq_△_△]
+       #.............................
+  [7] [.] w= 30.5  [co-occur: eq_angle_angle × eq_parallel_par]
+       #.............................
+  [8] [.] w= 30.3  [co-occur: eq_angle_angle × eq_△_△]
+       #.............................
+  [9] [.] w= 27.6  [co-occur: eq_parallel_par × eq_△_△]
+       #.............................
+
+── Weight History (225 snapshots) ──
+  @frame 2460:
+    w=891.0 ###################.  (AF ≡ GL)
+    w= 33.0 #...................  [co-occur: eq_parallel_par × eq_seg_seg]
+    w= 33.0 #...................  [co-occur: eq_angle_angle × eq_seg_seg]
+    w= 32.9 #...................  [co-occur: eq_angle_angle × eq_parallel_par]
+    w= 33.0 #...................  [co-occur: eq_seg_seg × eq_△_△]
+    w= 33.0 #...................  [co-occur: eq_parallel_par × eq_△_△]
+    w= 32.6 #...................  [co-occur: eq_angle_angle × eq_△_△]
+    w=605.8 #############.......  (∠JLK ≡ ∠DFE)
+    w=454.0 ##########..........  (△JKL ≡ △GHI)
+    w=471.0 ##########..........  (parallel(AB) ≡ parallel(DE))
+  @frame 2469:
+    w=895.0 ###################.  (JK ≡ AB)
+    w= 30.0 #...................  [co-occur: eq_parallel_par × eq_seg_seg]
+    w= 30.0 #...................  [co-occur: eq_angle_angle × eq_seg_seg]
+    w= 29.9 #...................  [co-occur: eq_angle_angle × eq_parallel_par]
+    w= 30.0 #...................  [co-occur: eq_seg_seg × eq_△_△]
+    w= 29.2 #...................  [co-occur: eq_parallel_par × eq_△_△]
+    w= 29.7 #...................  [co-occur: eq_angle_angle × eq_△_△]
+    w=608.8 #############.......  (∠FED ≡ ∠LKJ)
+    w=456.0 ##########..........  (△ABC ≡ △JKL)
+    w=471.0 ##########..........  (parallel(AB) ≡ parallel(DE))
+  @frame 2484:
+    w=902.0 ###################.  (AF ≡ GL)
+    w= 30.0 #...................  [co-occur: eq_parallel_par × eq_seg_seg]
+    w= 30.0 #...................  [co-occur: eq_angle_angle × eq_seg_seg]
+    w= 29.9 #...................  [co-occur: eq_angle_angle × eq_parallel_par]
+    w= 30.0 #...................  [co-occur: eq_seg_seg × eq_△_△]
+    w= 28.9 #...................  [co-occur: eq_parallel_par × eq_△_△]
+    w= 29.8 #...................  [co-occur: eq_angle_angle × eq_△_△]
+    w=609.8 #############.......  (∠CBA ≡ ∠LKJ)
+    w=461.0 ##########..........  (△JKL ≡ △GHI)
+    w=473.0 ##########..........  (parallel(JK) ≡ parallel(AB))
+  @frame 2490:
+    w=904.0 ###################.  (CA ≡ LJ)
+    w= 33.0 #...................  [co-occur: eq_parallel_par × eq_seg_seg]
+    w= 33.0 #...................  [co-occur: eq_angle_angle × eq_seg_seg]
+    w= 32.9 #...................  [co-occur: eq_angle_angle × eq_parallel_par]
+    w= 33.0 #...................  [co-occur: eq_seg_seg × eq_△_△]
+    w= 30.4 #...................  [co-occur: eq_parallel_par × eq_△_△]
+    w= 32.8 #...................  [co-occur: eq_angle_angle × eq_△_△]
+    w=609.8 #############.......  (∠CBA ≡ ∠LKJ)
+    w=463.0 ##########..........  (△ABC ≡ △JKL)
+    w=475.0 ##########..........  (parallel(DE) ≡ parallel(GH))
+  @frame 2499:
+    w=906.0 ###################.  (JK ≡ GH)
+    w= 30.0 #...................  [co-occur: eq_parallel_par × eq_seg_seg]
+    w= 30.0 #...................  [co-occur: eq_angle_angle × eq_seg_seg]
+    w= 30.0 #...................  [co-occur: eq_angle_angle × eq_parallel_par]
+    w= 30.0 #...................  [co-occur: eq_seg_seg × eq_△_△]
+    w= 27.1 #...................  [co-occur: eq_parallel_par × eq_△_△]
+    w= 29.8 #...................  [co-occur: eq_angle_angle × eq_△_△]
+    w=611.8 #############.......  (∠JLK ≡ ∠GIH)
+    w=464.0 ##########..........  (△ABC ≡ △GHI)
+    w=479.0 ##########..........  (parallel(AB) ≡ parallel(JK))
+
+── Stability ──
+  [unst] w= 11.0  (AF ≡ GL)
+  [unst] w=  9.8  (parallel(AB) ≡ parallel(DE))
+  [unst] w=  7.8  (∠JLK ≡ ∠ACB)
+  [unst] w=  9.8  (△ABC ≡ △GHI)
+  [STABLE] w= 10.0  [co-occur: eq_parallel_par × eq_seg_seg]
+  [STABLE] w= 10.0  [co-occur: eq_angle_angle × eq_seg_seg]
+  [STABLE] w= 10.0  [co-occur: eq_seg_seg × eq_△_△]
+  [unst] w= 22.0  (CA ≡ IG)
+  [unst] w= 11.8  (parallel(AB) ≡ parallel(JK))
+  [unst] w= 16.8  (∠CBA ≡ ∠FED)
+  [unst] w= 17.8  (△JKL ≡ △DEF)
+  [unst] w= 26.0  (EF ≡ HI)
+  [unst] w= 19.8  (∠GIH ≡ ∠DFE)
+  [unst] w= 33.0  (FD ≡ IG)
+  [unst] w= 20.8  (∠DFE ≡ ∠ACB)
+  [unst] w=  9.0  (△ABC ≡ △JKL)
+  [unst] w=  3.0  (parallel(GH) ≡ parallel(DE))
+  [unst] w= 35.0  (IG ≡ FD)
+  [unst] w= 21.8  (∠EDF ≡ ∠KJL)
+  [unst] w= 43.0  (CA ≡ LJ)
+  [unst] w= 13.0  (△DEF ≡ △ABC)
+  [unst] w= 44.0  (BC ≡ KL)
+  [unst] w=  2.0  (parallel(GH) ≡ parallel(JK))
+  [unst] w= 52.0  (AB ≡ DE)
+  [unst] w= 33.8  (∠FED ≡ ∠LKJ)
+  [unst] w= 54.0  (LJ ≡ FD)
+  [unst] w= 20.0  (△GHI ≡ △ABC)
+  [unst] w=  4.0  (parallel(DE) ≡ parallel(AB))
+  [unst] w= 61.0  (FD ≡ LJ)
+  [unst] w= 39.8  (∠JLK ≡ ∠DFE)
+  [unst] w= 10.0  (parallel(GH) ≡ parallel(AB))
+  [unst] w= 63.0  (EF ≡ BC)
+  [unst] w= 42.8  (∠ACB ≡ ∠JLK)
+  [unst] w= 25.0  (△JKL ≡ △ABC)
+  [unst] w= 47.8  (∠LKJ ≡ ∠CBA)
+  [unst] w= 30.0  (△GHI ≡ △JKL)
+  [unst] w= 76.0  (LJ ≡ CA)
+  [unst] w= 18.0  (parallel(JK) ≡ parallel(AB))
+  [unst] w= 87.0  (JK ≡ DE)
+  [unst] w= 26.0  (parallel(JK) ≡ parallel(GH))
+  [unst] w= 94.0  (GH ≡ JK)
+  [unst] w= 61.8  (∠CBA ≡ ∠IHG)
+  [unst] w= 99.0  (GH ≡ AB)
+  [unst] w= 68.8  (∠BAC ≡ ∠HGI)
+  [unst] w= 45.0  (△DEF ≡ △GHI)
+  [unst] w=102.0  (JK ≡ AB)
+  [unst] w= 47.0  (△JKL ≡ △GHI)
+  [unst] w=114.0  (JK ≡ GH)
+  [unst] w= 79.8  (∠GIH ≡ ∠ACB)
+  [unst] w= 51.0  (△GHI ≡ △DEF)
+  [unst] w= 47.0  (parallel(DE) ≡ parallel(JK))
+  [unst] w=125.0  (DE ≡ AB)
+  [unst] w= 87.8  (∠BAC ≡ ∠KJL)
+  [unst] w= 91.8  (∠HGI ≡ ∠BAC)
+  [unst] w=141.0  (BC ≡ HI)
+  [unst] w=157.0  (IG ≡ LJ)
+  [unst] w= 66.0  (parallel(AB) ≡ parallel(GH))
+  [unst] w=106.8  (∠KJL ≡ ∠EDF)
+  [unst] w=117.8  (∠JLK ≡ ∠GIH)
+  [unst] w=181.0  (LJ ≡ IG)
+  [unst] w=120.8  (∠BAC ≡ ∠EDF)
+  [unst] w=185.0  (GH ≡ DE)
+  [unst] w=195.0  (DE ≡ JK)
+  [unst] w=200.0  (KL ≡ HI)
+  [unst] w=133.8  (∠GIH ≡ ∠JLK)
+  [unst] w=138.8  (∠FED ≡ ∠CBA)
+  [unst] w=216.0  (KL ≡ BC)
+  [unst] w=149.8  (∠LKJ ≡ ∠FED)
+  [unst] w=115.0  (△DEF ≡ △JKL)
+  [unst] w=231.0  (IG ≡ CA)
+  [STABLE] w=165.8  (∠CBA ≡ ∠LKJ)
+  [unst] w=116.0  (parallel(JK) ≡ parallel(DE))
+  [unst] w=240.0  (EF ≡ KL)
+  [unst] w=176.8  (∠KJL ≡ ∠HGI)
+  [unst] w=177.8  (∠DFE ≡ ∠GIH)
+  [unst] w=261.0  (CA ≡ FD)
+  [unst] w=266.0  (DE ≡ GH)
+  [unst] w=190.8  (∠DFE ≡ ∠JLK)
+  [unst] w=141.0  (parallel(DE) ≡ parallel(GH))
+  [unst] w=302.0  (AB ≡ JK)
+  [unst] w=310.0  (HI ≡ EF)
+  [unst] w=215.8  (∠FED ≡ ∠IHG)
+  [unst] w=313.0  (HI ≡ KL)
+  [unst] w=218.8  (∠ACB ≡ ∠DFE)
+  [unst] w=222.8  (∠EDF ≡ ∠HGI)
+  [unst] w=324.0  (AB ≡ GH)
+  [unst] w=174.0  (△ABC ≡ △DEF)
+  [unst] w=331.0  (KL ≡ EF)
+  [unst] w=235.8  (∠IHG ≡ ∠FED)
+  [unst] w=242.8  (∠KJL ≡ ∠BAC)
+  [unst] w=249.8  (∠IHG ≡ ∠LKJ)
+  [unst] w=383.0  (BC ≡ EF)
+  [unst] w=286.8  (∠LKJ ≡ ∠IHG)
+  [unst] w=311.8  (∠EDF ≡ ∠BAC)
+  [unst] w=313.8  (∠ACB ≡ ∠GIH)
+  [unst] w=317.8  (∠HGI ≡ ∠KJL)
+  [unst] w=435.0  (HI ≡ BC)
+  [unst] w=467.0  (FD ≡ CA)
+  [unst] w=391.8  (∠HGI ≡ ∠EDF)
+  [unst] w=417.8  (∠IHG ≡ ∠CBA)
+
+============================================================
