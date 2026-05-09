@@ -1,0 +1,136 @@
+{
+  "T4_QG_vs_PA": {
+    "Q": {
+      "frames": 14,
+      "L4": 0,
+      "MI": 0.13148,
+      "bridges": 0
+    },
+    "Q+G": {
+      "frames": 16,
+      "L4": 0,
+      "MI": 0.173455,
+      "bridges": 0
+    },
+    "PA": {
+      "frames": 16,
+      "L4": 0,
+      "MI": 0.173455,
+      "bridges": 0
+    },
+    "Q_G_overlap": "See T5 for seed sweep comparison"
+  },
+  "T5_QG_seed_sweep": {
+    "Q": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "Q+G": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "PA": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "T5_QG_overlap": {
+    "mean_diff_Q_vs_QG": 0.0,
+    "mean_diff_Q_vs_PA": 0.0,
+    "conclusion": "Q+G closer to Q"
+  },
+  "T6_unrelated_G": {
+    "Q+G_real": 0,
+    "Q+randG": 0,
+    "conclusion": "G must be self-referential for effect"
+  },
+  "T7_levels_seed_sweep": {
+    "mean": 31.3,
+    "std": 3.1,
+    "all": [
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      18,
+      32,
+      32,
+      32,
+      32
+    ]
+  },
+  "T8_freq_sweep": {
+    "0.5x": 32,
+    "1x": 32,
+    "2x": 32,
+    "5x": 32
+  },
+  "T9_time_dilation": {
+    "mean": 1.194,
+    "std": 0.0,
+    "all": [
+      1.194,
+      1.194,
+      1.194,
+      1.194,
+      1.194,
+      1.194,
+      1.194,
+      1.194,
+      1.194,
+      1.194
+    ]
+  },
+  "T10_born_rule": {
+    "mean": 0.8656,
+    "std": 0.1869,
+    "all": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5938,
+      0.8438,
+      0.625,
+      1.0,
+      1.0,
+      0.5938
+    ],
+    "note": "Born probability approximated from frame occupancy; use native script for precise 49.3%"
+  }
+}

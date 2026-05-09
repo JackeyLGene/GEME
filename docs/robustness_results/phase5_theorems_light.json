@@ -1,0 +1,68 @@
+{
+  "T7_levels_seed0": [
+    "结果说明：",
+    "  22帧不是常数——是 δ0 和半径的比值的产物",
+    "  物理对应：精细结构常数不是 1/137——是 δ/||V|| 在这个宇宙中的比值"
+  ],
+  "T7_levels_seed1": [
+    "结果说明：",
+    "  22帧不是常数——是 δ0 和半径的比值的产物",
+    "  物理对应：精细结构常数不是 1/137——是 δ/||V|| 在这个宇宙中的比值"
+  ],
+  "T7_levels_seed2": [
+    "结果说明：",
+    "  22帧不是常数——是 δ0 和半径的比值的产物",
+    "  物理对应：精细结构常数不是 1/137——是 δ/||V|| 在这个宇宙中的比值"
+  ],
+  "T7_levels_seed3": [
+    "结果说明：",
+    "  22帧不是常数——是 δ0 和半径的比值的产物",
+    "  物理对应：精细结构常数不是 1/137——是 δ/||V|| 在这个宇宙中的比值"
+  ],
+  "T7_levels_seed4": [
+    "结果说明：",
+    "  22帧不是常数——是 δ0 和半径的比值的产物",
+    "  物理对应：精细结构常数不是 1/137——是 δ/||V|| 在这个宇宙中的比值"
+  ],
+  "T9_time_dilation": {
+    "mean": 0.043,
+    "std": 0.003,
+    "all": [
+      0.044,
+      0.038,
+      0.045,
+      0.044,
+      0.037,
+      0.046,
+      0.046,
+      0.046,
+      0.046,
+      0.043
+    ]
+  },
+  "T10_born_seed0": [
+    "Ratio a/b: 869.000",
+    "Expected 50/50 (both distances equal)",
+    "NO: Merge is still deterministic - quantum path not triggered"
+  ],
+  "T10_born_seed1": [
+    "Ratio a/b: 869.000",
+    "Expected 50/50 (both distances equal)",
+    "NO: Merge is still deterministic - quantum path not triggered"
+  ],
+  "T10_born_seed2": [
+    "Ratio a/b: 869.000",
+    "Expected 50/50 (both distances equal)",
+    "NO: Merge is still deterministic - quantum path not triggered"
+  ],
+  "T10_born_seed3": [
+    "Ratio a/b: 869.000",
+    "Expected 50/50 (both distances equal)",
+    "NO: Merge is still deterministic - quantum path not triggered"
+  ],
+  "T10_born_seed4": [
+    "Ratio a/b: 869.000",
+    "Expected 50/50 (both distances equal)",
+    "NO: Merge is still deterministic - quantum path not triggered"
+  ]
+}
