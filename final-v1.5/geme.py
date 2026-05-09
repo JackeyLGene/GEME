@@ -112,11 +112,11 @@ def vec_dist(a,b):
 # ──────────────────────────────────────────────────────────────────
 _FRAME_ID_COUNTER=[0]
 class Frame:
-    __slots__=("vec","weight","sig","sig_full","src","age","merged","fid")
-    def __init__(self,vec,weight=1.0,sig="",src=""):
+    __slots__=("vec","weight","sig","sig_full","src","age","merged","fid","layer")
+    def __init__(self,vec,weight=1.0,sig="",src="",layer="L1"):
         _FRAME_ID_COUNTER[0]+=1; self.fid=_FRAME_ID_COUNTER[0]
         self.vec=vec; self.weight=weight; self.sig=sig[:30]; self.sig_full=sig
-        self.src=src[:80] if src else sig[:30]; self.age=0; self.merged=0
+        self.src=src[:80] if src else sig[:30]; self.age=0; self.merged=0; self.layer=layer
 
 # ──────────────────────────────────────────────────────────────────
 # Memory (competitive memory economy)
@@ -174,7 +174,7 @@ class Memory:
         last_ok=self._merge_dists[-1] if self._merge_dists else 0.001
         return max(med, last_ok*0.5)
 
-    def observe(self,vec,sig,src=""):
+    def observe(self,vec,sig,src="",layer="L1"):
         if not vec or len(vec)==0:
             return  # ignore empty vectors
         # L4: 在添加新输入前预测下一个帧，然后与实际对比
@@ -276,7 +276,7 @@ class Memory:
             if len(self.frames)>=self.capacity:
                 self.frames.sort(key=lambda x: x.weight-x.age*GAMMA*2)
                 r=self.frames.pop(0); self.total_weight-=r.weight
-            nf=Frame(vec,nw,sig,src); self.frames.append(nf); self.total_weight+=nw
+            nf=Frame(vec,nw,sig,src,layer=layer); self.frames.append(nf); self.total_weight+=nw
             self._last_merge_fid=nf.fid; self._merge_history.append(nf.fid)
             # L4: 初始化权重历史
             self._weight_history[nf.fid]=[(self._step_counter, nw)]
@@ -311,7 +311,7 @@ class Memory:
                         assoc_vec=tuple(sum(f.vec[j]*f.weight for f in self.frames if (f.sig_full or f.sig) in (sa,sb))/max(total_w,1) for j in range(_VEC_DIM))
                         if len(self.frames)>=self.capacity:
                             self.frames.sort(key=lambda x: x.weight); r=self.frames.pop(0); self.total_weight-=r.weight
-                        self.frames.append(Frame(assoc_vec,weight=float(count),sig=assoc_sig)); self.total_weight+=float(count); self._assoc_frames+=1
+                        self.frames.append(Frame(assoc_vec,weight=float(count),sig=assoc_sig,layer="L2")); self.total_weight+=float(count); self._assoc_frames+=1
                     # Chains now formed by self_observe(), not here
 
     def _form_chains(self):
@@ -333,7 +333,7 @@ class Memory:
                     if len(self.frames)>=self.capacity:
                         self.frames.sort(key=lambda x: x.weight)
                         r=self.frames.pop(0); self.total_weight-=r.weight
-                    self.frames.append(Frame((0.0,)*_VEC_DIM,weight=chain_w,sig=ms))
+                    self.frames.append(Frame((0.0,)*_VEC_DIM,weight=chain_w,sig=ms,layer="L3"))
                     self.total_weight+=chain_w; self._chain_count+=1; formed+=1
     
     def self_observe(self):
@@ -365,7 +365,7 @@ class Memory:
                     meta_vec=match[0].vec
                     dw_str=f"dwdw_{abs(dw):.2f}"
                     # 注入d(w)/dt元观测帧
-                    self.observe(meta_vec, dw_str)
+                    self.observe(meta_vec, dw_str, layer="L4")
         # Weighted centroid: aggregate vector of the frame economy's state
         total_w = sum(f.weight for f in active)
         dim = len(active[0].vec)
@@ -374,7 +374,7 @@ class Memory:
             for j in range(dim)
         )
         # Feed centroid back as a self-observation
-        self.observe(centroid, "self_obs")
+        self.observe(centroid, "self_obs", layer="L4")
         # Also track frame IDs for chain formation
         fids=[f.fid for f in active]
         feed_time=self._step_counter
@@ -435,6 +435,14 @@ class Memory:
                   chr(9711)*2 in (f.sig_full or ''))]
         if not l4: return 0
         w = sorted([f.weight for f in l4], reverse=True)
+    
+    def count_by_layer(self):
+        """Return dict of {layer: count} for all frames."""
+        counts={}
+        for f in self.frames:
+            l=getattr(f,'layer',"L1")
+            counts[l]=counts.get(l,0)+1
+        return counts
         avg = sum(w) / len(w) if w else 1
         return sum(1 for x in w if x >= avg * min_weight_ratio)
     def mutual_information_phi_X(self):
@@ -569,7 +577,7 @@ class Memory:
                 if len(self.frames) >= self.capacity:
                     self.frames.sort(key=lambda x: x.weight)
                     r = self.frames.pop(0); self.total_weight -= r.weight
-                nf = Frame(dummy_vec, weight=5.0, sig=err_str)
+                nf = Frame(dummy_vec, weight=5.0, sig=err_str, layer="L4")
                 self.frames.append(nf); self.total_weight += 5.0
         if len(self._prediction_accuracy) > 50:
             self._prediction_accuracy.pop(0)
@@ -584,7 +592,7 @@ class Memory:
                 if len(self.frames) >= self.capacity:
                     self.frames.sort(key=lambda x: x.weight)
                     r = self.frames.pop(0); self.total_weight -= r.weight
-                nf = Frame(dummy_vec, weight=10.0, sig=doubt_str)
+                nf = Frame(dummy_vec, weight=10.0, sig=doubt_str, layer="L6")
                 self.frames.append(nf); self.total_weight += 10.0
         elif self._doubt_mode and recent_acc > 0.85:
             self._doubt_mode = False
@@ -612,6 +620,7 @@ class Memory:
             "doubt_mode": self._doubt_mode,
             "derivative_frames": len(self._derivative_frames),
             "L4_meta_active": len([f for f in self.frames if 'dwdw' in (f.sig_full or f.sig)]),
+            "layers": self.count_by_layer(),
         }
 
 # ──────────────────────────────────────────────────────────────────
