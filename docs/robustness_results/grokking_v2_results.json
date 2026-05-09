@@ -1,0 +1,20 @@
+{
+  "standard": {
+    "grok_step": 4325,
+    "min_test": 0.0020000000949949026,
+    "min_test_epoch": 75,
+    "end_test": 0.9980000257492065
+  },
+  "G": {
+    "grok_step": 8000,
+    "min_test": 0.0020000000949949026,
+    "min_test_epoch": 75,
+    "end_test": 0.012000000104308128
+  },
+  "self_refine": {
+    "grok_step": 8000,
+    "min_test": 0.0,
+    "min_test_epoch": 50,
+    "end_test": 0.012000000104308128
+  }
+}

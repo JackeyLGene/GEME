@@ -1,0 +1,27 @@
+{
+  "A_bare": {
+    "accuracy": 0.1,
+    "correct": 10,
+    "total": 100
+  },
+  "B_COT": {
+    "accuracy": 0.17,
+    "correct": 17,
+    "total": 100
+  },
+  "C_G_self": {
+    "accuracy": 0.08,
+    "correct": 8,
+    "total": 100
+  },
+  "D_COT_G": {
+    "accuracy": 0.1,
+    "correct": 10,
+    "total": 100
+  },
+  "E_filler": {
+    "accuracy": 0.03,
+    "correct": 3,
+    "total": 100
+  }
+}
