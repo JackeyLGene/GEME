@@ -9,8 +9,18 @@ Usage:
                  structural_signature(...))
 """
 from __future__ import annotations
-from typing import List, Tuple
+from typing import List, Tuple, Dict
 import math, statistics
+
+# ──────────────────────────────────────────────────────────────────
+# Structural constants (centralized, documented, frozen)
+# ──────────────────────────────────────────────────────────────────
+DELTA = 0.19     # δ: adaptive threshold scaling factor
+GAMMA = 0.05     # γ: frame age decay multiplier
+TAU = 0.60       # τ: induction stress threshold
+NOVELTY_BONUS = 5.0   # initial weight premium for novel inputs
+_D27 = 27        # default vector dimension
+
 
 # ──────────────────────────────────────────────────────────────────
 # Minimal formula language (replaces gira.phase3.language)
@@ -114,27 +124,38 @@ class Frame:
 class Memory:
     def __init__(self,capacity=10,merge_thresh=None,cooccur_window=50,
                  cooccur_thresh=0.25,max_chains=5):
-        self.frames=[]; self.capacity=capacity
+        self.frames=[]; self.capacity=max(capacity,1)
         self.merge_thresh=merge_thresh
-        self._merge_thresh_val=merge_thresh or 0.15
+        self._merge_thresh_val=merge_thresh or DELTA
         self.cooccur_thresh=cooccur_thresh
         self.total_weight=0.0
         self._window=[]; self._win_max=cooccur_window
         self._step_counter=0
         self._cooccur={}; self._assoc_frames=0
-        self._chain_count=0; self.max_chains=max_chains
+        self._chain_count=0; self.max_chains=max(max_chains,1)
         self._merge_dists=[]
         self._learn_dists=[]
         self._self_observe_count=0
         self._chain_cooccur_thresh=5
-        self.preserve_sig=True  # 合并时保持原始签名
-        self._last_merge_fid=None  # 自指追踪：每次操作合并到的帧ID
-        self._merge_history=[]  # 自指追踪：操作历史序列
-        self._novelty_bonus=5.0  # 新奇帧权重 (G对应)
+        self.preserve_sig=True
+        self._last_merge_fid=None
+        self._merge_history=[]
+        self._novelty_bonus=NOVELTY_BONUS
+        self.quantum_mode=False
+        # L4: d(w)/dt 追踪 + 预测帧
+        self._weight_history={}  # fid → [(step, weight), ...]
+        self._derivative_frames=[]  # 已生成的d(w)/dt帧
+        # L4: 预测（模态）
+        self._prediction_window=[]  # 最近3-5个输入签名
+        self._prediction_accuracy=[]  # 滚动准确率窗口
+        self._pred_errors=0; self._pred_total=0
+        # L6: 统摄（当预测精度持续下降时触发）
+        self._doubt_mode=False
+        self._last_accuracy=1.0
         # 第5维：多世界
         self._multiverse_enabled=True
-        self._multiverse=[]  # [(frames_copy, step_branched, branch_id), ...]
-        self._step_branched=set()  # 记录哪些step产生了分支
+        self._multiverse=[]
+        self._step_branched=set()
 
     def _adaptive_window(self):
         """自指窗口：帧平均寿命 × 2"""
@@ -155,6 +176,11 @@ class Memory:
         return max(med, last_ok*0.5)
 
     def observe(self,vec,sig,src=""):
+        if not vec or len(vec)==0:
+            return  # ignore empty vectors
+        # L4: 在添加新输入前预测下一个帧，然后与实际对比
+        if sig:
+            self.process_prediction(sig)
         bi,bd=-1,float('inf')
         # Compute threshold FIRST (before candidate selection)
         thresh=self._adaptive_thresh()
@@ -166,7 +192,7 @@ class Memory:
         for i,f in enumerate(self.frames):
             d=vec_dist(vec,f.vec)
             if d<bd: bd=d; bi=i
-            if hasattr(self,'quantum_mode') and self.quantum_mode and thresh:
+            if self.quantum_mode and thresh:
                 if d<=thresh: candidates.append((i,d,f))
         
         if thresh is None and bi>=0 and bd!=float('inf'):
@@ -174,9 +200,9 @@ class Memory:
             if len(self._learn_dists)>200: self._learn_dists.pop(0)
             
         # Quantum merge: probabilistic selection among candidates
-        if hasattr(self,'quantum_mode') and self.quantum_mode and len(candidates)>0:
+        if self.quantum_mode and len(candidates)>0:
             import random as _qr
-            if not hasattr(self,'_qrand'): self._qrand = _qr.Random(_qr.randint(0,999999))
+            if not hasattr(self,'_qrand'): self._qrand = _qr.Random(42)
             psum = 0.0; probs = []
             for i,d,f in candidates:
                 p = math.exp(-d/max(self._merge_thresh_val,0.001))
@@ -215,6 +241,12 @@ class Memory:
                     if len(combined.split("_"))<=8: f.sig=combined[:30]
                 self.total_weight+=f.weight; self._step_counter+=1
                 self._last_merge_fid = f.fid; self._merge_history.append(f.fid)
+                # L4: 记录权重历史
+                if f.fid not in self._weight_history:
+                    self._weight_history[f.fid]=[]
+                self._weight_history[f.fid].append((self._step_counter, f.weight))
+                if len(self._weight_history[f.fid])>50:
+                    self._weight_history[f.fid].pop(0)
                 step_id=self._step_counter
                 self._window.append((sig,step_id,tuple(vec)))
                 if len(self._window)>self._win_max: self._window.pop(0)
@@ -232,15 +264,23 @@ class Memory:
                 if len(combined.split("_"))<=8: f.sig=combined[:30]
             self.total_weight+=f.weight
             self._last_merge_fid=f.fid; self._merge_history.append(f.fid)
+            # L4: 记录权重历史
+            if f.fid not in self._weight_history:
+                self._weight_history[f.fid]=[]
+            self._weight_history[f.fid].append((self._step_counter, f.weight))
+            if len(self._weight_history[f.fid])>50:
+                self._weight_history[f.fid].pop(0)
         else:
             if thresh is None or thresh==0.0: nw=1.0
             elif bd!=float('inf'): nw=1.0+self._novelty_bonus*max(0,1.0-bd/max(thresh,0.001))
             else: nw=1.0
             if len(self.frames)>=self.capacity:
-                self.frames.sort(key=lambda x: x.weight-x.age*0.1)
+                self.frames.sort(key=lambda x: x.weight-x.age*GAMMA*2)
                 r=self.frames.pop(0); self.total_weight-=r.weight
             nf=Frame(vec,nw,sig,src); self.frames.append(nf); self.total_weight+=nw
             self._last_merge_fid=nf.fid; self._merge_history.append(nf.fid)
+            # L4: 初始化权重历史
+            self._weight_history[nf.fid]=[(self._step_counter, nw)]
         self._step_counter+=1
         step_id=self._step_counter
         self._window.append((sig,step_id,tuple(vec)))
@@ -298,14 +338,49 @@ class Memory:
                     self.total_weight+=chain_w; self._chain_count+=1; formed+=1
     
     def self_observe(self):
-        """Self-observation: system observes its own frame economy.
-        Uses stable frame IDs (fid) for co-occurrence tracking.
-        Chains form between frames that co-occur in self-observation."""
+        """Self-observation: generate aggregate vector from frame economy.
+        
+        The observation vector is a weighted centroid of all frames with weight>2,
+        normalized by total weight. This implements the paper's claim: the system
+        generates an observation vector from its own internal state and feeds it
+        back through the same competitive merge process.
+        
+        Additionally computes d(w)/dt for all frames and generates L4 meta-frames
+        when derivative magnitudes cross threshold indicating metacognitive change.
+        """
         self._self_observe_count+=1
-        fids=[f.fid for f in self.frames if f.weight>2]
+        active=[f for f in self.frames if f.weight>2]
+        if not active:
+            return
+        # L4: 计算权重导数
+        derivs=self.compute_derivatives()
+        # 识别d(w)/dt显著的帧作为L4元认知观测对象
+        high_dw=[(fid,dw) for fid,dw in derivs.items() if abs(dw)>0.02]
+        if high_dw:
+            # 将导数最大的三个作为L4元观测信号
+            high_dw.sort(key=lambda x: abs(x[1]), reverse=True)
+            for fid, dw in high_dw[:3]:
+                # 找到对应帧
+                match=[f for f in self.frames if f.fid==fid]
+                if match:
+                    meta_vec=match[0].vec
+                    dw_str=f"dwdw_{abs(dw):.2f}"
+                    # 注入d(w)/dt元观测帧
+                    self.observe(meta_vec, dw_str)
+        # Weighted centroid: aggregate vector of the frame economy's state
+        total_w = sum(f.weight for f in active)
+        dim = len(active[0].vec)
+        centroid = tuple(
+            sum(f.vec[j] * f.weight for f in active) / total_w
+            for j in range(dim)
+        )
+        # Feed centroid back as a self-observation
+        self.observe(centroid, "self_obs")
+        # Also track frame IDs for chain formation
+        fids=[f.fid for f in active]
         feed_time=self._step_counter
         for fid in fids:
-            self._window.append((f"fid_{fid}",feed_time,(0.0,)*_VEC_DIM))
+            self._window.append((f"fid_{fid}",feed_time,(0.0,)*dim))
             if len(self._window)>self._win_max:
                 self._window.pop(0)
         for i in range(len(fids)):
@@ -316,16 +391,22 @@ class Memory:
     
     def induction_clean(self):
         self.self_observe()  # observe before pruning
+        self._chain_count = 0  # 重置链计数，允许后续继续形成链
         for f in self.frames:
             self.total_weight-=f.weight
             if f.merged==0: f.weight*=0.80
             elif f.merged<3: f.weight*=0.95
             f.weight=max(1.0,f.weight)
             self.total_weight+=f.weight; f.age+=1
-        self.frames.sort(key=lambda x: x.weight-x.age*0.05,reverse=True)
+        self.frames.sort(key=lambda x: x.weight-x.age*GAMMA,reverse=True)
         half=max(1,len(self.frames)//2)
         for f in self.frames[half:]: self.total_weight-=f.weight
         self.frames=self.frames[:half]
+        # L4: 清理已剪枝帧的权重历史
+        alive_fids={f.fid for f in self.frames}
+        for fid in list(self._weight_history.keys()):
+            if fid not in alive_fids:
+                del self._weight_history[fid]
 
     @property
     def efficiency(self):
@@ -341,6 +422,201 @@ class Memory:
         return input_count/max(len(self.frames),1)
     def entropy_reduction(self, initial_frames):
         return 1.0-len(self.frames)/initial_frames if initial_frames else 0.0
+    def structural_entropy(self):
+        """Shannon entropy of frame weight distribution."""
+        if not self.frames or self.total_weight<=0: return 0.0
+        from math import log2
+        return -sum((f.weight/self.total_weight)*log2(f.weight/self.total_weight)
+                    for f in self.frames if f.weight>0)
+    def count_L4_frames(self, min_weight_ratio=1.5):
+        """Number of stable L4 self-referential frames (frames with self or bridge sig)."""
+        l4 = [f for f in self.frames 
+              if ('self' in (f.sig or '') or 
+                  chr(8212)*2 in (f.sig_full or '') or 
+                  chr(9711)*2 in (f.sig_full or ''))]
+        if not l4: return 0
+        w = sorted([f.weight for f in l4], reverse=True)
+        avg = sum(w) / len(w) if w else 1
+        return sum(1 for x in w if x >= avg * min_weight_ratio)
+    def mutual_information_phi_X(self):
+        """I(phi; X): mutual information between self-referential (phi) and
+        non-self frames (X), computed from empirical co-occurrence joint distribution.
+        
+        Uses the co-occurrence table to compute p(phi, x) for all pairs of
+        (self_sig, ext_sig) that have appeared in the same window.
+        When I(phi; X) → 0, self-reference carries no information about input.
+        """
+        from math import log2
+        # Identify self-referential vs external signatures
+        phi_keys = set()  # signatures containing "self"
+        x_keys = set()   # signatures NOT containing "self"
+        for (sa, sb) in self._cooccur:
+            # Association frames (──) are phi-family
+            if 'self' in sa or chr(8212)*2 in sa:
+                phi_keys.add(sa)
+            else:
+                x_keys.add(sa)
+            if 'self' in sb or chr(8212)*2 in sb:
+                phi_keys.add(sb)
+            else:
+                x_keys.add(sb)
+        if not phi_keys or not x_keys:
+            return 0.0
+        # Compute total co-occurrence mass between phi and X
+        total = sum(c for (sa, sb), c in self._cooccur.items()
+                    if (sa in phi_keys and sb in x_keys) or
+                       (sb in phi_keys and sa in x_keys))
+        if total == 0:
+            return 0.0
+        # Build joint distribution p(phi, x)
+        mi = 0.0
+        for (sa, sb), c in self._cooccur.items():
+            if sa in phi_keys and sb in x_keys:
+                p_joint = c / total
+                # Marginal: p(phi) = sum_x p(phi, x), p(x) = sum_phi p(phi, x)
+                p_phi = sum(c2 for (s1, s2), c2 in self._cooccur.items()
+                           if (s1 == sa and s2 in x_keys) or
+                              (s2 == sa and s1 in x_keys)) / total
+                p_x = sum(c2 for (s1, s2), c2 in self._cooccur.items()
+                         if (s1 == sb and s2 in phi_keys) or
+                            (s2 == sb and s1 in phi_keys)) / total
+                if p_phi > 0 and p_x > 0:
+                    mi += p_joint * log2(p_joint / (p_phi * p_x))
+            elif sb in phi_keys and sa in x_keys:
+                p_joint = c / total
+                p_phi = sum(c2 for (s1, s2), c2 in self._cooccur.items()
+                           if (s1 == sb and s2 in x_keys) or
+                              (s2 == sb and s1 in x_keys)) / total
+                p_x = sum(c2 for (s1, s2), c2 in self._cooccur.items()
+                         if (s1 == sa and s2 in phi_keys) or
+                            (s2 == sa and s1 in phi_keys)) / total
+                if p_phi > 0 and p_x > 0:
+                    mi += p_joint * log2(p_joint / (p_phi * p_x))
+        return max(0.0, mi)
+    
+    def compute_derivatives(self):
+        """Compute d(w)/dt for all frames with sufficient history.
+        Returns dict of {fid: derivative} for L4 meta-observation."""
+        derivs = {}
+        for fid, history in self._weight_history.items():
+            if len(history) < 5:
+                continue
+            # Linear regression slope over recent history
+            recent = history[-10:] if len(history) > 10 else history
+            n = len(recent)
+            xs = [h[0] for h in recent]
+            ys = [h[1] for h in recent]
+            x_mean = sum(xs) / n
+            y_mean = sum(ys) / n
+            num = sum((xs[i] - x_mean) * (ys[i] - y_mean) for i in range(n))
+            den = sum((xs[i] - x_mean) ** 2 for i in range(n))
+            derivs[fid] = num / max(den, 0.001)
+        return derivs
+    
+    def is_meta_stable(self, fid):
+        """Check if a frame's weight is meta-stable (d(w)/dt ≈ 0)."""
+        derivs = self.compute_derivatives()
+        if fid not in derivs:
+            return False
+        return abs(derivs[fid]) < 0.01
+    
+    # ──────────────────────────────────────────────────────────
+    # L4: 预测（模态跃迁）
+    # ──────────────────────────────────────────────────────────
+    def predict_next(self):
+        """从L3桥+cooccur表预测下一个最可能出现的帧签名。
+        用最后2个非self输入签名预测下一个。
+        返回 (predicted_sig, confidence)。如果无足够数据，返回 (None, 0.0)。"""
+        if len(self._window) < 3:
+            return None, 0.0
+        # 从滑动窗口拿最后2个非self_obs签名作为上下文
+        recent = [entry[0] for entry in self._window if entry[0] != 'self_obs']
+        if len(recent) < 2:
+            return None, 0.0
+        ctx = recent[-2:]  # [前一个, 当前] → 预测下一个
+        # 在cooccur表中搜同时与这两个签名的最关联的第三个
+        scores = {}
+        for sig in ctx:
+            for (sa, sb), c in self._cooccur.items():
+                if sa == sig and sb not in ctx:
+                    scores[sb] = scores.get(sb, 0) + c
+                elif sb == sig and sa not in ctx:
+                    scores[sa] = scores.get(sa, 0) + c
+        if not scores:
+            return None, 0.0
+        best = max(scores, key=scores.get)
+        total = sum(scores.values())
+        conf = scores[best] / max(total, 1)
+        return best, conf
+    
+    def process_prediction(self, actual_sig):
+        """L4: 用当前签名检测预测误差。
+        比较predict_next()的结果和实际的签名。
+        如果不匹配且置信度高 → 生成预测误差帧。"""
+        if not actual_sig or actual_sig == 'self_obs':
+            return None
+        predicted, conf = self.predict_next()
+        if predicted is None or conf < 0.3:
+            return None
+        # L5: 记录准确率
+        self._pred_total += 1
+        if predicted == actual_sig:
+            self._prediction_accuracy.append(1.0)
+        else:
+            self._prediction_accuracy.append(0.0)
+            # L4: 预测误差 → 生成pred_err元帧
+            err_str = f"pred_err_{conf:.2f}_{predicted[:8]}_{actual_sig[:8]}"
+            # 用当前输入向量注入误差帧
+            match = [f for f in self.frames if 'pred_err' in (f.sig_full or f.sig)]
+            if not match:
+                dummy_vec = (0.0,) * len(self.frames[0].vec) if self.frames else (0.0,)
+                if len(self.frames) >= self.capacity:
+                    self.frames.sort(key=lambda x: x.weight)
+                    r = self.frames.pop(0); self.total_weight -= r.weight
+                nf = Frame(dummy_vec, weight=5.0, sig=err_str)
+                self.frames.append(nf); self.total_weight += 5.0
+        if len(self._prediction_accuracy) > 50:
+            self._prediction_accuracy.pop(0)
+        # L6: 统摄—检测系统性准确率下降
+        recent_acc = sum(self._prediction_accuracy[-10:]) / max(len(self._prediction_accuracy[-10:]), 1) if self._prediction_accuracy else 1.0
+        if not self._doubt_mode and len(self._prediction_accuracy) >= 10 and recent_acc < 0.6 and self._last_accuracy > 0.8:
+            self._doubt_mode = True
+            doubt_str = f"sys_doubt_acc_{recent_acc:.2f}"
+            match = [f for f in self.frames if 'sys_doubt' in (f.sig_full or f.sig)]
+            if not match:
+                dummy_vec = (0.0,) * len(self.frames[0].vec) if self.frames else (0.0,)
+                if len(self.frames) >= self.capacity:
+                    self.frames.sort(key=lambda x: x.weight)
+                    r = self.frames.pop(0); self.total_weight -= r.weight
+                nf = Frame(dummy_vec, weight=10.0, sig=doubt_str)
+                self.frames.append(nf); self.total_weight += 10.0
+        elif self._doubt_mode and recent_acc > 0.85:
+            self._doubt_mode = False
+        self._last_accuracy = recent_acc
+        return {'predicted': predicted, 'actual': actual_sig, 'confidence': conf, 'accuracy': recent_acc}
+    
+    def metrics(self):
+        """All key indicators in a single dict."""
+        w=sorted([f.weight for f in self.frames], reverse=True)
+        return {
+            "frame_count": len(self.frames),
+            "capacity": self.capacity,
+            "total_weight": round(self.total_weight, 2),
+            "efficiency": round(self.efficiency, 4),
+            "utilization": round(self.utilization, 4),
+            "stress": round(self.stress, 4),
+            "structural_entropy": round(self.structural_entropy(), 4),
+            "L4_frame_count": self.count_L4_frames(),
+            "top_weights": [round(x,1) for x in w[:5]],
+            "I(phi;X)": round(self.mutual_information_phi_X(), 6),
+            "assoc_frames": self._assoc_frames,
+            "self_observations": self._self_observe_count,
+            "pred_total": self._pred_total,
+            "pred_accuracy": round(sum(self._prediction_accuracy[-20:])/max(len(self._prediction_accuracy[-20:]),1),3) if self._prediction_accuracy else 0.0,
+            "doubt_mode": self._doubt_mode,
+            "derivative_frames": len(self._derivative_frames),
+            "L4_meta_active": len([f for f in self.frames if 'dwdw' in (f.sig_full or f.sig)]),
+        }
 
 # ──────────────────────────────────────────────────────────────────
 # GEME
@@ -361,7 +637,7 @@ class GEME:
         self.memory=Memory(capacity=memory_cap,merge_thresh=merge_thresh,
                           cooccur_window=cooccur_window,cooccur_thresh=cooccur_thresh,
                           max_chains=max_chains)
-        self._stress_accum=0.0; self._induction_threshold=0.6
+        self._stress_accum=0.0; self._induction_threshold=TAU
         self.frame_count=0; self._last_induction=0; self._input_count=0
         self.time_window_size=time_window_size
         self._inputs_in_window=0
@@ -448,9 +724,13 @@ class GEME:
                 # 在分支帧集上找最近帧合并
                 bi=-1; bd=float('inf')
                 for i,f in enumerate(branch_frames):
-                    d=sum((vec[j]-f.vec[j])**2 for j in range(len(vec)))
+                    # 动态维度：对齐长度
+                    dl=min(len(vec),len(f.vec))
+                    d=sum((vec[j]-f.vec[j])**2 for j in range(dl))
+                    # 未对齐部分按不匹配处理（距离惩罚）
+                    d += abs(len(vec)-len(f.vec)) * 0.25
                     if d<bd: bd=d; bi=i
-                th=self.memory._adaptive_thresh() or 0.15
+                th=self.memory._adaptive_thresh() or DELTA
                 if bi>=0 and bd<=th*th:
                     f=branch_frames[bi]
                     f.vec=tuple((f.vec[j]*f.weight+vec[j])/(f.weight+1) for j in range(len(vec)))
@@ -466,17 +746,6 @@ class GEME:
         return {"frame":self.frame_count,"mem":len(self.memory.frames),
                 "eff":round(self.memory.efficiency,4),"stress":round(stress,4),
                 "induction":ind,"thresh":self.memory._merge_thresh_val}
-        induction_fired=False
-        if self._stress_accum>self._induction_threshold:
-            cd=self.frame_count-self._last_induction
-            if cd>=15:
-                self.memory.induction_clean()
-                if self.vocab_mode: self.promote_to_vocab()
-                self._stress_accum=0.0; self._last_induction=self.frame_count
-                induction_fired=True
-        return {"frame":self.frame_count,"mem":len(self.memory.frames),
-                "eff":round(self.memory.efficiency,4),"stress":round(stress,4),
-                "induction":induction_fired,"thresh":self.memory._merge_thresh_val}
 
     def evaluate_sig(self,sig):
         sp=set(sig.split("_"))
@@ -487,6 +756,16 @@ class GEME:
             fp=set(f.sig.split("_")); ratio=len(sp&fp)/min(len(sp),len(fp))
             if ratio>=0.75: return 2
         return 3
+
+    def metrics(self):
+        """Unified metrics interface: returns all key indicators as dict."""
+        m=self.memory.metrics()
+        m["frame_count_total"]=self.frame_count
+        m["input_count"]=self._input_count
+        m["induction_threshold"]=self._induction_threshold
+        if self._input_count>0:
+            m["compression_ratio"]=round(self._input_count/max(len(self.memory.frames),1),1)
+        return m
 
 # ──────────────────────────────────────────────────────────────────
 # Self-test
