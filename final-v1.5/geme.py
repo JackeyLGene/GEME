@@ -461,35 +461,30 @@ class Memory:
                 x_keys.add(sb)
         if not phi_keys or not x_keys:
             return 0.0
-        # Compute total co-occurrence mass between phi and X
-        total = sum(c for (sa, sb), c in self._cooccur.items()
-                    if (sa in phi_keys and sb in x_keys) or
-                       (sb in phi_keys and sa in x_keys))
-        if total == 0:
+        # 全空间总和（包括phi-phi、x-x、phi-x所有对）
+        total_all = sum(c for c in self._cooccur.values())
+        if total_all == 0:
             return 0.0
-        # Build joint distribution p(phi, x)
+        # 预计算边际概率（全空间）
+        p_phi_cache = {}
+        p_x_cache = {}
+        for sig in phi_keys:
+            p_phi_cache[sig] = sum(c for (sa, sb), c in self._cooccur.items() if sa == sig or sb == sig) / total_all
+        for sig in x_keys:
+            p_x_cache[sig] = sum(c for (sa, sb), c in self._cooccur.items() if sa == sig or sb == sig) / total_all
         mi = 0.0
         for (sa, sb), c in self._cooccur.items():
-            if sa in phi_keys and sb in x_keys:
-                p_joint = c / total
-                # Marginal: p(phi) = sum_x p(phi, x), p(x) = sum_phi p(phi, x)
-                p_phi = sum(c2 for (s1, s2), c2 in self._cooccur.items()
-                           if (s1 == sa and s2 in x_keys) or
-                              (s2 == sa and s1 in x_keys)) / total
-                p_x = sum(c2 for (s1, s2), c2 in self._cooccur.items()
-                         if (s1 == sb and s2 in phi_keys) or
-                            (s2 == sb and s1 in phi_keys)) / total
-                if p_phi > 0 and p_x > 0:
+            in_phi_a = sa in phi_keys; in_phi_b = sb in phi_keys
+            in_x_a = sa in x_keys; in_x_b = sb in x_keys
+            if in_phi_a and in_x_b:
+                p_joint = c / total_all
+                p_phi = p_phi_cache[sa]; p_x = p_x_cache[sb]
+                if p_joint > 0 and p_phi > 0 and p_x > 0:
                     mi += p_joint * log2(p_joint / (p_phi * p_x))
-            elif sb in phi_keys and sa in x_keys:
-                p_joint = c / total
-                p_phi = sum(c2 for (s1, s2), c2 in self._cooccur.items()
-                           if (s1 == sb and s2 in x_keys) or
-                              (s2 == sb and s1 in x_keys)) / total
-                p_x = sum(c2 for (s1, s2), c2 in self._cooccur.items()
-                         if (s1 == sa and s2 in phi_keys) or
-                            (s2 == sa and s1 in phi_keys)) / total
-                if p_phi > 0 and p_x > 0:
+            elif in_x_a and in_phi_b:
+                p_joint = c / total_all
+                p_phi = p_phi_cache[sb]; p_x = p_x_cache[sa]
+                if p_joint > 0 and p_phi > 0 and p_x > 0:
                     mi += p_joint * log2(p_joint / (p_phi * p_x))
         return max(0.0, mi)
     
