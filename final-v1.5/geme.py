@@ -146,7 +146,6 @@ class Memory:
         self._weight_history={}  # fid → [(step, weight), ...]
         self._derivative_frames=[]  # 已生成的d(w)/dt帧
         # L4: 预测（模态）
-        self._prediction_window=[]  # 最近3-5个输入签名
         self._prediction_accuracy=[]  # 滚动准确率窗口
         self._pred_errors=0; self._pred_total=0
         # L6: 统摄（当预测精度持续下降时触发）
@@ -298,18 +297,18 @@ class Memory:
                 ratio=count/total_steps
                 if ratio>=self.cooccur_thresh and count>=max(5,total_steps*0.05):
                     assoc_sig=sa+"──"+sb
-                    existing=[f for f in self.frames if (f.sig_full if hasattr(f,'sig_full') and f.sig_full else f.sig)==assoc_sig]
+                    existing=[f for f in self.frames if (f.sig_full or f.sig)==assoc_sig]
                     if existing:
                         for exf in existing:
                             self.total_weight-=exf.weight; exf.weight+=0.5; self.total_weight+=exf.weight
                     else:
                         base_vecs=[]
                         for f in self.frames:
-                            fs=f.sig_full if hasattr(f,'sig_full') and f.sig_full else f.sig
+                            fs=f.sig_full or f.sig
                             if fs in (sa,sb): base_vecs.append(f.vec)
                         if len(base_vecs)<2: continue
-                        total_w=sum(f.weight for f in self.frames if (f.sig_full if hasattr(f,'sig_full') and f.sig_full else f.sig) in (sa,sb))
-                        assoc_vec=tuple(sum(f.vec[j]*f.weight for f in self.frames if (f.sig_full if hasattr(f,'sig_full') and f.sig_full else f.sig) in (sa,sb))/max(total_w,1) for j in range(_VEC_DIM))
+                        total_w=sum(f.weight for f in self.frames if (f.sig_full or f.sig) in (sa,sb))
+                        assoc_vec=tuple(sum(f.vec[j]*f.weight for f in self.frames if (f.sig_full or f.sig) in (sa,sb))/max(total_w,1) for j in range(_VEC_DIM))
                         if len(self.frames)>=self.capacity:
                             self.frames.sort(key=lambda x: x.weight); r=self.frames.pop(0); self.total_weight-=r.weight
                         self.frames.append(Frame(assoc_vec,weight=float(count),sig=assoc_sig)); self.total_weight+=float(count); self._assoc_frames+=1
@@ -562,14 +561,16 @@ class Memory:
         self._pred_total += 1
         if predicted == actual_sig:
             self._prediction_accuracy.append(1.0)
+            self._pred_errors += 0
         else:
             self._prediction_accuracy.append(0.0)
+            self._pred_errors += 1
             # L4: 预测误差 → 生成pred_err元帧
             err_str = f"pred_err_{conf:.2f}_{predicted[:8]}_{actual_sig[:8]}"
             # 用当前输入向量注入误差帧
             match = [f for f in self.frames if 'pred_err' in (f.sig_full or f.sig)]
             if not match:
-                dummy_vec = (0.0,) * len(self.frames[0].vec) if self.frames else (0.0,)
+                dummy_vec = (0.0,) * len(self.frames[0].vec) if self.frames else (0.0,) * _VEC_DIM
                 if len(self.frames) >= self.capacity:
                     self.frames.sort(key=lambda x: x.weight)
                     r = self.frames.pop(0); self.total_weight -= r.weight
@@ -578,13 +579,13 @@ class Memory:
         if len(self._prediction_accuracy) > 50:
             self._prediction_accuracy.pop(0)
         # L6: 统摄—检测系统性准确率下降
-        recent_acc = sum(self._prediction_accuracy[-10:]) / max(len(self._prediction_accuracy[-10:]), 1) if self._prediction_accuracy else 1.0
+        recent_acc = sum(self._prediction_accuracy[-10:]) / len(self._prediction_accuracy[-10:]) if self._prediction_accuracy else 1.0
         if not self._doubt_mode and len(self._prediction_accuracy) >= 10 and recent_acc < 0.6 and self._last_accuracy > 0.8:
             self._doubt_mode = True
             doubt_str = f"sys_doubt_acc_{recent_acc:.2f}"
             match = [f for f in self.frames if 'sys_doubt' in (f.sig_full or f.sig)]
             if not match:
-                dummy_vec = (0.0,) * len(self.frames[0].vec) if self.frames else (0.0,)
+                dummy_vec = (0.0,) * len(self.frames[0].vec) if self.frames else (0.0,) * _VEC_DIM
                 if len(self.frames) >= self.capacity:
                     self.frames.sort(key=lambda x: x.weight)
                     r = self.frames.pop(0); self.total_weight -= r.weight
@@ -654,7 +655,7 @@ class GEME:
         """Promote surviving association frames to vocabulary.
         Called after induction. Only promotes frames with clean patterns."""
         for f in self.memory.frames:
-            sig=f.sig_full if hasattr(f,'sig_full') and f.sig_full else f.sig
+            sig=f.sig_full or f.sig
             if "──" in sig and f.weight>5:
                 # Extract characters from association signature
                 parts=sig.split("──")
