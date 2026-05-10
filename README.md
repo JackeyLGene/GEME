@@ -11,90 +11,52 @@
 GEME is a minimal computational system built on three axioms:
 
 1. **Competitive merging** — new input merges into the closest existing frame, or creates one
-2. **Adaptive forgetting** — frames decay and are pruned under economic pressure
-3. **Self-referential observation** — the system observes its own frame economy and feeds the observation back
+2. **Adaptive forgetting** — frames decay and are pruned; survivors are the most verified
+3. **Self-referential observation** — the system observes its own frame economy and feeds back the result
 
-Zero neural networks. Zero backpropagation. Zero free parameters. Three structural constants.
-
-Shine any structured input through GEME and look at what emerges: quantized levels, time dilation, semantic convergence, self-referential prediction, anomaly detection. It is a prism — it decomposes information into frames and shows you the structure inside. It is a telescope — it points at things you already know and lets you see them differently.
-
-No domain knowledge is programmed in. Everything that emerges is a property of the frame economy itself.
+Operating with only three structural constants (δ, γ, τ) from which all behavioral thresholds derive. Zero free parameters. Six emergent cognitive layers (L1–L6). Reproducible in ~10 seconds.
 
 ## Quick Start
 
-```python
-from geme import GEME, eq, fn, const
-g = GEME(memory_cap=16)
-# Process symbolic formulas
-f = eq(fn("swap", const("1"), const("2")),
-       fn("swap", const("2"), const("1")))
-result = g.process_sig(f, structural_signature(f))
-# Read all metrics
-print(g.metrics())
+```bash
+git clone https://github.com/JackeyLGene/GEME.git
+cd GEME/submit/code
+python s1_demo.py
 ```
 
-No external dependencies. Python 3.8+ stdlib only.
+No external dependencies. Output: the six-layer discovery journey.
 
----
+## Key Results
 
-## What Emerges
+| Claim | Result |
+|-------|--------|
+| Self-reference is informationally cheap | I(φ;X) = 0.026 bits, t(19)=65.2, p<.001 |
+| Self-reference ≈ Induction | Q+G ≡ PA (10 seeds, std = 0) |
+| Frame attractor | L4 = 1 ± 0.2, System = 6 ± 2 |
+| Six cognitive layers | L1 Entity → L6 Integration |
 
-| Experiment | Observation | Invites |
-|-----------|-------------|---------|
-| Gödel Bridge | Self-reference carries near-zero mutual information with input | Information theory, formal systems |
-| L4 Prediction | The system learns to predict the next input in a sequence | Cognitive science, anomaly detection |
-| Consciousness Economy | Prediction costs ≈ verification costs in the frame economy | Computation complexity, P vs NP in self-referential systems |
-| 22 Quantized Levels | A continuous circle is discretized into 22±2 frames | Physics, quantization |
-| Time Dilation (1.85×) | Fast inputs produce fewer frames than slow ones | General relativity, time in frame economies |
-| Born Rule (49.3%) | Equal-distance inputs merge probabilistically with 50/50 distribution | Quantum mechanics, measurement |
-| Translation Invariance | Chinese and English texts converge to the same frame structure | Linguistics, semantics |
-| Justice Structure (v6) | Social concepts (crime→punishment→class) produce identical L4 behavior across 3 scripts | Anthropology, social cognition |
+## Documentation
 
----
-
-## Structure
-
-```
-L1 ── L2 ── L3 ── L4 ── L5 ── L6
-实体    关联    桥接    预测    元观测    统摄
-
-(L1,L2,L3) = world processing — what is
-(L4,L5,L6) = self-referential verification — what should be
-```
-
----
-
-## Repository
-
-```
-geme.py              — core engine
-geme_dynamic.py      — dynamic vocabulary variant
-docs/                — design spec, code audit, robustness report
-standalone/          — 80+ validation experiments
-preprint/            — paper drafts (CN/EN)
-```
-
-## Using It
-
-Point GEME at your own data:
-
-- Feed it legal texts and watch it discover structure across languages (`standalone/hammurabi_v3_cuneiform.py`)
-- Feed it formal systems and watch Gödel sentences behave like induction axioms (`standalone/exp_godel_proof_test.py`)
-- Feed it sensor data and watch it detect anomalies through L4 prediction
-
-The companion paper describes the framework and observations. The code is the invitation.
-
-## Protocol
-
-Apache 2.0. All claims are empirically supported by reproducible experiments in the repository. Contributions, forks, and independent reproductions are welcome.
+- [Paper (docx)](submit/paper/GEME_Paper_EN.docx) — full manuscript
+- [Landing Checklist](submit/paper/LANDING_CHECKLIST.md) — pre-submission review
+- [Code](submit/code/geme.py) — 980 lines, zero dependencies
+- [Replication](submit/code/paq_replication.py) — run Q+G≈PA in 30s
+- [Essays](https://jackeylgene.github.io/GEME/essays/) — short reflections
 
 ## Citation
 
 ```bibtex
-@misc{liu2026geme,
+@software{liu2026geme,
   author = {Liu, Jieqi},
-  title = {GEME: A Self-Reflective Prism Framework for Cognition},
-  year = {2026},
-  doi = {10.5281/zenodo.20059553}
+  title = {GEME: The Shannon-Gödel Bridge — Self-Reference is Information-Theoretically Free},
+  month = may,
+  year = 2026,
+  publisher = {Zenodo},
+  doi = {10.5281/zenodo.20059553},
+  url = {https://doi.org/10.5281/zenodo.20059553}
 }
 ```
+
+## License
+
+Apache 2.0. © 2026 Jieqi Liu.
