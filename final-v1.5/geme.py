@@ -435,7 +435,9 @@ class Memory:
                   chr(9711)*2 in (f.sig_full or ''))]
         if not l4: return 0
         w = sorted([f.weight for f in l4], reverse=True)
-    
+        avg = sum(w) / len(w) if w else 1
+        return sum(1 for x in w if x >= avg * 1.5)
+
     def count_by_layer(self):
         """Return dict of {layer: count} for all frames."""
         counts={}
@@ -443,8 +445,6 @@ class Memory:
             l=getattr(f,'layer',"L1")
             counts[l]=counts.get(l,0)+1
         return counts
-        avg = sum(w) / len(w) if w else 1
-        return sum(1 for x in w if x >= avg * min_weight_ratio)
     def mutual_information_phi_X(self):
         """I(phi; X): mutual information between self-referential (phi) and
         non-self frames (X), computed from empirical co-occurrence joint distribution.
