@@ -3,6 +3,9 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20059553.svg)](https://doi.org/10.5281/zenodo.20059553)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 
+> **简单直截，发明本心。**  
+> — 陆九渊
+
 ## A Prism, A Telescope
 
 GEME is a minimal computational system built on three axioms:
