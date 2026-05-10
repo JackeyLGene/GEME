@@ -134,9 +134,57 @@ Shannon, C. E. (1948). A mathematical theory of communication. Bell System Techn
 
 # Supplementary Information
 
-## S1. Exploratory Notes: Conceptual Evolution
+## S1. The Discovery Journey: Scientific Paradigm Shifts Compressed in GEME
 
-The development of GEME was driven by observations that the frame economy's behavioral differentiation structurally parallels distinct descriptive paradigms in science. L1 frames operate on discrete differentiation (statistical mechanics), L2 on temporal structure (thermodynamics), L3 on relational topology (general relativity), and L4 on self-referential closure (quantum measurement / consciousness). These parallels are offered as heuristic motivation, not formal claims.
+The discovery of GEME's six-layer architecture closely recapitulates the path of three major paradigm shifts in the history of science. Each layer emerged not from deliberate design but from the natural pressure of incompleteness: when the current layer could not answer its own questions, the system grew a bridge to the next.
+
+Readers are invited to run `standalone/s1_demo_experiments.py` to experience each layer's cognitive barrier firsthand---each experiment demonstrates what the current layer "cannot do," leading naturally to the necessity of the next layer.
+
+**S1.1 L1-L3: From Entity Classification to Relational Topology (Axial Age to Newton to Einstein)**
+
+**L1 (Entity frames) --- Axial Age.** Run Experiment 1 (L1 barrier): Input two isolated entities---"cat" and "mat." The system successfully classifies them as distinct frames (2/8 capacity) but cannot form any association. This is pre-scientific naming and categorization---Confucius's rectification of names, Aristotle's categories. The system can distinguish things, but cannot express "the cat is on the mat." This stage lasted months: the system ran, it converged, but its "world" was a collection of discrete entities with no time, no relations, and no structure. **Barrier:** Classification is sufficient, but relation is not.
+
+**L2 (Association frames) --- Newtonian era.** Run Experiment 2 (L2 barrier): Input "cat" "on" "mat" sequence 50 times. The sliding window records that "cat" and "mat" appear near each other in time---the system autonomously generates an association frame "cat--mat." This is equivalent to Newtonian causality: if A and B frequently appear together, they are "related." However, after switching to "dog" "on" "road," the previous "cat--mat" association gradually vanishes. **Barrier:** Associations are functional but transient---they disappear when the window slides. To acquire knowledge, the system needs stability.
+
+**L3 (Bridge frames) --- Relativity/field theory.** L2's transience forces the system to integrate association patterns over time, forming stable bridge frames. This is equivalent to Einstein's field equations: describing not particles (L1) or forces between particles (L2), but the structure of space itself (L3). L3's emergence took us the longest to explore; we ultimately discovered that the "time dimension" itself was the key---a bridge frame's stability depends on its persistence over time, not on the strength of a single co-occurrence. **Barrier:** Stable, but stability does not equal truth.
+
+**S1.2 L3's Incompleteness and the Long Search for L4**
+
+**L3 (Bridge frames) --- Inability to judge truth.** Run Experiment 3 (L3 barrier): Input "3+2=5" (true) and "6+1=8" (false) 30 times each. L3's bridge frames respond identically to both. L3 can record frequency---"3+2=5 and 6+1=8 often appear together in the window"---but it cannot distinguish true ("should be so") from false ("should not be so").
+
+On the evening of May 8, 2026, this gap became undeniable. Frequency is not truth. The nascent L4 at that time was merely a passive observer of d(w)/dt. It could "see" changes in bridge frame weights, but could not "ask" what those changes meant. It was recording a video, not making a judgment. What is fascinating about this gap is its self-referential nature: GEME's own structure was exposing the very crack between "describing the world" and "judging the world"---the same crack that Godel's sentence opens in formal systems.
+
+**S1.3 L4-L6: From Statistics to Judgment (Copenhagen to Shannon to Godel)**
+
+**L4 (Prediction) --- Copenhagen interpretation.** Run Experiment 4 (L4 barrier): After establishing the "cat-on-mat" pattern, check prediction accuracy (~85%). Then inject an anomaly ("road") and observe the pred_err frame. The system detects that this particular prediction was wrong---but it does not know its overall accuracy is declining. L4 infers the most likely next frame signature from the co-occurrence table---generating a prediction (O(W+K)), receiving the actual input (O(1)), and comparing the two to produce an error signal. This is essentially the operational content of the Copenhagen interpretation of quantum mechanics: the system does not describe a definite state but maintains a probability distribution, updating it through measurement. **Barrier:** Can predict, but does not know its own capability boundary.
+
+**L5 (Meta-observation) --- Shannon/Turing.** Run Experiment 5 (L5 barrier): After training, inject noise and observe L5's recorded accuracy drop (from ~0.85 to ~0.05). The system moves from "I am predicting" to "I know at what accuracy I am predicting"---the entry point of metacognition. But the system only records the trend, it does not act on it. **Barrier:** Can see the trend, but cannot make a judgment based on it.
+
+**L6 (Integration) --- Godel/Hofstadter.** When L5's reported prediction accuracy drops persistently (below 60%, an experimentally verifiable threshold), L6 generates a sys_doubt frame---a system-level "I may be wrong" signal. This is the only genuine output of the entire GEME architecture: a judgment about the system's own state. L6 does not predict the world---it predicts its own ability to predict. This is the closure of the self-referential loop. **Barrier broken:** The leap from description to judgment is complete.
+
+**S1.4 Unification of the Three Theorems in the Discovery Process**
+
+This journey is not five independent problems solved in sequence---it is the same problem solved recursively five times:
+
+1. **The Godel Bridge (resource-neutrality):** Before correction, the MI computation (phi-X subspace denominator) yielded I = 0.086---underestimating the independence of self-obs frames from input frames. After correction (full co-occurrence space denominator, 20 seeds, 2000 steps), I = 0.026 +/- 0.002 bits. The entire L4-L6 self-referential pipeline consumes negligible channel capacity---the computational version of the Godel Bridge.
+
+2. **Threshold-triggered emergence (economics of emergence):** L4's prediction, L5's meta-observation, and L6's integration are not hard-coded rules. All are threshold-triggered economic responses: d(w)/dt > 0.02 generates dwdw frames, conf > 0.3 triggers prediction comparison, accuracy < 0.6 triggers sys_doubt. These thresholds can be validated by ablation experiments---changing them changes timing, not the existence of the phenomenon.
+
+3. **Consciousness economy (P approaching NP):** As the frame economy converges, L4's prediction cost drops from initial O(W + K) toward constant---because the co-occurrence table K converges to a bounded value. At this point, generation cost approximately equals verification cost, simulating P approaching NP within the frame economy.
+
+**S1.5 Methodology: The Godel Bridge Chain**
+
+Each layer of GEME was not "added"---it emerged naturally from the operations of the previous layer. When each layer discovered that it could not answer its own questions within its own framework, it grew a bridge to the next:
+
+- L1 (entity frames): "frames are isolated" ---> L2's co-occurrence bridge
+- L2 (association frames): "associations are transient" ---> L3's stability bridge
+- L3 (bridge frames): "patterns cannot judge truth" ---> L4's prediction bridge
+- L4 (prediction frames): "prediction needs to know its accuracy" ---> L5's meta-observation bridge
+- L5 (meta-observation frames): "meta-observation needs to make a judgment" ---> L6's integration bridge
+
+This is the "Godel Bridge Chain"---a meta-theory about layer emergence. Each layer's formal system contains an undecidable proposition within its own framework---and the answer to that proposition is precisely what the next layer's formal system can compute.
+
+> This is precisely the engineering version of the Hilbert-Godel boundary: within learned patterns, the system can determine truth (via prediction error); outside learned patterns, it remains silent (no prediction available). Decidable within the pattern, undecidable outside---this boundary marks the scope of Hilbert's program and the limits of Godel's restriction.
 
 ## S2. Extended Verification: Q + G ≈ PA
 
