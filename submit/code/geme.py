@@ -9,8 +9,8 @@ Usage:
                  structural_signature(...))
 """
 from __future__ import annotations
-import math, statistics, random
-from copy import deepcopy
+from typing import List, Tuple, Dict
+import math, statistics
 
 # ──────────────────────────────────────────────────────────────────
 # Structural constants (centralized, documented, frozen)
@@ -18,36 +18,8 @@ from copy import deepcopy
 DELTA = 0.19     # δ: adaptive threshold scaling factor
 GAMMA = 0.05     # γ: frame age decay multiplier
 TAU = 0.60       # τ: induction stress threshold
-
-# ── Derived constants (all expressible as functions of δ, γ, τ) ──
-DW_THRESHOLD = GAMMA * 0.4            # d(w)/dt significance: 40% of metabolic baseline
-META_STABLE_THRESHOLD = GAMMA * 0.2   # |d(w)/dt| < this → meta-stable (20% of baseline)
-PRED_CONFIDENCE_THRESHOLD = 0.3    # bootstrap value — overridden by adaptive lower-quartile calibration
-DOUBT_ON_THRESHOLD = TAU              # accuracy < τ → systemic doubt (isomorphic to §2.3)
-DOUBT_OFF_THRESHOLD = 1.0 - GAMMA * 3.0  # hysteresis upper bound
-HEALTHY_ACC_THRESHOLD = 1.0 - GAMMA * 4.0  # min accuracy for system to be considered healthy (= 0.80)
-ANOMALY_MED_BOUND = TAU - GAMMA * 2          # moderate anomaly threshold (= 0.50)
-ANOMALY_HIGH_BOUND = GAMMA * 4               # high anomaly threshold (= 0.20)
-NOVELTY_BONUS = 5.0                   # initial weight premium
-# Derivation: a novel frame must survive long enough to be validated.
-# Minimum survival steps = τ / (avg_stress × 0.1) ≈ 0.60 / 0.05 = 12 steps.
-# After 12 steps of γ decay: w × exp(−12 × 0.05) = w × 0.549.
-# To remain above median weight (~2.0 after convergence): w ≥ 2.0 / 0.549 ≈ 3.64.
-# New frame weight = 1.0 + bonus × distance_ratio. At max novelty (ratio→0):
-#   1.0 + 5.0 = 6.0. After decay: 6.0 × 0.549 ≈ 3.3 > 2.0. Survives.
-INDUCTION_DECAY_UNMERGED = math.exp(-GAMMA / 0.25)    # ≈ 0.819
-INDUCTION_DECAY_LOW = math.exp(-GAMMA)                 # ≈ 0.951
-SIG_LEN = 30        # signature truncation (engineering)
-SRC_LEN = 80        # source truncation (engineering)
-PRED_WINDOW = 50    # rolling window for prediction accuracy
-W_HIST_WINDOW = 50  # rolling window for weight history
-DERIV_HIST_MIN = 5  # minimum history length for derivative computation
-MULTIVERSE_DIM_PENALTY = DELTA * 1.32   # dim mismatch penalty in multiverse (~0.25)
-EVAL_MATCH_THRESHOLD = 0.75             # Jaccard-like overlap for evaluate_sig
-
-# ── Unicode separators (explicit, not magic codepoints) ──
-ASSOC_SEP = chr(8212) * 2    # —— (em dash ×2, U+2014) — original code verified match
-CHAIN_SEP = chr(9711) * 2    # ◯◯ (large circle ×2, U+25EF) — original code verified match
+NOVELTY_BONUS = 5.0   # initial weight premium for novel inputs
+_D27 = 27        # default vector dimension
 
 
 # ──────────────────────────────────────────────────────────────────
@@ -143,8 +115,8 @@ class Frame:
     __slots__=("vec","weight","sig","sig_full","src","age","merged","fid","layer")
     def __init__(self,vec,weight=1.0,sig="",src="",layer="L1"):
         _FRAME_ID_COUNTER[0]+=1; self.fid=_FRAME_ID_COUNTER[0]
-        self.vec=vec; self.weight=weight; self.sig=sig[:SIG_LEN]; self.sig_full=sig
-        self.src=src[:SRC_LEN] if src else sig[:SIG_LEN]; self.age=0; self.merged=0; self.layer=layer
+        self.vec=vec; self.weight=weight; self.sig=sig[:30]; self.sig_full=sig
+        self.src=src[:80] if src else sig[:30]; self.age=0; self.merged=0; self.layer=layer
 
 # ──────────────────────────────────────────────────────────────────
 # Memory (competitive memory economy)
@@ -176,9 +148,6 @@ class Memory:
         # L4: 预测（模态）
         self._prediction_accuracy=[]  # 滚动准确率窗口
         self._pred_errors=0; self._pred_total=0
-        # 自适应置信度阈值：跟踪所有预测置信度，从分布中自校准
-        self._confidences=[]        # all predict_next confidence values
-        self._conf_threshold=PRED_CONFIDENCE_THRESHOLD  # starts at bootstrap, auto-calibrates
         # L6: 统摄（当预测精度持续下降时触发）
         self._doubt_mode=False
         self._last_accuracy=1.0
@@ -231,7 +200,8 @@ class Memory:
             
         # Quantum merge: probabilistic selection among candidates
         if self.quantum_mode and len(candidates)>0:
-            if not hasattr(self,'_qrand'): self._qrand = random.Random()
+            import random as _qr
+            if not hasattr(self,'_qrand'): self._qrand = _qr.Random(42)
             psum = 0.0; probs = []
             for i,d,f in candidates:
                 p = math.exp(-d/max(self._merge_thresh_val,0.001))
@@ -244,6 +214,7 @@ class Memory:
                     if r <= acc: bi=i; bd=d; chosen=(i,d,f); break
                 # 第5维：保存未选候选为分支世界
                 if self._multiverse_enabled and len(candidates)>1:
+                    from copy import deepcopy
                     step_id=self._step_counter
                     for i,d,f in candidates:
                         if i==bi: continue  # 跳过被选中的
@@ -273,7 +244,7 @@ class Memory:
                 if f.fid not in self._weight_history:
                     self._weight_history[f.fid]=[]
                 self._weight_history[f.fid].append((self._step_counter, f.weight))
-                if len(self._weight_history[f.fid])>W_HIST_WINDOW:
+                if len(self._weight_history[f.fid])>50:
                     self._weight_history[f.fid].pop(0)
                 step_id=self._step_counter
                 self._window.append((sig,step_id,tuple(vec)))
@@ -281,7 +252,7 @@ class Memory:
                 return
                 
         # Standard merge
-        if thresh is not None and bi>=0 and bd<=thresh and (not sig or sig[:SIG_LEN]==self.frames[bi].sig):
+        if thresh is not None and bi>=0 and bd<=thresh and (not sig or sig[:30]==self.frames[bi].sig):
             self._merge_dists.append(bd)
             if len(self._merge_dists)>100: self._merge_dists.pop(0)
             f=self.frames[bi]; self.total_weight-=f.weight
@@ -296,7 +267,7 @@ class Memory:
             if f.fid not in self._weight_history:
                 self._weight_history[f.fid]=[]
             self._weight_history[f.fid].append((self._step_counter, f.weight))
-            if len(self._weight_history[f.fid])>W_HIST_WINDOW:
+            if len(self._weight_history[f.fid])>50:
                 self._weight_history[f.fid].pop(0)
         else:
             if thresh is None or thresh==0.0: nw=1.0
@@ -383,7 +354,7 @@ class Memory:
         # L4: 计算权重导数
         derivs=self.compute_derivatives()
         # 识别d(w)/dt显著的帧作为L4元认知观测对象
-        high_dw=[(fid,dw) for fid,dw in derivs.items() if abs(dw)>DW_THRESHOLD]
+        high_dw=[(fid,dw) for fid,dw in derivs.items() if abs(dw)>0.02]
         if high_dw:
             # 将导数最大的三个作为L4元观测信号
             high_dw.sort(key=lambda x: abs(x[1]), reverse=True)
@@ -422,8 +393,8 @@ class Memory:
         self._chain_count = 0  # 重置链计数，允许后续继续形成链
         for f in self.frames:
             self.total_weight-=f.weight
-            if f.merged==0: f.weight*=INDUCTION_DECAY_UNMERGED
-            elif f.merged<3: f.weight*=INDUCTION_DECAY_LOW
+            if f.merged==0: f.weight*=0.80
+            elif f.merged<3: f.weight*=0.95
             f.weight=max(1.0,f.weight)
             self.total_weight+=f.weight; f.age+=1
         self.frames.sort(key=lambda x: x.weight-x.age*GAMMA,reverse=True)
@@ -458,10 +429,10 @@ class Memory:
                     for f in self.frames if f.weight>0)
     def count_L4_frames(self, min_weight_ratio=1.5):
         """Number of stable L4 self-referential frames (frames with self or bridge sig)."""
-        l4 = [f for f in self.frames
-              if ('self' in (f.sig or '') or
-                  ASSOC_SEP in (f.sig_full or '') or
-                  CHAIN_SEP in (f.sig_full or ''))]
+        l4 = [f for f in self.frames 
+              if ('self' in (f.sig or '') or 
+                  chr(8212)*2 in (f.sig_full or '') or 
+                  chr(9711)*2 in (f.sig_full or ''))]
         if not l4: return 0
         w = sorted([f.weight for f in l4], reverse=True)
         avg = sum(w) / len(w) if w else 1
@@ -488,11 +459,11 @@ class Memory:
         x_keys = set()   # signatures NOT containing "self"
         for (sa, sb) in self._cooccur:
             # Association frames (──) are phi-family
-            if 'self' in sa or ASSOC_SEP in sa:
+            if 'self' in sa or chr(8212)*2 in sa:
                 phi_keys.add(sa)
             else:
                 x_keys.add(sa)
-            if 'self' in sb or ASSOC_SEP in sb:
+            if 'self' in sb or chr(8212)*2 in sb:
                 phi_keys.add(sb)
             else:
                 x_keys.add(sb)
@@ -530,7 +501,7 @@ class Memory:
         Returns dict of {fid: derivative} for L4 meta-observation."""
         derivs = {}
         for fid, history in self._weight_history.items():
-            if len(history) < DERIV_HIST_MIN:
+            if len(history) < 5:
                 continue
             # Linear regression slope over recent history
             recent = history[-10:] if len(history) > 10 else history
@@ -549,7 +520,7 @@ class Memory:
         derivs = self.compute_derivatives()
         if fid not in derivs:
             return False
-        return abs(derivs[fid]) < META_STABLE_THRESHOLD
+        return abs(derivs[fid]) < 0.01
     
     # ──────────────────────────────────────────────────────────
     # L4: 预测（模态跃迁）
@@ -581,27 +552,13 @@ class Memory:
         return best, conf
     
     def process_prediction(self, actual_sig):
-        """L4: compare predict_next to actual signature.
-        Confidence threshold auto-calibrates from the system's own distribution:
-        tracks all confidence values, sets threshold at the 25th percentile —
-        accepting the top 75% of the system's own confidence distribution."""
+        """L4: 用当前签名检测预测误差。
+        比较predict_next()的结果和实际的签名。
+        如果不匹配且置信度高 → 生成预测误差帧。"""
         if not actual_sig or actual_sig == 'self_obs':
             return None
         predicted, conf = self.predict_next()
-        if predicted is None:
-            return None
-        # Track confidence for adaptive calibration (before threshold decision)
-        if conf > 0:
-            self._confidences.append(conf)
-            if len(self._confidences) > 100:
-                self._confidences.pop(0)
-            # Auto-calibrate: threshold = 25th percentile of own confidence distribution
-            if len(self._confidences) >= 20:
-                sorted_conf = sorted(self._confidences)
-                idx = max(0, len(sorted_conf) // 4)  # lower quartile
-                self._conf_threshold = sorted_conf[idx]
-        # Use adaptive threshold for decision
-        if conf < self._conf_threshold:
+        if predicted is None or conf < 0.3:
             return None
         # L5: 记录准确率
         self._pred_total += 1
@@ -622,11 +579,11 @@ class Memory:
                     r = self.frames.pop(0); self.total_weight -= r.weight
                 nf = Frame(dummy_vec, weight=5.0, sig=err_str, layer="L4")
                 self.frames.append(nf); self.total_weight += 5.0
-        if len(self._prediction_accuracy) > PRED_WINDOW:
+        if len(self._prediction_accuracy) > 50:
             self._prediction_accuracy.pop(0)
         # L6: 统摄—检测系统性准确率下降
         recent_acc = sum(self._prediction_accuracy[-10:]) / len(self._prediction_accuracy[-10:]) if self._prediction_accuracy else 1.0
-        if not self._doubt_mode and len(self._prediction_accuracy) >= 10 and recent_acc < DOUBT_ON_THRESHOLD and self._last_accuracy > HEALTHY_ACC_THRESHOLD:
+        if not self._doubt_mode and len(self._prediction_accuracy) >= 10 and recent_acc < 0.6 and self._last_accuracy > 0.8:
             self._doubt_mode = True
             doubt_str = f"sys_doubt_acc_{recent_acc:.2f}"
             match = [f for f in self.frames if 'sys_doubt' in (f.sig_full or f.sig)]
@@ -637,7 +594,7 @@ class Memory:
                     r = self.frames.pop(0); self.total_weight -= r.weight
                 nf = Frame(dummy_vec, weight=10.0, sig=doubt_str, layer="L6")
                 self.frames.append(nf); self.total_weight += 10.0
-        elif self._doubt_mode and recent_acc > DOUBT_OFF_THRESHOLD:
+        elif self._doubt_mode and recent_acc > 0.85:
             self._doubt_mode = False
         self._last_accuracy = recent_acc
         return {'predicted': predicted, 'actual': actual_sig, 'confidence': conf, 'accuracy': recent_acc}
@@ -660,7 +617,6 @@ class Memory:
             "self_observations": self._self_observe_count,
             "pred_total": self._pred_total,
             "pred_accuracy": round(sum(self._prediction_accuracy[-20:])/max(len(self._prediction_accuracy[-20:]),1),3) if self._prediction_accuracy else 0.0,
-            "conf_threshold": round(self._conf_threshold, 4),
             "doubt_mode": self._doubt_mode,
             "derivative_frames": len(self._derivative_frames),
             "L4_meta_active": len([f for f in self.frames if 'dwdw' in (f.sig_full or f.sig)]),
@@ -751,9 +707,14 @@ class GEME:
         return fired
     
     def process_sig(self, formula, sig=None):
-        """Process a formula: encode to vector via symbol_vector, then delegate."""
+        self.frame_count+=1; self._input_count+=1
         if sig is None: sig=structural_signature(formula)
-        return self.process_vec(symbol_vector(formula), sig)
+        self.memory.observe(symbol_vector(formula), sig)
+        stress=self.memory.stress
+        ind=self._induction_step(stress)
+        return {"frame":self.frame_count,"mem":len(self.memory.frames),
+                "eff":round(self.memory.efficiency,4),"stress":round(stress,4),
+                "induction":ind,"thresh":self.memory._merge_thresh_val}
     
     def process_vec(self, vec, sig, src=""):
         """Process a pre-computed vector with signature (bypasses symbol_vector).
@@ -772,7 +733,7 @@ class GEME:
                     dl=min(len(vec),len(f.vec))
                     d=sum((vec[j]-f.vec[j])**2 for j in range(dl))
                     # 未对齐部分按不匹配处理（距离惩罚）
-                    d += abs(len(vec)-len(f.vec)) * MULTIVERSE_DIM_PENALTY
+                    d += abs(len(vec)-len(f.vec)) * 0.25
                     if d<bd: bd=d; bi=i
                 th=self.memory._adaptive_thresh() or DELTA
                 if bi>=0 and bd<=th*th:
@@ -780,6 +741,7 @@ class GEME:
                     f.vec=tuple((f.vec[j]*f.weight+vec[j])/(f.weight+1) for j in range(len(vec)))
                     f.weight+=1.0; f.merged+=1
                 else:
+                    from copy import deepcopy
                     nf=deepcopy(branch_frames[0]) if branch_frames else None
                     if nf: branch_frames.append(nf)
                 new_mv.append((branch_frames, step_branched, branch_id))
@@ -796,10 +758,8 @@ class GEME:
         med=sorted_w[len(sorted_w)//2] if sorted_w else 1
         for f in self.memory.frames:
             if f.weight<med: continue
-            fp=set(f.sig.split("_")); denom=min(len(sp),len(fp))
-            if denom==0: continue
-            ratio=len(sp&fp)/denom
-            if ratio>=EVAL_MATCH_THRESHOLD: return 2
+            fp=set(f.sig.split("_")); ratio=len(sp&fp)/min(len(sp),len(fp))
+            if ratio>=0.75: return 2
         return 3
 
     def metrics(self):
@@ -871,11 +831,11 @@ class GEME:
         if m.get('doubt_mode', False):
             return 0.8  # system is actively doubting
         acc = m.get('pred_accuracy', 0.0)
-        if acc > HEALTHY_ACC_THRESHOLD:
+        if acc > 0.8:
             return 0.1
-        elif acc > ANOMALY_MED_BOUND:
+        elif acc > 0.5:
             return 0.3
-        elif acc > ANOMALY_HIGH_BOUND:
+        elif acc > 0.2:
             return 0.6
         else:
             return 0.9
@@ -921,13 +881,11 @@ class GEME:
             state = json.load(f)
         g = cls(memory_cap=state.get('memory_cap', 16))
         g.frame_count = state.get('frame_count', 0)
-        g._input_count = state.get('input_count', state.get('frame_count', 0))
+        # Restore frames (simplified - vectors only, no full state)
         for fd in state.get('frames', []):
-            vec = fd['vec'] if isinstance(fd['vec'], (list, tuple)) else [0.0] * _VEC_DIM
-            nf = Frame(tuple(vec), weight=fd.get('weight', 1.0),
-                       sig=fd.get('sig', ''), layer=fd.get('layer', 'L1'))
-            g.memory.frames.append(nf)
-            g.memory.total_weight += nf.weight
+            from copy import deepcopy
+            vec = fd['vec'] if isinstance(fd['vec'], (list, tuple)) else [0.0]*27
+            g.process_vec(vec, fd.get('sig', 'restored'))
         return g
 
     def input_file(self, path, encoding='utf-8'):
