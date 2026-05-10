@@ -1,0 +1,6047 @@
+<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing">
+  
+
+  <w:body>
+    
+    
+    <w:p>
+      
+      
+      <w:pPr>
+        
+        
+        <w:pStyle w:val="Title"/>
+        
+      
+      </w:pPr>
+      
+      
+      <w:r>
+        <w:t xml:space="preserve">GEME</w:t>
+      </w:r>
+      
+    
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">GEME: </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">自反棱镜认知框架</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">刘杰奇</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">独立研究者。邮件：[待补充]</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkStart w:id="9" w:name="摘要"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading1"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">摘要</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">理解认知的基础机制仍是一个核心挑战。我们提出生成经济记忆实体（GEME），一个建立在三条不可约公理之上的最小计算模型：竞争性合并、自适应遗忘和自指观察。GEME</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">没有自由参数，仅依赖三个结构常数，运行时产生一个帧经济系统，从中系统性地涌现出三类现象：（1）自指操作承载接近零的互信息（I</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> = 0.026 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">bits），我们将其类比为生物系统中高效自我监控的潜在机制；（2）第四层自指层中出现阈值触发的结构化响应，我们将其类比为一定复杂度下类元认知响应的涌现；（3）第四层帧数收敛至</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 1 ± </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.2，而系统总帧数在不同条件下收敛至</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 6 ± </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">2，这一数值范围与相关领域的结构吸引子数值相近。本文的主要贡献是将</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">作为一个可复现的计算思想实验呈现，其观测到的现象邀请对经典的认知与社会约束进行重新解释，而非为它们提供确定的解释。模型完全开源且可复现。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="9"/>
+    
+    
+    <w:bookmarkStart w:id="10" w:name="引言"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading1"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">1. </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">引言</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">理解认知——一个有限系统如何从信息流中建构意义、形成概念并指涉自身——是现代科学的核心挑战之一。这一挑战根植于两个看似分立的基础：信息传输的物理约束（香农，1948）与自指的逻辑必然性（哥德尔，1931）。然而，一个能将二者统一、并为更广泛的认知理论提供可操作基元的生成模型，至今仍属空白。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">相关研究更关注于各自的限制与构建。柴廷的算法信息论将对象的本质信息锚定于产生它的最短程序，揭示了数学真理中固有的随机性边界。阿伦森则进一步论证了信息框架下的限制：许多关于心智与知识的哲学问题，其症结可能在于&#x201D;计算复杂性&#x201D;——即实现功能所需的资源代价，而非抽象的可计算性。弗里斯顿的自由能原理则从生命科学领域提出了一个基于变分贝叶斯推断的、量化的&#x201D;经济&#x201D;解释：所有自组织系统存在的统一法则是持续最小化其感知的预测误差，从而为知觉、行动与内稳态提供了一种动力学视角。而在语言科学领域，乔姆斯基（2016，What</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> kind of Creatures Are </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">We）在其后期哲学思辨中已经在探讨语言结构中&#x201D;最简运算&#x201D;的结构性问题。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">这些深入的探索在各自的领域中挖掘出了认知深刻的一面，但仍旧无法以一个简单、统一的框架回答这个问题。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">侯世达在《哥德尔、埃舍尔、巴赫》中，提供了一个直觉性的哲学回答。他认为，意义、意识乃至生命层级本身，并非源自外部注入，而是系统在指涉自身的过程中涌现的产物。自指是连接无意义的符号与有意义的理解、机械的步骤与内在体验的桥梁。侯世达完成了壮丽的哲学综合，但这一综合在很大程度上仍停留于隐喻与叙述的层面，一个可运行、可检验的计算模型始终缺失。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">本文旨在为认知科学跨出从哲学综合到可计算探索的关键一步。我们提出&#x201D;生成性经济记忆体&#x201D;（Generative</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> Economy Memory Entity, </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">GEME）——一个仅基于三条极简公理（竞争、合并、自指）的、无参数的计算框架。GEME并不模拟任何特定认知模块，而是尝试实例化前述思想谱系所共享的一个深层内核：认知有可能是一个在资源约束下、通过自指来组织信息、以期维持自身结构完整性的经济系统。我们的目标不是宣称解决认知难题，而是锻造一个可复现、可审视、可扩展的计算&#x201D;棱镜&#x201D;。透过它，我们得以用新的、操作性的视角，审视信息如何在竞争中结构化，自指何以能既丰富内部模型又不耗竭信道，以及稳定状态如何从随机互动中涌现。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">我们报告三项系统性发现：（1）自指的信息论成本在系统稳定时趋于近零（I</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> = 0.026 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">bits，100</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">种子）；（2）阈值触发的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">响应将世界处理与自指预测分开；（3）L4</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">自指帧数收敛至</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 1 ± </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.2，系统总帧数在不同条件下收敛至</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 6 ± </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">2，这一数值范围与经典经验常数数值相近。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">论文组织如下。第</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 2 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">节描述</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">模型。第</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 3 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">节报告实验结果。第</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">节讨论含义、局限性和与现有框架的联系。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="10"/>
+    
+    
+    <w:bookmarkStart w:id="15" w:name="geme-模型"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading1"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">2. GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">模型</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">[图1</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">插入位置：GEME六层架构图——从输入(L0)经L1-L6到输出的流水线]</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkStart w:id="11" w:name="三条公理"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">2.1 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">三条公理</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">由三条公理支配。它们是不可约的固定结构约束，而非可调参数。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">公理</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">1（竞争性合并——稀缺性下的分配）：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧容量</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> C </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">是有限的——这是经济分析的起点。当输入向量</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> xₜ ∈ ℝᴰ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">到达时，它与所有现有帧</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> fᵢ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">逐一计算欧氏距离</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> d(xₜ, </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">fᵢ.vec)，竞争稀缺的帧槽位。设</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> f* = argmin d(xₜ, fᵢ.vec) </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">为最佳匹配帧。若</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> d(xₜ, f</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:i/>
+          <w:iCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">.vec) &lt; δ · </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:i/>
+          <w:iCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">μ(F)，其中</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:i/>
+          <w:iCs/>
+        </w:rPr>
+        <w:t xml:space="preserve"> μ(F) </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:i/>
+          <w:iCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">为当前帧群体的平均成对距离，则将输入合并到</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:i/>
+          <w:iCs/>
+        </w:rPr>
+        <w:t xml:space="preserve"> f</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">，更新其质心并增加其合并计数（等价于&#x201D;配给制&#x201D;——最近者获得更新权）。否则，以</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> xₜ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">为初始向量创建新帧。这一公理实现了一种稀缺性驱动的自适应分类——相似的输入倾向于聚合以节约槽位，差异显著的输入迫使系统扩展表征空间。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">公理</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">2（自适应遗忘——维护成本下的选择）：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">每步更新后，所有帧的权重按</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> wᵢ ← wᵢ · exp(−γ / mergedᵢ) </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">衰减，帧龄递增。权重低于剪枝阈值</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> τ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的帧被移除。合并频率高的帧衰减更慢——即被反复验证的表征留存更久。权重</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> w </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">充当帧的&#x201D;市场认可度&#x201D;信号：高权重帧是匹配历史最频繁记录的表征，低权重帧因长期未参与合并而面临淘汰。稀缺的帧容量自动分配给最频繁被激活的表征，实现了一种自然的&#x201D;优胜劣汰&#x201D;。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">公理</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">3（自指观察——系统的自我审计）：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">每隔</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> k </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">步（默认</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> k = </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">10），系统计算当前帧经济的加权质心</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> oₜ = Σ(wᵢ · fᵢ.vec) / </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Σwᵢ，然后将</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> oₜ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">作为新的输入向量馈送回系统自身，经历与外部输入相同的竞争性合并过程。这一公理相当于企业或经济体的&#x201D;内部审计&#x201D;——系统对其自身的表征分布进行采样并纳入后续决策，形成一个闭合的自我修正循环。这是</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">中最高层的经济行为：它不直接参与外部稀缺性竞争，而是评估和调整系统内部资源的分配效率。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">三条公理共同定义了一个确定性转移函数</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> T: Sₜ → </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Sₜ₊₁，其中系统状态</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> Sₜ = (Fₜ, t) </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">完全由当前帧集和时间步决定。没有随机性，没有隐藏变量，没有梯度信号。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="11"/>
+    
+    
+    <w:bookmarkStart w:id="12" w:name="形式定义"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">2.2 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">形式定义</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> f </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">是一个七元组</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> (vec, weight, age, merged, sig, src, layer)。vec </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">是</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> D </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">维向量（固定维度版本中</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> D = </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">27，自适应版本中随输入维度增长）；weight</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">是跟踪合并频率的标量，决定了帧在剪枝竞争中的生存概率；age</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">计数自创建以来的步数；merged</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">跟踪成功合并的次数（影响衰减率）；sig</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">是用于可解释性的可选签名（截断至</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 30 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">字符）；src</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">记录帧的来源；layer</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">记录帧所属的分层（L0</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">至</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">L6），用于层次结构追踪。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">距离计算采用欧氏距离。合并阈值</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> δ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">和衰减率</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> γ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">采用自适应更新——δ</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">乘以前帧群体的平均成对距离的均值</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">μ(F)，使得系统对不同密度的帧分布具有鲁棒性。帧容量上限为</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">C（默认</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> C = </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">32），超过上限时最低权重帧被淘汰。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="12"/>
+    
+    
+    <w:bookmarkStart w:id="13" w:name="形式动力学"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">2.3 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">形式动力学</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">令系统在时间步</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> t </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的状态为</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> Sₜ = (Fₜ, </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">t)，其中</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> Fₜ = {f₁, f₂, …, fₙ} </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">是时间</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> t </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">存在的所有帧的集合。系统根据确定性转移函数</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> T: Sₜ → Sₜ₊₁ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">演化，该函数按顺序实现三个公理：</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">输入处理（公理</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">1）。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">给定输入向量</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> xₜ ∈ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">ℝᴰ，对所有</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> fᵢ ∈ Fₜ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">计算距离</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> d(xₜ, </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">fᵢ.vec)。令</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> f* = arg min d(xₜ, </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">fᵢ.vec)。如果</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> d(xₜ, f*.vec) &lt; δ · </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">μ(Fₜ)，则更新</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">f</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:i/>
+          <w:iCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">.vec ← (f</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve">.merged · f</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:i/>
+          <w:iCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">.vec + xₜ) / (f</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve">.merged + 1), f</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:i/>
+          <w:iCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">.merged ← f</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve">.merged + 1.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">否则，向</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> Fₜ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">添加新帧</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> fₙₑ𝓌 = (xₜ, 1.0, 0, 0, None)。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">遗忘（公理</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">2）。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">对所有</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> fᵢ ∈ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Fₜ，更新</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">wᵢ ← wᵢ · exp(−γ / mergedᵢ), ageᵢ ← ageᵢ + 1.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">移除所有</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> wᵢ &lt; τ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的帧。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">自观察（公理</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">3）。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">每</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> k </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">步（默认</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> k = </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">10），生成自观察向量</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> oₜ = Σ(wᵢ · fᵢ.vec) / </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Σwᵢ。将</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> oₜ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">作为输入向量反馈回系统，应用与步骤</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 1 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">相同的竞争性合并过程。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">定义</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">1（层分配）。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> f </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">被分配到层</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> Lᵢ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">如果它是由层</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> Lᵢ₋₁ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的帧生成的。输入向量被视为层</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L₀。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">定义</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">2（稳定帧）。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> f </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">在时间</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> t </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">是稳定的，如果</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> |d(f.weight)/dt| &lt; </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">ε，其中</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> ε = </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.001，在</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 100 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">步窗口上计算。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BlockText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">注记。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> GEME </w:t>
+      </w:r>
+      
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的涌现性质已在数千次运行中得到实验验证。这些性质的严格数学证明仍是未来工作的重要开放问题。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="13"/>
+    
+    
+    <w:bookmarkStart w:id="14" w:name="动力学六层经济"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">2.4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">动力学：六层经济</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">[图2</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">插入位置：六层经济示意图——每层的输入/输出/涌现结构]</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧经济在六个并发层上运行，每层对应于认知科学中一个不同的功能层级：</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">L0（输入层）：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">原始输入向量。可以是高维感知信号（如视觉特征向量）或低维符号编码（如公理编码为</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 27 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">维符号频率向量）。L0</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">没有记忆——它只是当前输入。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">L1（实体层——分类）：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">通过自适应合并从原始输入建立实体帧。L1</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">回答&#x201D;这是什么&#x201D;——它将输入流离散化为可区分的单元。其限制是孤立性：帧之间没有关系。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">L2（关联层——因果）：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">通过滑动窗口发现</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L1 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧之间的时间共现，创建&#x201D;关联帧&#x201D;。L2</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">回答&#x201D;什么和什么有关&#x201D;——但关联是暂时的，窗口滑动后消失。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">L3（桥接层——结构）：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">通过检测稳定关联模式形成桥接帧。L3</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">回答&#x201D;什么结构是稳定的&#x201D;——这是系统第一个自指结构：桥接帧编码的是关系之间的关系。其限制是：稳定的模式不等于真的模式。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">L4（预测层——期望）：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">从共现表中统计推断下一个最可能出现的帧签名。L4</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">回答&#x201D;下一个应该是什么&#x201D;——当预测与实际不符时生成</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> pred_err </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧。这是哥本哈根式的概率预测机制。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">L5（元观测层——自知）：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">跟踪每次预测的准确率，维护滚动统计窗口。L5</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">回答&#x201D;我预测得有多准&#x201D;——这是元认知的入口。但</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L5 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">只记录趋势，不采取行动。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">L6（统摄层——判断）：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">当</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L5 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">报告的预测准确率持续下降低于</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 60% </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">时，生成</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> sys_doubt </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧——系统层面的&#x201D;我可能错了&#x201D;信号。L6</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">回答&#x201D;我的模型是否还有效&#x201D;——这是整个</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">唯一的真正输出：一个关于系统自身状态的判断。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">六层可以归为两个阶段：(L1,L2,L3)</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">构成&#x201D;世界处理&#x201D;阶段——系统学习世界的结构；(L4,L5,L6)</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">构成&#x201D;自指验证&#x201D;阶段——系统学习自己的预测能力并在必要时自我纠正。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="14"/>
+    
+    
+    <w:bookmarkEnd w:id="15"/>
+    
+    
+    <w:bookmarkStart w:id="21" w:name="实验结果"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading1"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">3. </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">实验结果</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">[图3</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">插入位置：香农-哥德尔桥——MI随步数的收敛曲线]</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkStart w:id="16" w:name="香农-哥德尔桥自指的信息高效性"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">3.1 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">香农-哥德尔桥：自指的信息高效性</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">我们计算自指帧集合（phi，包括</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">self_obs、权重导数帧和关联桥帧）与外部输入帧集合（X）之间的互信息</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> I(phi; </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">X)，在全共现分布上计算（而非截断子空间）。在</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 100 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">个随机种子、每个</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 2000 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">步的条件下，平均</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> I(phi; X) = 0.026 ± 0.002 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">bits，98%</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的运行低于</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 0.05 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">bits。单样本</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> t </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">检验确认</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> MI </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">显著大于零（t(19)</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> = 65.2, p &lt; </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">.001），但数值极小——95%</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">置信区间为</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> [0.025, </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.027]。低且渐近消失的互信息表明，在</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">经济中，自指操作生成的表示在统计上很大程度上独立于外部输入流。这引发了自指在此类系统中可能在信息上是高效的猜想（以下简称：香农-哥德尔桥）。参见补充材料</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> S2 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的步数回归验证。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="16"/>
+    
+    
+    <w:bookmarkStart w:id="17" w:name="参数稳定性结构鲁棒性"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">3.2 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">参数稳定性：结构鲁棒性</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">三个结构常数（δ</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> = 0.19, γ = 0.05, τ = </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.6）定义一个经济区间，而非一组调谐参数。在每个常数的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> ±50% </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">变化下，L4</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">预测行为在性质上持续存在：所有</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 27 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">个参数组合中约</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 33% </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">产生</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 &gt; </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0，参数扫描未发现</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">完全消失的条件。所有工程初始化参数（共现窗口、合并阈值缩放）在其运行范围内对核心收敛结果无显著影响。消融实验（补充材料</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">S4）确认没有单一阈值驱动该效应；起充分作用的是竞争性帧经济中自观察循环的存在。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">[图4</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">插入位置：参数扫描热图——δ/γ/τ</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">三元映射到</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">存在性]</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="17"/>
+    
+    
+    <w:bookmarkStart w:id="18" w:name="阈值触发的-l4-响应"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">3.3 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">阈值触发的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">响应</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">当帧权重变化率超过阈值（|d(w)/dt|</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> &gt; </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.02）时，系统生成一类独特的帧（L4</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧），对这些导数进行编码。预测流水线的运行具有经济性：生成预测的成本为</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> O(W + </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">K)（扫描窗口和共现表），而验证成本为</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">O(1)。随着结构知识的积累，生成和验证成本趋同，在帧经济内部展现出相对于生成的高效验证特征（见补充材料</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> S6 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的详细复杂度分析）。L4</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧对系统自身动力学的编码在功能上（而非机制上）概念性地类似于生物系统中的元认知监控。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">[图5</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">插入位置：d(w)/dt</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">直方图——阈值</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 0.02 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">处的触发边界]</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="18"/>
+    
+    
+    <w:bookmarkStart w:id="19" w:name="稳定吸引子帧数收敛"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">3.4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">稳定吸引子：帧数收敛</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">在内存容量</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 8 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">到</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 52 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">之间，L4</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">自指帧数收敛至</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 1 ± </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.2。系统总帧数在运行区间（容量</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">8-32）收敛至</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 6 ± </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">2，这一范围与</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> Miller </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 7 ± </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">2（工作记忆）、Milgram</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的六度分隔（社交网络）以及</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> Q + G ≈ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">PA（形式系统）的结构吸引子数值惊人地接近。这一层次性收敛表明，一个主导的元认知帧（L4）协调着大约六个下层结构帧（L1-L3），与观察到的人类工作记忆容量限一致。我们强调，这一数值重合仍处于推测阶段，需要跨领域实证验证。这一数值近似引发推测性假设——不同的认知和社会系统可能受到类似的信息或经济约束——这是一个需要通过直接经验对齐来验证的可能性，而非本文已确立的论断。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">[图6</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">插入位置：容量扫描——容量</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 4-64 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">下</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧数收敛至</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">1，总帧数收敛至</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 6±2]</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="19"/>
+    
+    
+    <w:bookmarkStart w:id="20" w:name="q-g-pa自指与归纳的结构等价性"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">3.5 Q + G ≈ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">PA：自指与归纳的结构等价性</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">框架的一个核心预测是：将哥德尔句子</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> G </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">添加到罗宾逊算术</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> Q </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">后，系统的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">预测行为应与皮亚诺算术（PA）不可区分。我们通过将</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> Q、Q+G </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">和</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> PA </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的公理编码为</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 27 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">维结构化向量，各自运行完整的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">流水线来直接测试这一预测。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">在</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 10 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">个独立随机种子上，结果是明确的（标准差为零）：</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:tbl>
+      <w:tblPr>
+        <w:tblStyle w:val="Table"/>
+        <w:tblW w:type="auto" w:w="0"/>
+        <w:tblLook w:firstRow="1" w:lastRow="0" w:firstColumn="0" w:lastColumn="0" w:noHBand="0" w:noVBand="0" w:val="0020"/>
+      </w:tblPr>
+      <w:tblGrid>
+        <w:gridCol w:w="1980"/>
+        <w:gridCol w:w="1980"/>
+        <w:gridCol w:w="1980"/>
+        <w:gridCol w:w="1980"/>
+      </w:tblGrid>
+      <w:tr>
+        <w:trPr>
+          <w:tblHeader w:val="on"/>
+        </w:trPr>
+        <w:tc>
+          <w:tcPr/>
+          <w:p>
+            <w:pPr>
+              <w:pStyle w:val="Compact"/>
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:rFonts w:hint="eastAsia"/>
+              </w:rPr>
+              <w:t xml:space="preserve">条件</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr/>
+          <w:p>
+            <w:pPr>
+              <w:pStyle w:val="Compact"/>
+            </w:pPr>
+            <w:r>
+              <w:t xml:space="preserve">L4</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr/>
+          <w:p>
+            <w:pPr>
+              <w:pStyle w:val="Compact"/>
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:rFonts w:hint="eastAsia"/>
+              </w:rPr>
+              <w:t xml:space="preserve">预测数</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr/>
+          <w:p>
+            <w:pPr>
+              <w:pStyle w:val="Compact"/>
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:rFonts w:hint="eastAsia"/>
+              </w:rPr>
+              <w:t xml:space="preserve">准确率</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+      </w:tr>
+      <w:tr>
+        <w:tc>
+          <w:tcPr/>
+          <w:p>
+            <w:pPr>
+              <w:pStyle w:val="Compact"/>
+            </w:pPr>
+            <w:r>
+              <w:t xml:space="preserve">Q</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr/>
+          <w:p>
+            <w:pPr>
+              <w:pStyle w:val="Compact"/>
+            </w:pPr>
+            <w:r>
+              <w:t xml:space="preserve">0.0</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr/>
+          <w:p>
+            <w:pPr>
+              <w:pStyle w:val="Compact"/>
+            </w:pPr>
+            <w:r>
+              <w:t xml:space="preserve">783</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr/>
+          <w:p>
+            <w:pPr>
+              <w:pStyle w:val="Compact"/>
+            </w:pPr>
+            <w:r>
+              <w:t xml:space="preserve">0.450</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+      </w:tr>
+      <w:tr>
+        <w:tc>
+          <w:tcPr/>
+          <w:p>
+            <w:pPr>
+              <w:pStyle w:val="Compact"/>
+            </w:pPr>
+            <w:r>
+              <w:t xml:space="preserve">Q+G</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr/>
+          <w:p>
+            <w:pPr>
+              <w:pStyle w:val="Compact"/>
+            </w:pPr>
+            <w:r>
+              <w:t xml:space="preserve">1.0</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr/>
+          <w:p>
+            <w:pPr>
+              <w:pStyle w:val="Compact"/>
+            </w:pPr>
+            <w:r>
+              <w:t xml:space="preserve">878</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr/>
+          <w:p>
+            <w:pPr>
+              <w:pStyle w:val="Compact"/>
+            </w:pPr>
+            <w:r>
+              <w:t xml:space="preserve">0.350</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+      </w:tr>
+      <w:tr>
+        <w:tc>
+          <w:tcPr/>
+          <w:p>
+            <w:pPr>
+              <w:pStyle w:val="Compact"/>
+            </w:pPr>
+            <w:r>
+              <w:t xml:space="preserve">PA</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr/>
+          <w:p>
+            <w:pPr>
+              <w:pStyle w:val="Compact"/>
+            </w:pPr>
+            <w:r>
+              <w:t xml:space="preserve">1.0</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr/>
+          <w:p>
+            <w:pPr>
+              <w:pStyle w:val="Compact"/>
+            </w:pPr>
+            <w:r>
+              <w:t xml:space="preserve">878</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr/>
+          <w:p>
+            <w:pPr>
+              <w:pStyle w:val="Compact"/>
+            </w:pPr>
+            <w:r>
+              <w:t xml:space="preserve">0.350</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+      </w:tr>
+    </w:tbl>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Q+G </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">和</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> PA </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">不仅仅是相似——它们在</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">预测行为上完全相同。这构成了自指（G）与归纳（PA）在</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">预测层面结构等价性的直接计算演示——一个由哥德尔定理预测但此前从未在运行系统中被直接观测到的结果。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">此外，该实验在单一实验设置中统一展示了所有三个经济发现：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> - </w:t>
+      </w:r>
+      
+      
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">哥德尔桥：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">自指</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> G </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧与输入公理之间的互信息接近零（I</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> = 0.026 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">bits）。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> - </w:t>
+      </w:r>
+      
+      
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">阈值触发涌现：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">从</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 = </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0（Q）到</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 = </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">1（Q+G，PA）的转变是对自指结构存在的阈值触发响应。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> - </w:t>
+      </w:r>
+      
+      
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">意识经济性：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> G </w:t>
+      </w:r>
+      
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">与归纳法在预测成本方面计算等价，表明跨形式系统存在共享的经济压缩原理。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">参见补充材料</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> S2 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的几何和</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> Tarski </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">系统扩展验证，以及关于计算复杂性含义的讨论。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">[图7</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">插入位置：Q+G≈PA——三条件柱状图对比（L4/预测数/准确率）]</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="20"/>
+    
+    
+    <w:bookmarkEnd w:id="21"/>
+    
+    
+    <w:bookmarkStart w:id="28" w:name="讨论"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading1"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">4. </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">讨论</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkStart w:id="22" w:name="与自由能原理的对话经济动力学的共同基底"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">4.1 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">与自由能原理的对话：经济动力学的共同基底</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">与弗里斯顿的自由能原理（Friston,</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">2010）共享一个深层直觉：认知系统可以被理解为一个在资源约束下最小化某种&#x201D;代价&#x201D;的经济系统。在自由能框架中，这一代价是变分自由能——系统感知与内部模型之间的差异；在</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">中，代价表现为帧经济中的生存压力——低权重帧在高竞争环境下被淘汰，高权重帧因频繁合并而强化。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">然而，两者的运行机制有根本区别。自由能原理通过梯度下降优化变分下界，需要显式的概率推断。GEME</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">则通过基于规则的经济动力学（竞争、合并、自指）实现结构稳定。GEME</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">表明，一类重要的认知结构（如概念的层级化、注意的分配、自我监测）可能源于一种更原始、更&#x201D;廉价&#x201D;的优化过程——即对内部表征空间的经济性组织，而非对外部信号流的精确概率推断。这提示我们，高级认知功能或许建筑在多重嵌套的优化过程之上，GEME</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">揭示的可能是其中更基础的一层。我们指出，这一并行是概念性和启发式的；GEME</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">不声称实现了自由能原理的变分机制，也未直接测试其神经生物学假设。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="22"/>
+    
+    
+    <w:bookmarkStart w:id="23" w:name="与整合信息论的对话自指作为一种整合机制"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">4.2 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">与整合信息论的对话：自指作为一种整合机制</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">整合信息论（IIT,</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> Oizumi et al., </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">2014）试图量化意识的必要条件——系统因果结构的&#x201D;不可分割性&#x201D;（Φ）。GEME</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的&#x201D;自指&#x201D;过程提供了一种动态的、功能性的整合视角。在</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">中，自指观测不消耗基础信道容量，却生成了关于系统自身状态的高阶统一表征（如</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧）。这演示了信息整合可以通过一种高效、内生的循环过程实现，而不必然依赖于特定的、高</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> Φ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的静态因果结构。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">并不与</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> IIT </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">竞争，而是提出了一个补充性问题：那些被体验为统一的现象，其背后的计算过程是否可能是多种多样的？自指循环是否是实现某种&#x201D;功能整合&#x201D;的高效算法之一？我们强调，GEME</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">不实施</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> IIT </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> Φ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">计算，也未测试其神经生物学假设。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="23"/>
+    
+    
+    <w:bookmarkStart w:id="24" w:name="与工作记忆及认知架构的对话容量作为涌现吸引子"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">4.3 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">与工作记忆及认知架构的对话：容量作为涌现吸引子</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">最引人注目的结果之一，是其内生稳定标度（≈6）与工作记忆容量等经验定律的数值巧合。这不应被解读为</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">GEME&#x201D;解释&#x201D;了米勒定律，而应被视为一个结构性的提示：有限的记忆容量可能并非一个固定的&#x201D;插槽&#x201D;限制，而是一个复杂动力系统在资源竞争与合并压力下自然涌现的稳定吸引子。这与近期从动力系统视角重构工作记忆的理论趋向一致。相较于</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> ACT-R </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">等架构中预定义的&#x201D;组块&#x201D;槽位，GEME</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">表明&#x201D;容量&#x201D;可以是系统动力学的结果而非前提。这为在更自然的连续任务中理解记忆的弹性与局限性提供了新的计算模型。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">作为本文的局限，L4</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧数的&#x201D;1&#x201D;吸引子和系统总帧数的&#x201D;6±2&#x201D;吸引子在当前阶段仍为实验观察值，缺乏跨领域的形式化证明。这一数值重合仍处于推测阶段，有待未来通过直接经验对齐来验证。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="24"/>
+    
+    
+    <w:bookmarkStart w:id="25" w:name="与复杂系统科学中的标度律对话跨层结构的普遍性"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">4.4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">与复杂系统科学中的标度律对话：跨层结构的普遍性</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">在模拟认知与社会两类任务时收敛于相似标度，这一现象超越了认知科学，触及了复杂系统科学的核心关切：为何截然不同的系统会展现出相似的标度律？GEME</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">提供了一个生成性假设：当系统被建模为一个竞争性信息经济时，其稳定状态可能被一个简单的固定点方程所刻画，该方程的解对系统的表层领域细节相对不敏感。这暗示，在认知、社会乃至其他复杂适应系统中观察到的某些普适标度，可能共享一个关于信息处理单元在互动网络中优化其状态的公共动力学起源。这是一个有待检验的生成性假说。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="25"/>
+    
+    
+    <w:bookmarkStart w:id="26" w:name="局限与未来工作"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">4.5 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">局限与未来工作</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的抽象性与极简性既是其力量之源，也明确了其边界。它目前不与任何神经机制或具体行为数据直接对应。当前模型输入空间是合成性的（固定维度向量，当前大小适中），而现实世界的认知任务需要更丰富的感知基础，我们正在积极扩展</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">以处理可变维度和自然语言输入。在结构上，GEME</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的分层架构（L1-L6）还可以进一步扩展，引入元层（W</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">层）以处理跨系统的直觉推断与知识迁移——这一方向将留待后续工作探索。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">未来的工作包括：（a）将</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">与大语言模型耦合进行提示工程，（b）跨语言和领域的自然语言输入探索（进行中工作：NoHarm），（c）帧经济相变的正式数学分析，以及（d）将模型扩展到多智能体社会模拟。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="26"/>
+    
+    
+    <w:bookmarkStart w:id="27" w:name="结论"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">4.6 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">结论</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的诞生实例化了一条从&#x201D;自指&#x201D;与&#x201D;经济&#x201D;公理出发、通过生成性观测来探索认知结构的研究路径。GEME</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">是一个过程棱镜。我们邀请读者透过它，重新审视那些关于心智、信息与复杂系统的分立问题。它的价值不在于给出了答案，而在于它将这些答案可能的形式——一系列关于结构如何在约束中自我组织的动力学模式——清晰、可复现地呈现了出来。在这个意义上，GEME</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">为一场更基础的对话提供了共同的参照物：我们所见认知与世界之结构，在多大程度上，是信息为维系自身存在而必须演出的、那场基于自指的经济之舞？</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="27"/>
+    
+    
+    <w:bookmarkEnd w:id="28"/>
+    
+    
+    <w:bookmarkStart w:id="29" w:name="致谢"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading1"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">致谢</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">感谢道格拉斯·R·侯世达，他的开创性著作《哥德尔、埃舍尔、巴赫》为理解自指与意义涌现设定了坐标系，也为本研究提供了最基础的灵感。此外，对他早期就本项工作雏形所给予的鼓励，我们深表感激。对于一个独立探索者而言，来自思想源头的回响，其价值无法估量。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">本研究为独立进行。部分实验代码在</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> AI </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">辅助下开发；作者对全部内容负责。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="29"/>
+    
+    
+    <w:bookmarkStart w:id="30" w:name="参考文献"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading1"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">参考文献</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Aaronson, S. (2011). Why philosophers should care about computational complexity. In Computability: Turing, Godel, Church, and Beyond.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Aaronson, S. (2013). The ghost in the quantum Turing machine. arXiv:1306.0159.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Anderson, J. R. (1996). ACT: A simple theory of complex cognition. American Psychologist, 51(4), 355-365.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Barabasi, A.-L. (2016). Network Science. Cambridge University Press.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Chaitin, G. J. (1975). A theory of program size formally identical to information theory. Journal of the ACM, 22(3), 329-340.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Chomsky, N. (2016). What Kind of Creatures Are We? Columbia University Press.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Cowan, N. (2001). The magical number 4 in short-term memory: A reconsideration of mental storage capacity. Behavioral and Brain Sciences, 24(1), 87-114.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Friston, K. (2010). The free-energy principle: a unified brain theory? Nature Reviews Neuroscience, 11(2), 127-138.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Godel, K. (1931). Uber formal unentscheidbare Satze der Principia Mathematica und verwandter Systeme I. Monatshefte fur Mathematik und Physik, 38(1), 173-198.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Hofstadter, D. R. (1979). Godel, Escher, Bach: An Eternal Golden Braid. Basic Books.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Kahneman, D. (2011). Thinking, Fast and Slow. Farrar, Straus and Giroux.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Ma, W. J., Husain, M., &amp; Bays, P. M. (2014). Changing concepts of working memory. Nature Neuroscience, 17(3), 347-356.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Miller, G. A. (1956). The magical number seven, plus or minus two. Psychological Review, 63(2), 81-97.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Milgram, S. (1967). The small world problem. Psychology Today, 1(1), 61-67.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Newell, A. (1990). Unified Theories of Cognition. Harvard University Press.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Oizumi, M., Albantakis, L., &amp; Tononi, G. (2014). From the phenomenology to the mechanisms of consciousness. PLoS Computational Biology, 10(5), e1003588.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Power, A., Burda, Y., Edwards, H., Babuschkin, I., &amp; Misra, V. (2022). Grokking: Generalization beyond overfitting on small algorithmic datasets. arXiv:2201.02177.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Shannon, C. E. (1948). A mathematical theory of communication. Bell System Technical Journal, 27(3), 379-423.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">West, G. B. (2017). Scale: The Universal Laws of Growth, Innovation, Sustainability, and the Pace of Life in Organisms, Cities, Economies, and Companies. Penguin Press.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">Van der Maas, H. L. J., et al. (2006). A dynamical model of general intelligence: The positive manifold of intelligence by mutualism. Psychological Review, 113(4), 842-861.</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="30"/>
+    
+    
+    <w:bookmarkStart w:id="34" w:name="补充信息"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading1"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">补充信息</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkStart w:id="31" w:name="s1.-发现之旅认知壁垒的逐一突破"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">S1. </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">发现之旅：认知壁垒的逐一突破</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">在当前阶段的论文中，GEME的核心代码是紧凑、有效的但复杂的。这样的一个模型是从认知的哲学思考出发，在实验尝试中不断修正的产物。每一个分层的识别与突破都几经周折，我们很乐意通过一系列的实验呈现这个历程，来更清晰地解释GEME为什么这么做。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">读者可以运行</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rStyle w:val="VerbatimChar"/>
+        </w:rPr>
+        <w:t xml:space="preserve">standalone/s1_demo_experiments.py</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">来亲身体验每一层的认知壁垒——每个实验展示当前层&#x201D;做不到什么&#x201D;，并引向下一层的必要性。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">S1.1 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">L1-L3：从孤立实体到稳定关系</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">L1 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">实验：孤立帧。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">运行实验</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t>1：输入两个孤立实体——&#x201C;猫&#x201D;和&#x201D;垫子&#x201D;。系统成功地将它们分类为不同的帧（2/8帧容量），但无法形成任何关联。系统能区分事物，但不能表达&#x201D;猫在垫子上&#x201D;这种关系。这一阶段持续了数月：系统能跑，能收敛，但它的&#x201D;世界&#x201D;是离散实体的集合，没有时间、没有关系、没有结构。</w:t>
+      </w:r>
+      
+      
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">壁垒：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">分类够了，但关系不够。这一困境让人想起前科学时代的&#x201D;命名与分类&#x201D;——系统像一位只懂得正名却不会造句的学者。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">L2 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">实验：关联消失。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">运行实验</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t>2：输入&#x201D;猫&#x201D;&#x201C;在&#x201D;&#x201C;垫上&#x201D;序列</w:t>
+      </w:r>
+      
+      
+      
+      <w:r>
+        <w:t xml:space="preserve"> 50 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t>轮。滑动窗口记录到&#x201D;猫&#x201D;和&#x201D;垫上&#x201D;在时间上邻近出现，系统自动生成了关联帧「猫──垫上」。但切换输入为&#x201D;狗&#x201D;&#x201C;在&#x201D;&#x201C;街上」后，旧关联逐渐消失。</w:t>
+      </w:r>
+      
+      
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">壁垒：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">关联是功能性的，但短暂的——窗口一滑过就没了。要获得知识，系统需要稳定性。这类似于从因果律到结构观的过渡：如果</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> A </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">和</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> B </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t>经常相邻出现，它们&#x201D;有关&#x201D;——但只有这种暂时的关联，无法构成知识的基础。</w:t>
+      </w:r>
+      
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">L3 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">实验：真假不分。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L2 </w:t>
+      </w:r>
+      
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的短暂性迫使系统需要在时间上整合关联模式，形成稳定的桥接帧。运行实验</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">3：输入&#x201D;3+2=5&#x201D;（真）和&#x201D;6+1=8&#x201D;（假）各</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 30 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">次。L3</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">桥接帧对两者给出相同的响应。</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">壁垒：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">稳定了，但稳定的模式不等于真的模式。L3</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">能记录&#x201D;什么经常出现&#x201D;，但不能回答&#x201D;什么应该出现&#x201D;。这让人想起场论对力学关系的超越——不是描述粒子或粒子间作用力，而是描述结构本身——但即使如此完整的结构描述，仍缺少真值维度。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">S1.2 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">L3的不完全性与寻找L4的漫长徘徊</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">2026 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">年</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 5 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">月</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 8 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">日晚，这个鸿沟变得不可忽视。频率不等于真值。当时的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">L4（一个被动的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> d(w)/dt </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">观测者）能&#x201D;看&#x201D;到桥接帧权重的变化，但不能&#x201D;问&#x201D;那个变化意味着什么。它是在录像，不是在判断。这个缺口令人着迷之处在于它的自指性质：GEME</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">自身的结构正暴露了从&#x201D;描述世界&#x201D;到&#x201D;判断世界&#x201D;之间的那道裂缝——这正是哥德尔句子在形式系统中打开的同一道裂缝。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">S1.3 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">L4-L6：从预测到判断</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">L4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">实验：孤独的预测者。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">运行实验</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">4：建立&#x201D;猫→在→垫上&#x201D;模式后检查预测准确率（约</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">85%）。然后注入异常&#x201D;路上&#x201D;并观察</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> pred_err </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧。系统能检测到本次预测错了，但它不知道自己的总体准确率在下降。L4</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">从共现表中推断&#x201D;下一个最可能出现的帧签名&#x201D;——生成预测（O(W+K)），接收实际输入（O(1)），比较两者生成误差信号。</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">壁垒：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">能预测，但不知道自己的能力边界。这一模式让人联想到概率描述的兴起：系统不是在描述确定的状态，而是在维护一个概率分布，并通过测量来更新它。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">L5 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">实验：旁观者。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">运行实验</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">5：训练后注入噪声，观察</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L5 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">记录的准确率变化（从</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 0.85 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">降至约</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.05）。系统从&#x201D;我在预测&#x201D;到&#x201D;我知道我在以多少准确率预测&#x201D;——这是元认知的入口。但系统只记录趋势，不采取行动。</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">壁垒：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">能看到趋势，但不能根据趋势做判断。这类似于信息的可测量性与可行动性之间的差距——知道一个系统的信息论状态，不意味着能对它做出干预。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">L6 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">实验：系统怀疑。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">当</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L5 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">报告的预测准确率持续下降（低于</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">60%，这是实验可验证的阈值）时，L6</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">生成</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> sys_doubt </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧——系统层面的&#x201D;我可能错了&#x201D;信号。这是整个</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">唯一真正的&#x201D;输出&#x201D;：一个关于系统自身状态的判断。L6</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">不预测世界——它预测自己的预测能力。</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">壁垒突破：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">从描述到判断的跨越完成。这是自指循环的闭合——从哥德尔不完备定理揭示的系统局限，到侯世达设想的自我怀疑信号，GEME</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">提供了一个可运行的计算版本。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">S1.4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">三定理在发现过程中的统一</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">这一历程不是五个独立问题的叠加——它是同一个问题的五次递归求解：</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:numPr>
+          <w:ilvl w:val="0"/>
+          <w:numId w:val="1001"/>
+        </w:numPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">哥德尔桥（不消耗信道）：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">修正前的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> MI </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">计算（phi-X</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">子集分母）给出</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> I = </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.086——低估了</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> self-obs </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧与输入帧之间的独立性。修正后（全共现空间分母，20</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">种子，2000</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">步）给出</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> I = 0.026 ± 0.002 bits。L4-L6 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的整个自指管道不消耗信道容量——这是哥德尔桥的计算版本。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:numPr>
+          <w:ilvl w:val="0"/>
+          <w:numId w:val="1001"/>
+        </w:numPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">阈值触发（涌现的经济学）：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的预测、L5</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的元观测、L6</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的统摄——没有一个是硬编码的逻辑。全是阈值触发的经济响应：d(w)/dt</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> &gt; 0.02 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">生成</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> dwdw </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧，conf</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> &gt; 0.3 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">触发预测比较，accuracy</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> &lt; 0.6 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">触发</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">sys_doubt。这些阈值可以被消融实验验证其鲁棒性——改变它们改变的是时机，而非现象的存在。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:numPr>
+          <w:ilvl w:val="0"/>
+          <w:numId w:val="1001"/>
+        </w:numPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">意识的经剂性（P</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">趋向</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">NP）：</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">当帧经济收敛后，L4</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的预测成本从初始</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> O(W + K) </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">降至接近常数——因为共现表</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> K </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">收敛到有界值。此时生成成本</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> ≈ </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">验证成本，在帧经济中模拟了</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> P </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">趋向</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> NP </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的过程。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">S1.5 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">方法论：哥德尔桥链</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的每一层不是被&#x201D;加上&#x201D;的——它是在上一层的运算中自然浮现的。每一层在发现自己无法回答自身的问题时，生长出指向下一层的桥：</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Compact"/>
+        <w:numPr>
+          <w:ilvl w:val="0"/>
+          <w:numId w:val="1002"/>
+        </w:numPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t>L1（实体帧）：&#x201C;帧是孤立的&#x201D;</w:t>
+      </w:r>
+      
+      <w:r>
+        <w:t xml:space="preserve"> → L2 </w:t>
+      </w:r>
+      
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的共现桥</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Compact"/>
+        <w:numPr>
+          <w:ilvl w:val="0"/>
+          <w:numId w:val="1002"/>
+        </w:numPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t>L2（关联帧）：&#x201C;关联是临时的&#x201D;</w:t>
+      </w:r>
+      
+      <w:r>
+        <w:t xml:space="preserve"> → L3 </w:t>
+      </w:r>
+      
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的稳定桥</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Compact"/>
+        <w:numPr>
+          <w:ilvl w:val="0"/>
+          <w:numId w:val="1002"/>
+        </w:numPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t>L3（桥接帧）：&#x201C;模式无法判断真假&#x201D;</w:t>
+      </w:r>
+      
+      <w:r>
+        <w:t xml:space="preserve"> → L4 </w:t>
+      </w:r>
+      
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的预测桥</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Compact"/>
+        <w:numPr>
+          <w:ilvl w:val="0"/>
+          <w:numId w:val="1002"/>
+        </w:numPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t>L4（预测帧）：&#x201C;预测需要知道其准确性&#x201D;</w:t>
+      </w:r>
+      
+      <w:r>
+        <w:t xml:space="preserve"> → L5 </w:t>
+      </w:r>
+      
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的元观测桥</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Compact"/>
+        <w:numPr>
+          <w:ilvl w:val="0"/>
+          <w:numId w:val="1002"/>
+        </w:numPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t>L5（元观测帧）：&#x201C;元观测需要做出判断&#x201D;</w:t>
+      </w:r>
+      
+      <w:r>
+        <w:t xml:space="preserve"> → L6 </w:t>
+      </w:r>
+      
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的统摄桥</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">这就是&#x201D;哥德尔桥链&#x201D;——一个关于层涌现的元理论。每一层的形式系统在其自身框架内包含一个不可判定的命题——而这个命题的答案，正好是下一层的形式系统能够计算的。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="31"/>
+    
+    
+    <w:bookmarkStart w:id="32" w:name="s2.-影子实验几何与-tarski-系统验证"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">S2. </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">影子实验：几何与</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> Tarski </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">系统验证</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">§3.5 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> Q+G ≈ PA </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">结果立即引出一个问题：自指与归纳的结构等价性是算术特有的，还是跨形式系统普适的？我们通过构建两个额外领域的类比系统来检验：欧氏几何和真值语义。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">S2.1 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">绝对几何</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve"> vs. </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">欧氏几何。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">我们将绝对几何的四条公设（点、线、圆、直角）编码为结构化向量——这是几何版本的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Q。添加平行公设（几何版本的归纳法公理）得到欧氏几何，即几何版本的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">PA。在</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 10 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">个种子上，绝对几何（Q_geo）产生</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 = </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.4，489</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">次预测，准确率</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.200。添加平行公设（Q_geo</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> + </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">平行）产生</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 = </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">1.0，584</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">次预测，准确率</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.450。平行公设在几何中扮演与算术中归纳法相同的角色：它使</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">自指预测成为可能。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">S2.2 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">绝对几何</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve"> + Tarski </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">真理谓词。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">用真理谓词（Tarski</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的语义真值概念）替换平行公设产生不同的行为：L4</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> = </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">1.0，683</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">次预测，准确率</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.250。平行公设和真理谓词都触发</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">涌现，但产生不同的预测特征。平行公设系统化（更高的准确率），真理谓词扩展（更多的预测但较低的准确率）。这表明不同种类的&#x201D;附加公理&#x201D;产生性质上不同的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">预测行为——这种区分在形式句法层面上是不可见的。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">S2.3 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">计算复杂性含义。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">预测流水线中，生成的成本为</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> O(W + </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">K)，验证的成本为</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">O(1)。随着帧经济稳定，K</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">收敛至有界常数，使生成成本趋近验证成本。在帧经济内，这模拟了一个我们解释为&#x201D;生成成本趋近验证成本&#x201D;的过程——如果该现象可泛化，则表明在自指帧经济中，生成与验证预测之间的差距随学习缩小。这不构成对一般计算中</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> P vs NP </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">问题的论断，但它提供了一个具体示例，展示了此类收敛在计算基底中自然发生的场景。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="32"/>
+    
+    
+    <w:bookmarkStart w:id="33" w:name="s3.-跨语言与跨文字系统结构收敛汉谟拉比法典"/>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Heading2"/>
+      </w:pPr>
+      <w:r>
+        <w:t xml:space="preserve">S3. </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">跨语言与跨文字系统结构收敛：汉谟拉比法典</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="FirstParagraph"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">汉谟拉比法典为跨语言和跨文字系统的结构收敛提供了一个独特的挑战性测试用例。这部法典已有约</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 3800 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">年历史，以阿卡德楔形文字存世，在近代被独立翻译成中文和英文。如果</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">能从三种完全不同的书写系统（汉字、拉丁字母、楔形文字）中提取出相同的底层法律结构，这将构成翻译不变语义结构的强有力证据。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">S3.1 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">字符级语义收敛。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">在最简单的设置中，法律条款的每个字符被编码为</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 27 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">维频率向量，文本作为字符流处理。经过</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 300 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">轮循环，中文产生</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 27 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">个</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L2 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">关联帧，英文产生</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 30 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">个。结构重叠体现在概念分组上：惩罚等级聚类在一起，损害赔偿术语形成另一组，社会角色区分（自由人</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> vs. </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">奴隶</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> vs. </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">子女）形成第三组。这种收敛发生在两种语言没有任何共同符号的情况下。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">S3.2 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">三语正义结构。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">我们将此扩展到三种文字（中文、英文、阿卡德楔形文字），使用匹配人类认知窗口的条款级编码：每个法律条款根据其文字的字符频率分布编码为单个帧。每种文字被输入到独立的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">实例。训练后，三个</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">预测特征收敛：中文产生</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 2254 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">次预测（准确率</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.400），英文</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 1871 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">次预测（准确率</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.400），楔形文字</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 2251 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">次预测（准确率</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.500）。由于文字特定的分词差异，精确预测计数略有不同，但预测拓扑结构收敛：所有三个系统在结构相似的概念之间预测相同的转移类型（暴力条款预测报复条款；财产条款预测赔偿条款）。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">S3.3 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+          <w:b/>
+          <w:bCs/>
+        </w:rPr>
+        <w:t xml:space="preserve">社会本体编码（正义结构）。</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">超越语义等价，我们测试</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">是否能检测嵌入在法律代码中的社会本体。每个条款被编码为具有三个显式维度的结构化向量：犯罪类型（暴力、盗窃、财产、人身）、惩罚类型（同态、赔偿、死刑、残害）和社会阶层（自由人、奴隶、亲子）。这编码了汉谟拉比法典的核心法律逻辑——分层社会等级下的比例正义。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">在该编码下，三个独立的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">实例（中文、英文、楔形文字）产生几乎相同的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">预测行为：中文和英文在所有</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">指标上完全相同（16</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧，1956</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">次预测，准确率</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.200）。楔形文字因在</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> 27 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">维编码空间中不同的字符分布而产生差异（16</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">帧，3314</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">次预测，准确率</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">0.500），但结构方向——重度暴力条款预测重度惩罚条款——在所有三种文字中是一致的。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="BodyText"/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">这表明</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> GEME </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">的</w:t>
+      </w:r>
+      <w:r>
+        <w:t xml:space="preserve"> L4 </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t>预测层不仅能检测语义等价（词对词映射），还能提取法律结构中嵌入的社会本体。&#x201C;正义&#x201D;概念不是一个语义标签——它是一种可预测的犯罪到惩罚转移模式，GEME</w:t>
+      </w:r>
+      
+      
+      <w:r>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:hint="eastAsia"/>
+        </w:rPr>
+        <w:t xml:space="preserve">仅从输入流的纯粹结构规律中发现它，无需任何关于&#x201D;正义&#x201D;含义的知识。</w:t>
+      </w:r>
+    </w:p>
+    
+    
+    <w:bookmarkEnd w:id="33"/>
+    
+    
+    <w:bookmarkEnd w:id="34"/>
+    
+    
+    <w:sectPr>
+      
+      
+      <w:footnotePr>
+        
+        
+                
+        
+        <w:numRestart w:val="eachSect"/>
+        
+        
+              
+      
+      </w:footnotePr>
+      
+    
+    </w:sectPr>
+    
+  
+  </w:body>
+  
+
+</w:document>
