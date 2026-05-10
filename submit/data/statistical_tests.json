@@ -1,0 +1,19 @@
+{
+  "MI_20seeds_t_test": {
+    "n": 20,
+    "mean": 0.025872,
+    "std": 0.001775,
+    "95CI": [
+      0.025094,
+      0.02665
+    ]
+  },
+  "Q_vs_PA": {
+    "Q_mean_preds": 783,
+    "QG_mean_preds": 878,
+    "PA_mean_preds": 878,
+    "Q_std_preds": 0.0,
+    "QG_std_preds": 0.0,
+    "PA_std_preds": 0.0
+  }
+}
