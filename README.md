@@ -1,6 +1,6 @@
 # GEME — Generative Economy Memory Entity
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20059553.svg)](https://doi.org/10.5281/zenodo.20059553)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20110147.svg)](https://doi.org/10.5281/zenodo.20110147)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 
 > **简单直截，发明本心。**  
@@ -48,12 +48,12 @@ No external dependencies. Output: the six-layer discovery journey.
 ```bibtex
 @software{liu2026geme,
   author = {Liu, Jieqi},
-  title = {GEME: The Shannon-Gödel Bridge — Self-Reference is Information-Theoretically Free},
+  title = {GEME: A Self-Referential Prism for Cognitive Modeling},
   month = may,
   year = 2026,
   publisher = {Zenodo},
-  doi = {10.5281/zenodo.20059553},
-  url = {https://doi.org/10.5281/zenodo.20059553}
+  doi = {10.5281/zenodo.20110147},
+  url = {https://doi.org/10.5281/zenodo.20110147}
 }
 ```
 
