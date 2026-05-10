@@ -1,0 +1,14 @@
+{
+  "no_g": {
+    "correct": 30,
+    "total": 30,
+    "rate": 1.0
+  },
+  "with_g": {
+    "correct": 30,
+    "total": 30,
+    "rate": 1.0
+  },
+  "model": "EleutherAI/pythia-1.4b",
+  "delta": 0
+}

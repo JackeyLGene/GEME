@@ -1,1 +1,0 @@
-@start /B /BELOWNORMAL python -X utf8 run_phaseprompt_night.py > g:\GEME\docs\robustness_results\phaseprompt_log.txt 2>&1

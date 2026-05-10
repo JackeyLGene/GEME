@@ -4,7 +4,7 @@ S1: 六层壁垒实验 - 可复现的发现之旅
   跑实验 → 看到当前层做不到什么 → 理解为什么需要下一层 → 恰好对应科学史的一次相变
 """
 import sys, math
-sys.path.insert(0, '../final-v1.5')
+sys.path.insert(0, '.')
 from geme import GEME, _VEC_DIM
 
 def clear(g):

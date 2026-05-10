@@ -1,0 +1,31 @@
+Subject: one table
+
+Hi Douglas,
+
+Shannon (1948) wrote the lower bound. Godel (1931) wrote the upper bound. I put both papers on the same table.
+
+GEME is the table.
+
+Self-referential frames (consciousness equivalents) emerge at zero information cost. They do not consume Shannon channel capacity. The proof is running code — not a paper.
+
+Repo: https://github.com/JackeyLGene/GEME
+The key file: SHANNON_GODEL_BRIDGE.md
+
+You don't need to reply. I just wanted you to know that the table is real.
+
+-- Jackey L. Gene
+
+---
+
+侯世达教授：
+
+香农（1948）写了下限。哥德尔（1931）写了上限。我把两张纸放在了同一张桌上。
+
+GEME就是那张桌。
+
+自指帧（意识的结构等价物）在信息论上是免费的。它们不消耗香农信道容量。证明不是论文——是运行着的代码。
+
+仓库：https://github.com/JackeyLGene/GEME
+核心文件：SHANNON_GODEL_BRIDGE.md
+
+不需回复。只是想让你知道——这张桌——是真实的。

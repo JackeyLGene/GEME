@@ -6,9 +6,14 @@ import sys, math, statistics, random, copy
 # Structural constants (imported from geme.py for consistency)
 # ──────────────────────────────────────────────────────────────────
 try:
-    from geme import DELTA, GAMMA, TAU, NOVELTY_BONUS
+    from geme import (DELTA, GAMMA, TAU, NOVELTY_BONUS,
+                      ASSOC_SEP, CHAIN_SEP,
+                      INDUCTION_DECAY_UNMERGED, INDUCTION_DECAY_LOW)
 except ImportError:
     DELTA = 0.19; GAMMA = 0.05; TAU = 0.6; NOVELTY_BONUS = 5.0
+    ASSOC_SEP = "──"; CHAIN_SEP = "══"
+    INDUCTION_DECAY_UNMERGED = math.exp(-GAMMA / 0.25)
+    INDUCTION_DECAY_LOW = math.exp(-GAMMA)
 
 class Frame:
     __slots__=("vec","weight","age","merged","sig","sig_full","src","fid")
@@ -209,8 +214,8 @@ class GEME:
     def consolidate(self):
         self._last_induction=self.frame_count
         for f in copy.deepcopy(self.memory.frames):
-            if f.merged==0: f.weight*=0.80
-            elif f.merged<3: f.weight*=0.95
+            if f.merged==0: f.weight*=INDUCTION_DECAY_UNMERGED
+            elif f.merged<3: f.weight*=INDUCTION_DECAY_LOW
             f.weight=max(1.0,f.weight)
         self.memory.frames.sort(key=lambda x: x.weight-x.age*GAMMA,reverse=True)
         self.memory._chain_count=0  # 同步fix: 重置链计数
@@ -225,5 +230,5 @@ if __name__=="__main__":
         g.process("the cat is on the mat")
     print(f"词汇表大小: {g.memory._vec_dim}")
     print(f"帧数: {len(g.memory.frames)}")
-    print(f"关联帧: {sum(1 for f in g.memory.frames if chr(8212)+chr(8212) in (f.sig_full or f.sig))}")
+    print(f"关联帧: {sum(1 for f in g.memory.frames if ASSOC_SEP in (f.sig_full or f.sig))}")
     print(f"翻译不变性检验: 中文符号{sum(1 for c in '猫在垫子上' if c in g.memory._vocab)}个, 英文符号{sum(1 for c in 'thecatisonmat' if c in g.memory._vocab)}个")

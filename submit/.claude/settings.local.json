@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($py = \"C:\\\\Users\\\\Administrator.DESKTOP-EM03IHL\\\\.workbuddy\\\\binaries\\\\python\\\\versions\\\\3.14.3\\\\python.exe\"; Set-Location \"g:\\\\GEME\\\\submit\\\\code\"; & $py \"phase_transition.py\")"
+    ]
+  }
+}

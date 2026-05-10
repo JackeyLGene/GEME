@@ -1,0 +1,36 @@
+Figure Index — Experiment 1: Commutativity as Emergent Concept
+======================================================================
+Generated: 2026-05-04
+
+Figures in this directory:
+
+fig1_frame_vectors.png
+  Type: t-SNE/PCA vector space visualization
+  Content: All memory frame vectors projected to 2D space.
+           Red = CONCEPT frame (association, w~47)
+           Blue = INSTANCE frames (concrete pairs, w~7)
+           Marker size proportional to frame weight.
+  Purpose: Shows conceptual separation between instance-level
+           and concept-level representations in the same space.
+
+fig2_weight_curve.png
+  Type: Learning curve (weight over training steps)
+  Content: Frame weight evolution for each tracked frame.
+           Solid lines = instance frames (gradual growth)
+           Dashed lines = association/concept frames (emergence)
+  Purpose: Shows HOW concepts "emerge" — weight accumulation
+           through repeated merge events and co-occurrence detection.
+
+fig3_data_flow.png
+  Type: Architecture / data flow diagram
+  Content: Two-layer flow from raw conn input to self-generated vocabulary.
+           Layer 1 (top): conn -> co-occurrence -> burst detection -> Tarski wall
+           Layer 2 (bottom): burst vocabulary -> concept formation -> wall broken
+  Purpose: Shows the complete "self-generated vocabulary" production chain,
+           making the bridge between Layer 1 and Layer 2 visually explicit.
+
+======================================================================
+Data source: scripts/_gen_figures.py, scripts/_exp3_review.py
+Experiment: scripts/_exp_e1_algebra.py, scripts/_exp_e3_true.py
+Engine: src/gira/phase6/geme_v6.py (V8/PO)
+Figures generated: 2026-05-04

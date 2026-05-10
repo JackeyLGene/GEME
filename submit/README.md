@@ -20,9 +20,14 @@ submit/
 
 | Claim | Data | File |
 |-------|------|------|
-| MI ≈ 0.026 bits | 0.0396±0.0, 100%<0.05 | mi_100seeds.json |
+| MI ≈ 0.026 bits (20 seeds) | 0.0259±0.0018, 95%CI [0.025, 0.027] | claim_confirmation.json |
+| MI (100 seeds, preliminary) | 0.0396 (needs re-run with independent seeds) | mi_100seeds.json |
 | Q+G≈PA | 10 seeds, std=0 | claim_confirmation.json |
-| t-test | t(19)=65.2, p<.001 | statistical_tests.json |
+| t-test | t(19)=65.2, p<.001 (20 seeds) | statistical_tests.json |
+
+Note: MI values differ between 20-seed (0.026) and 100-seed (0.0396) datasets.
+The 100-seed data uses a fixed quantum random seed (42), meaning all 100 runs
+are identical — this dataset requires re-generation with independent seeds.
 
 ## Running S1 Demo
 

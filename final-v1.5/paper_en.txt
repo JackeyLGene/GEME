@@ -1,0 +1,595 @@
+======================================================================
+Geuron: A Minimal Cognitive Unit — Concepts, Boundaries, and the
+Conditions for Symbolic Distinction in a Competitive Memory Economy
+
+Liu Jieqi, Independent Researcher, Beijing, China
+Correspondence: [email]
+======================================================================
+
+AI USE DECLARATION
+======================================================================
+All original intellectual contributions in this paper were proposed
+by the author. The AI (Deepseek-V4-Flash via CodeBuddy CN) executed
+all coding, experimentation, and documentation tasks, and in doing
+so effectively facilitated the generation of original knowledge.
+
+The author assumes full responsibility for the originality,
+accuracy, and validity of all content. The full conversation log
+(963 exchanges, 728,771 words) is available upon request (S1;
+provided to reviewers, not for public release).
+
+This paper represents a knowledge increment produced through
+human-AI collaboration. It originates from a human's intellectual
+intuition—a question about boundaries in generative systems—and
+was realized through the AI's implementation capacity, enabling
+a result that neither party could have achieved alone. The paper
+demonstrates one instance of this paradigm.
+
+======================================================================
+
+ABSTRACT
+======================================================================
+Background: Kant's intuition/concept distinction, Godel's limit
+theorems, and Tarski's geometric results describe formal cognitive
+boundaries. No running computational system has demonstrated whether
+such boundaries occur in minimal, non-optimizing architectures.
+
+Methods: GEME (~200 lines Python) implements competitive memory,
+co-occurrence self-reference, and inductive pruning. No pretrained
+weights, no loss function, no domain knowledge.
+
+Results: 100% concept purity without labels (n=30); 320:1 compression;
+self-verification limit (50 seeds, 100%); geometric primitive collapse
+(100 seeds, 100%). The boundary creates conditions for symbolic
+distinction through external analysis of internal state (100 seeds,
+85-100%). Four-layer stack produces concept-relation chains (0.7).
+
+Conclusions: Minimal competitive architectures encounter structural
+boundaries analogous to those described in formal and philosophical
+traditions. These parallels are functional, not ontological.
+
+======================================================================
+
+1. INTRODUCTION
+======================================================================
+On the third day, the system generated new symbolic distinctions.
+The human observed: "Wait. This has the same structure as the
+Wittgenstein thing." [S1] The symbols "conn_2" and "conn_3" had no
+external referents—their meaning was their position in the frame
+dynamics. This parallels Wittgenstein's observation (Philosophical
+Investigations §43) that meaning can be use rather than reference,
+within the specific context of a computational symbol economy.
+
+The human had earlier written papers arguing that Godel's theorems
+describe generative boundaries—limits that create conditions for
+expansion. These arguments predicted "boundary encounters" (碰数).
+
+GEME was built as a minimal test. Its architecture has three
+levels. At the deepest level: a competitive memory economy—
+input vectors compete for limited frame capacity; similar
+vectors merge; novel vectors create new frames; the weakest
+are evicted. This single dynamics—survival by weight—drives
+everything.
+
+At the second level: self-observation. A sliding window tracks
+which structural signatures appear together. When the window
+accumulates enough data, the system observes its own co-occurrence
+patterns. This is not a separate mechanism—it is the core dynamics
+applied to the system's own activity.
+
+At the third level: three operational mechanisms emerge from the
+interaction of core dynamics and self-observation:
+  (i) co-occurrence self-reference: frequent signature pairs
+    form association frames (──, Layer 1);
+  (ii) shared-element chaining: associations that share a
+    signature form chain frames (══, Layer 2);
+  (iii) inductive pruning: periodic eviction of the lowest-weight
+    half of frames prevents memory saturation.
+These are not designed as separate components. They are the shape
+the core dynamics takes as input accumulates. [Figure 1: Architecture]
+
+Scope note. This paper is a contribution to computational cognitive
+modeling. It reports a minimal architecture and the structural
+phenomena it produces. Selected philosophical parallels are noted
+where GEME's outputs share structural features with established
+descriptions (Kant A51/B75, Wittgenstein §43, Godel 1931, Tarski
+1959). These parallels are descriptive, not evidential—they serve
+to communicate the type of phenomena observed, not to advance
+philosophical claims. The primary contribution is architectural
+and experimental.
+
+======================================================================
+
+2. RELATED WORK
+======================================================================
+This work sits at the intersection of competitive learning systems,
+cognitive architectures, and selectionist modeling.
+
+Adaptive Resonance Theory (ART; Grossberg, 1976; Carpenter &
+Grossberg, 1987) shares the closest mechanistic relationship.
+ART's vigilance parameter (matching vs creating categories) is
+functionally identical to GEME's adaptive merge threshold. GEME
+differs in using bottom-up similarity (not top-down expectations)
+and adds co-occurrence self-reference and inductive pruning.
+
+Self-Organizing Maps (SOM; Kohonen, 1982) implement competitive
+concept formation. SOMs produce topological maps; GEME produces
+discrete inspectable frames. SOMs are unsupervised learners;
+GEME has no learning objective—a deeper difference.
+
+Neural Darwinism (Edelman, 1987; Tononi et al., 1998) proposes
+selectionist competition. GEME's induction is a direct analog;
+GEME adds co-occurrence self-observation absent from Edelman.
+
+Free energy principle (Friston, 2010; Friston et al., 2017) models
+cognition as Bayesian surprise minimization. GEME shares endogenous
+self-organization but has no probabilistic representations—
+orthogonal strategies.
+
+Baseline comparison (Supplementary Table S5):
+                Purity    Tuning    Wall detect   Noise resil.
+GEME            100%      None      YES           YES
+ART (tuned)     100%*     Yes       NO            NO
+SOM (K=5)       100%      Yes       NO            FILLS
+LSTM-lite         -        -        YES*           -
+* ART requires vigilance tuning for domain separation (GEME does not).
+  LSTM-lite (exact-match predictor) hits the same wall as GEME because
+  the wall is a property of signature identity, not architecture.
+  GEME's advantage is making the wall explicit via evaluate_sig();
+  an exact-match classifier simply fails silently.
+
+GEME's primary advantage is not classification performance (all methods
+match when properly tuned)—it is wall exposure and noise resilience.
+These are capability differences, not performance differences.
+
+======================================================================
+
+3. RESULTS
+======================================================================
+
+Preface: Observer Dependence and Operational Terminology
+
+All phenomena are described from an external observer's perspective.
+GEME performs deterministic operations; it does not "experience"
+concepts, boundaries, or symbols. The system merges frames; the
+observer interprets the result.
+
+Throughout the Results section, "concept" refers to an operational
+criterion within GEME's architecture: a frame cluster that (i) has
+achieved single-signature dominance, (ii) carries weight
+significantly above L0 instance frames, and (iii) forms cross-domain
+associations. This definition is used consistently in the ablation
+analysis and quantitative metrics. It is not a philosophical claim;
+philosophical connections are noted separately in the Discussion.
+
+The parallel architecture (GEME1, GEME2) illustrates the
+observer-system boundary: from within a single GEME, open chains
+and closed triangles collapse into one concept (Tarski wall). The
+observer's choice to parallelize exposes what the system alone
+cannot see. This is not a limitation of GEME—it is the condition
+under which its behavior becomes interpretable as knowledge.
+
+GEME makes structural phenomena inspectable; their interpretation
+as philosophical parallels is the author's proposal, not the
+system's claim. Both the system's operation and the observer's
+interpretation are necessary for the results reported here.
+
+3.1 Baseline Comparison
+Metric                GEME      ART(tuned) SOM(K=5) LSTM-lite
+Domain purity          100%      100%      100%       -
+Wall detection         YES        NO        NO       YES*
+Noise resilience       YES        NO       FILLS       -
+* LSTM-lite hits the same wall (signature identity) but cannot
+  expose or analyze it. GEME's evaluate_sig() makes the wall
+  inspectable. See Supplementary Table S5 for full data.
+
+GEME's advantage: wall exposure (not just hitting it silently),
+noise resilience (competitive eviction), and frame inspectability.
+
+Unsupervised concept learning comparison. Recent SOTA methods
+achieve unsupervised concept discovery on diverse inputs: Deep
+ARTMAP (2025) extends ART with hierarchical learning for image
+patterns; Taniguchi et al. (2024) survey symbol emergence in
+multi-agent communication; Roy & Tabor (2025) learn neuro-symbolic
+concepts from structured data; Jon-And et al. (2024) extract
+emergent grammar from minimal cognitive architectures. These
+operate in fundamentally different regimes from GEME: they require
+training (Deep ARTMAP), multi-agent interaction (Taniguchi), or
+domain-specific encoding (Roy & Tabor). GEME's contribution is
+not higher accuracy on any shared benchmark—it is a distinct
+capability set: wall detection, compression with structural
+inspectability, and co-occurrence self-observation without
+training. A capability comparison is summarized below and in
+Supplementary Table S8.
+
+Capability           GEME   Deep ARTMAP  Taniguchi  Roy&Tabor  Jon-And
+Unsupervised          YES    semi         YES        YES        YES
+Wall detection        YES    NO           NO         NO         NO
+Inspectability        FULL   partial      partial    partial    partial
+Training required     NO     YES          NO         YES        NO
+Input type            struct images/seq   symbolic   struct     grammar
+Self-observation      YES    NO           YES        NO         NO
+
+
+3.2 Experiment 0: Autonomous Classification (n=30)
+
+Two formula types—algebra (swap) and set theory (succ)—fed into
+a single GEME in random 50/50 order (n=400 each). No domain labels.
+
+Frame cluster purity: 100% across all 30 seeds (sd=0; binomial test
+vs 50% null: p=9.3×10⁻¹⁰). All algebra frames in one cluster; all
+set frames in the other. Within-domain associations: 67%. Baselines
+(frequency counting, K-means) required pre-assigned cluster counts.
+
+3.3 Experiment 1: Commutativity as Emergent Relation (n=30)
+
+Concrete commutative instances—swap(1,2)=swap(2,1)—without
+quantifiers (n=600, 70% commutative, 30% identity control).
+Directional controls used different function names.
+
+Instance frames (weight ~7) and association frame (weight ~47)
+separated spontaneously. New commutative instances with unseen
+numbers: S2. Directional controls: S3 (30/30 seeds). Frequency
+inversion test (70%→30%): concept persisted. Compression ratio:
+320:1 versus raw vector storage.
+
+3.4 Experiment 2: Signature Boundary (50 seeds, 42-91)
+
+All inputs share signature eq_succ: ordered chains (succ(s0)=s1...)
+and scrambled pairs (succ(s5)=s2...). 50 runs: both 100% recognized
+(binomial vs 50%: p=8.9×10⁻¹⁶). Controls (next, other): 100%
+rejected. Threshold sweep (0.70-0.99): wall persists at all levels.
+To test whether the wall depends on the specific design of
+evaluate_sig(), five variants were tested across 250 total runs:
+default overlap, strict overlap (0.90), Jaccard similarity, weighted
+voting, and Jaccard strict. All five produced identical wall
+behavior (p=5.5×10⁻⁷⁶): the boundary is structural, not an artifact
+of the evaluation function.
+
+Precondition mapping. Godel's Second Theorem requires a consistent
+formal system containing Robinson arithmetic Q. GEME's frame economy
+maps as follows: alphabet→symbols; associations→axiom schemata;
+weight accumulation→counting; evaluate_sig()→provability predicate.
+GEME does not satisfy Hilbert-style preconditions; the isomorphism
+operates at the level of structural dynamics (see Supplementary
+Texts P1-P3, Appendix C). [Figure 3a: Signature boundary]
+
+3.5 Experiment 3: Geometric Collapse (100 seeds, 42-141)
+
+Pure conn inputs—conn(A,B), conn(B,C), conn(C,A)—all same signature
+(eq_conn). Closed triangles (3 assertions) vs open chains (2 assertions).
+100 runs: ALL collapsed into ONE concept (mean 1864.5, sd=5.4;
+95% CI [1861.2, 1867.9]; p=7.9×10⁻³¹). This is Tarski's (1959)
+observation that triangle is an axiom-level primitive, not derivable
+from connection primitives—confirmed in running code. [Figure 3b: Tarski geometric collapse]
+
+3.6 Experiment 3b: Burst-Size Symbol Distinction (100 seeds)
+
+Layer 1 detected burst sizes (3 vs 2) but could not express them—
+all conn same signature. VocabularyModule (external utility; Methods)
+extracts content word "conn"; detects burst sizes [2,3]; generates
+function names "conn_2", "conn_3". Layer 2 receives these: conn_3
+100% (30/30, binomial p=9.3e-10); conn_2 85% (25/30, p=1.6e-4).
+Wall broken. Naming: symbols' meaning = position in frame economy.
+[Figure 4: Burst-size symbol distinction]
+
+3.7 Mechanism Necessity: Ablation Analysis
+
+For an atomic architecture, necessity verification of each element
+is the primary form of validation. Negative evidence (what the
+system cannot do without a mechanism) carries information weight
+equal to or greater than positive evidence (what it can do with
+it). Ablation experiments were conducted at 50 seeds each, n=400
+per test.
+
+Ablation 1: Remove co-occurrence (cooccur_thresh=1.0, no associations)
+  - No association frames form at any layer.
+  - Concept layer (L1) absent: the system retains L0 instances
+    but never forms stable categories.
+  - Wall-breaking impossible: without associations, the
+    VocabularyModule receives no cross-frame structure to analyze.
+  - Conclusion: co-occurrence is necessary for L1 emergence.
+
+Ablation 2: Remove induction (disable pruning step)
+  - All frames retained permanently (no compression).
+  - Memory fills with noisy instances and never stabilizes.
+  - Frame count grows to capacity and oscillates.
+  - Conclusion: induction is necessary for compression and stability.
+
+Ablation 3: Remove competition (FIFO queue replacing competitive memory)
+  - Domain separation still works (signature-based, not memory-based).
+  - Wall detection still works (signature-based).
+  - Noise resistance collapses: FIFO fills with noise frames (0/10
+    stable vs 10/10 for competitive memory at 25% noise).
+  - Concept stabilization fails: no frame survives long enough to
+    form stable associations.
+  - Conclusion: competitive memory is necessary for noise resilience
+    and concept stability, though not for the wall itself.
+
+Supplementary tests:
+  - Fixed vs adaptive threshold: wall persists across all 4 conditions
+    (adaptive, fixed 0.10, 0.20, 0.30; 30 seeds each, 100%).
+  - Input frequency skew (90/10, 70/30, 50/50): concept forms at all
+    ratios (10 seeds each, 100%).
+  - Long run stability (1000, 2000, 5000 steps): 6 frames, 1 association,
+    constant stress=0.37 throughout—no collapse, no explosion.
+  - Tarski wall with 1/2/4 distinct triangle sets: wall persists at
+    30/30 for all conditions (structural, independent of data diversity).
+
+Full data in Supplementary Tables S3-S4. [Figure 2: Baselines and ablation results]
+
+3.7a Signature Tradeoff: Compression vs. Structural Visibility
+
+Introducing structural signatures might appear to reduce information
+compression (adding structure when raw vector matching already
+achieves compression). A comparison between signature-based GEME and
+raw-vector GEME (same competitive memory, no signatures) shows the
+opposite: both achieve identical compression ratios (100:1 on the
+commutativity task; Supplementary Table S7). The signature does not
+change the compression rate—that is determined by competitive memory
+dynamics. What the signature adds is structural visibility: the
+raw-vector GEME cannot detect walls, form associations, or transfer
+structural patterns across domains, even though it compresses equally
+well. Signatures impose no compression penalty; they enable the
+phenomena this paper reports. The signature is thus a bridge between
+Shannon's information theory [15] and Godel's incompleteness [1]:
+the same structure that enables compression measurement also enables
+boundary detection—it makes the wall visible without costing
+compression efficiency.
+
+3.8 Closed Loop: Parallel GEMEs → Chains
+
+GEME1 (open chains*): 1 concept. GEME2 (closed triangles*): 1 concept.
+* Parallel architecture by design (see Observer Dependence, Discussion).
+  Open chains = conn(A,B), conn(B,C) (missing third link, ray-like).
+  Closed triangles = conn(A,B), conn(B,C), conn(C,A) (full cycle).
+  Both share signature eq_conn and hit the same Tarski wall. Merging
+  them collapses the distinction; preserving them in parallel preserves
+  their different frame trajectories for integration.
+
+GEME3 (integration): 3 concept frames + 2 chain frames (ratio 0.7).
+Chain example: conn_2──conn_3══conn_3──conn_3 encodes cross-relation
+of open/closed. GEME4 forms triadic chains (A══B══C══A), closure.
+
+3.9 Generalization Demonstration: Godel's Proof as Input
+
+To test whether GEME's structural pattern transfer generalizes
+beyond the experimental domains above, we encoded the structural
+elements of Godel's 1931 incompleteness proof as formula sequences
+and fed them into a single GEME in sequential order: axioms →
+Godel numbering → diagonal lemma → undecidability → consistency.
+
+Across 10 seeds (42-51), the system's frame economy after
+processing the full proof consistently showed the Second Theorem
+("a consistent system cannot prove its own consistency") as the
+highest-weight association frame (mean w=815, sd=13, 95% CI [807,
+823]; top-3 in 10/10 runs, binomial p=9.8x10^-4; Supplementary
+Table S6, Figure 5).
+Control conditions confirmed specificity: condition B (theorem
+conclusions only, same count) produced flat association structure
+(max w=171, no dominant frame); condition C (random symbol strings,
+matched distribution) produced no coherent frame structure (max
+w=99, Second Theorem absent in 10/10).
+
+This demonstration uses hand-constructed formula encodings rather
+than natural text—a limitation. It is included as a preliminary
+generalization test: the structural pattern of Godel's proof
+transfers across GEME's frame economy without explicit reasoning
+mechanisms. Full data: Supplementary Table S6.
+
+Full data: Supplementary Table S6, code: Supplementary Code S8.
+
+======================================================================
+
+4. DISCUSSION
+======================================================================
+
+GEME differs from deep learning: no loss, no backprop; it observes
+its own co-occurrence and competes for memory. The walls are
+structural consequences of finite alphabetic capacity.
+
+Concept inspectability. Deep learning concepts are distributed
+activation patterns—accurate but un-inspectable. GEME concepts are
+inspectable frames: vector, signature, weight, associations, history
+all accessible. This is an ontological difference.
+
+Concept formation as noise survival. In the FIFO ablation (no
+competitive memory), noisy inputs fill the queue—no concept forms.
+In competitive memory, noise frames are evicted; only patterns that
+recur across noise survive. A concept is not a copy of an external
+pattern—it is a structure that persists through noise.
+
+Information-theoretic analysis confirms this interpretation.
+GEME achieves compression ratios of 67:1 to 499:1 across experiments
+while transforming single-signature input streams (H≈0 bits) into
+non-zero entropy frame distributions (H=0.19-0.40 bits; Supplementary
+Table S7). Competitive memory does not merely discard information—
+it redistributes it into a structured frame economy where surviving
+frames carry the weight of compressed input history.
+
+This echoes Shannon's insight that information is defined by what
+survives transmission through a noisy channel [15], transposed from
+the communication domain to the cognitive domain: what we call a
+concept is information that has survived competitive filtering.
+
+Phase transitions. Two types are distinguished operationally.
+Intrinsic: resolvable by adding cognitive layers (same alphabet).
+  GEME1→2→3→4 processes the same 27-symbol alphabet through
+  deeper frame economies, producing new structures without
+  external intervention.
+Architectural: requires alphabet or architecture modification by
+  an external observer. The parallel GEMEs (3.8) are architectural—
+  distributing conn inputs across two systems preserves a
+  distinction that collapses in a single frame space. The
+  VocabularyModule (3.6) is architectural—it adds new symbols
+  to the alphabet for the next layer.
+The Tarski wall (collapsing conn) can be addressed either way:
+  intrinsically (layer addition: GEME3 integrates two frame
+  spaces while preserving their separation) or architecturally
+  (alphabet redesign: assigning different signatures to open
+  and closed). The paper demonstrates both routes, which
+  correspond to the intrinsic and architectural phase transitions
+  predicted by the GIR framework (Supplementary Texts P1-P3).
+
+Cognitive interlayer positioning. Interdisciplinary studies
+typically investigate the intersection of existing fields—what
+overlaps between computation and philosophy, or between biology
+and economics. This paper investigates the dynamics of that
+overlap itself: how a competitive memory economy produces
+structural phenomena that appear simultaneously in computational,
+philosophical, and formal-mathematical descriptions. GEME is not
+offered as a contribution to any single discipline; it is offered
+as a mechanism whose operations generate the kind of structures
+that different disciplines recognize as meaningful within their
+own frameworks.
+
+Isomorphism caveat. evaluate_sig() is a design choice. A richer
+function might encounter different or no walls. The contribution
+is not "this IS Godel's boundary"—it is that a minimal design
+exposes a boundary structurally analogous to it.
+
+5.1 Contribution Positioning
+
+(a) An architectural primitive: competitive memory economy as a
+minimal, transparent, composable cognitive unit.
+(b) A demonstration of emergent philosophical analogs: running
+instantiations of structurally parallel phenomena.
+(c) A methodological proof of concept: philosophy-guided program
+synthesis—human vision + AI implementation = results neither alone
+could produce.
+
+The paper does not claim to have discovered universal boundaries of
+intelligence or solved the symbol grounding problem. It offers a
+running instance for consideration.
+
+Design Constraints:
+- Fixed alphabet (27 symbols). → Dynamic extension (Phase Ouroboros).
+- Wall detection observer-dependent. → Self-observation.
+- Chain frames associative, not deductive. → Theorem layer.
+- Offline batch input. → Online streaming.
+
+Phase Ouroboros road map: (1) dynamic alphabet; (2) self-observation;
+(3) theorem layer; (4) online streaming; (5) multi-Geuron matrix.
+
+======================================================================
+
+5. METHODS AND FORMALIZATION
+======================================================================
+
+GEME operates on a memory M = {f_1, ..., f_k} where each frame
+f_i = (vec_i, sig_i, w_i, A_i) with vec_i ∈ ℝ²⁷, sig_i a structural
+signature string, w_i ∈ ℕ a weight, and A_i a set of association
+pointers. Memory capacity C = 16 (configurable).
+
+5.1 Competitive Memory (Core Dynamics)
+
+For each input formula φ at time t, derive vector v = vec(φ) ∈ ℝ²⁷
+and structural signature s = sig(φ). Compute:
+
+  f* = argmin_{f ∈ M} d(v, f.vec),  d = L2 distance
+
+If d(f*.vec, v) < τ(t) (adaptive threshold, Eq. 1):
+  f*.w ← f*.w + 1
+  f*.vec ← (f*.vec · f*.w + v) / (f*.w + 1)    [weighted merge]
+Else:
+  M ← M ∪ {f_new(v, s, w=1, A=∅)}
+
+If |M| > C:
+  M ← M \ {argmin_{f ∈ M} f.w}                  [evict weakest]
+
+5.2 Adaptive Threshold
+
+τ(t) = τ_boot(t) for t ≤ 10 steps, else:
+  τ(t) = max( median({successful τ_i}⁵⁰_{i=1}), 0.5 × τ_ok )
+  where τ_ok is the last threshold that produced a valid merge.
+  [Bootstrap: 25th percentile of first 10 distances]
+
+5.3 Co-occurrence Self-Reference (Layer 1)
+
+Maintain a sliding window W of the last w=80 (s_i, s_j) pairs.
+For each unique pair (s_a, s_b) with co-occurrence count ≥ θ_c=0.15:
+  If association frame a_ab exists: a_ab.w ← a_ab.w + 1
+  Else: M ← M ∪ {f_new(v=0, sig="s_a──s_b", w=1, A={s_a, s_b})}
+
+5.4 Chain Formation (Layer 2)
+
+For association frames a_ij and a_jk both sharing signature s_j:
+  If chain frame c_ijk exists: c_ijk.w ← c_ijk.w + 1
+  Else: M ← M ∪ {f_new(v=0, sig="a_ij══a_jk", w=1, A={a_ij, a_jk})}
+  Maximum chains: 5 (0 for Experiment 3).
+
+5.5 Inductive Pruning
+
+Every δ ≥ 15 frames:
+  Sort M by f.w ascending.
+  Evict bottom 50% unconditionally.
+  Remaining frames: renormalize weights to incoming scale.
+
+5.6 Structural Signature
+
+sig(φ) = sort(tree_traverse(φ, exclude_constants=True))
+All function names and eq markers preserved; constants replaced
+with a generic marker. Produces strings like "eq_fn_fn",
+"eq_succ", "eq_conn".
+
+5.7 VocabularyModule (External)
+
+VM observes M. If top C/2 frames share a single signature σ:
+  Extract content word c from highest-weight frame.
+  Detect burst sizes from co-occurrence window at σ.
+  Generate function names "c_size1", "c_size2".
+  Emit as new input formulas for the next cognitive layer.
+Not engine-internal. A fully endogenous implementation
+(Phase Ouroboros) is future work.
+
+5.8 Reproduction
+
+Parameters: memory_cap=16, cooccur_window=80, cooccur_thresh=0.15,
+max_chains=5 (0 for Exp 3), induction_threshold=0.6, interval≥15.
+
+Standalone implementation: g:\GEME\final-v1.5\geme.py
+(zero external dependencies, Python 3.8+ stdlib only).
+All experiments reproduce in <30 seconds per configuration.
+Seeds: 42-91 (Exp 2), 42-141 (Exp 3). Full data:
+Supplementary Tables S1-S7.
+
+======================================================================
+
+DATA AVAILABILITY STATEMENT
+======================================================================
+github.com/[project]/geme (MIT). Standalone: one file, stdlib only.
+Run: python standalone/geme.py (smoke test); python standalone/
+run_all_experiments.py (reproduce); python standalone/baseline_
+comparison.py (baselines). Supplementary Tables S1-S5.
+
+======================================================================
+
+REFERENCES
+======================================================================
+[1] Godel, K. Monatsh. Math. Phys. 38, 173-198 (1931).
+[2] Hofstadter, D. Godel, Escher, Bach (Basic Books, 1979).
+[3] Hebb, D. The Organization of Behavior (Wiley, 1949).
+[4] Grossberg, S. Biol. Cybern. 23, 121-134 (1976).
+[5] Kohonen, T. Biol. Cybern. 43, 59-69 (1982).
+[6] Edelman, G. Neural Darwinism (Basic Books, 1987).
+[7] Friston, K. Nat. Rev. Neurosci. 11, 127-138 (2010).
+[8] Carpenter, G.A. & Grossberg, S. Comput. Vis. Graph. Image
+    Process. 37, 54-115 (1987).
+[9] Friston, K., FitzGerald, T., Rigoli, F., Schwartenbeck, P. &
+    Pezzulo, G. Biol. Cybern. 111, 201-213 (2017).
+[10] Roy, A. Philos. Trans. R. Soc. A 380, 20200444 (2022).
+[11] Taniguchi, T. et al. Artif. Life Robot. 29, 1-15 (2024).
+[12] Jon-And, A., Michaud, J. & Gardenfors, P. Emergent grammar
+    from a minimal cognitive architecture. Proc. Annu. Meet. Cogn.
+    Sci. Soc. 46, (2024).
+[13] Roy, A. & Tabor, W. Neuro-Symbolic Concepts. Preprint at
+    arXiv:2505.06191 (2025).
+[14] Deep ARTMAP: Generalized Hierarchical Learning with Adaptive
+    Resonance Theory. Preprint at arXiv:2503.07641 (2025).
+[15] Shannon, C.E. Bell Syst. Tech. J. 27, 379-423 (1948).
+
+
+
+S1. Liu, J. & Deepseek-V4-Flash. Collaboration Log (2026).
+    Available upon request.
+======================================================================

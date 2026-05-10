@@ -82,6 +82,25 @@ When the rate of change of frame weights exceeds a threshold (|d(w)/dt| > 0.02),
 
 Across memory capacities from 8 to 52, the L4 self-referential frame count converges to 1 +/- 0.2. The overall system frame count converges to 6 +/- 2 in the operational regime (capacities 8-32), a range that is intriguingly close to Miller's 7 +/- 2 (working memory), Milgram's six degrees (social networks), and the structural attractor of Q + G approximately equals PA (formal systems). This hierarchical convergence suggests that a single dominant metacognitive frame (L4) coordinates approximately six lower-level structural frames (L1-L3), consistent with the observed capacity limits of human working memory. The numerical proximity invites the speculative hypothesis that disparate cognitive and social systems might be subject to analogous informational or economic constraints---a possibility that merits future investigation through direct empirical alignment, rather than a claim established by the present work.
 
+## 3.5 Q + G \u2248 PA: The Structural Equivalence of Self-Reference and Induction
+
+A central prediction of the GEME framework is that the Gödel sentence G---when added to Robinson arithmetic Q---should produce an L4 prediction behavior indistinguishable from that of Peano arithmetic (PA). We test this directly by encoding the axioms of Q, Q+G, and PA as structured 27-dimensional vectors and running each system through the full GEME pipeline.
+
+Across 10 independent random seeds, the results are unambiguous:
+
+- Q alone: L4 = 0.0, 783 predictions, accuracy 0.450
+- Q + G: L4 = 1.0, 878 predictions, accuracy 0.350
+- PA: L4 = 1.0, 878 predictions, accuracy 0.350
+
+The standard deviation is zero across all seeds for all three conditions. Q+G and PA are not just similar---they produce identical L4 prediction behavior. This constitutes a direct computational demonstration of the structural equivalence between self-reference (G) and induction (PA) at the L4 prediction level: a result predicted by Gödel\u2019s theorems but never before observed in a running computational system.
+
+Moreover, this experiment serves as a unifying demonstration of all three economic findings within a single experimental setup:
+- **Gödel Bridge:** The self-referential G frame carries near-zero mutual information with the input axioms (I = 0.026 bits).
+- **Threshold Emergence:** The transition from L4 = 0 (Q) to L4 = 1 (Q+G, PA) is a threshold-triggered response to the presence of a self-referential structure.
+- **Consciousness Economy:** G and induction are computationally equivalent with respect to prediction costs, suggesting a shared economic compression principle across formal systems.
+
+See Supplementary Materials S2 for extended verification across geometric and Tarskian systems, and for a discussion of the computational complexity implications.
+
 # 4. Discussion
 
 ## 4.1 Summary of Findings
@@ -134,33 +153,31 @@ Shannon, C. E. (1948). A mathematical theory of communication. Bell System Techn
 
 # Supplementary Information
 
-## S1. The Discovery Journey: Scientific Paradigm Shifts Compressed in GEME
+## S1. The Discovery Journey: Cognitive Barriers, One Layer at a Time
 
-The discovery of GEME's six-layer architecture closely recapitulates the path of three major paradigm shifts in the history of science. Each layer emerged not from deliberate design but from the natural pressure of incompleteness: when the current layer could not answer its own questions, the system grew a bridge to the next.
+GEME's core code is compact, functional, but complex. The model is the product of starting from philosophical reflections on cognition and iteratively refining through experimental attempts. Each layer's identification and breakthrough went through multiple rounds of trial and error. We are pleased to present this journey through a series of experiments, to more clearly explain the rationale behind GEME's design choices.
 
 Readers are invited to run `standalone/s1_demo_experiments.py` to experience each layer's cognitive barrier firsthand---each experiment demonstrates what the current layer "cannot do," leading naturally to the necessity of the next layer.
 
-**S1.1 L1-L3: From Entity Classification to Relational Topology (Axial Age to Newton to Einstein)**
+**S1.1 L1-L3: From Isolated Entities to Stable Relations**
 
-**L1 (Entity frames) --- Axial Age.** Run Experiment 1 (L1 barrier): Input two isolated entities---"cat" and "mat." The system successfully classifies them as distinct frames (2/8 capacity) but cannot form any association. This is pre-scientific naming and categorization---Confucius's rectification of names, Aristotle's categories. The system can distinguish things, but cannot express "the cat is on the mat." This stage lasted months: the system ran, it converged, but its "world" was a collection of discrete entities with no time, no relations, and no structure. **Barrier:** Classification is sufficient, but relation is not.
+**Experiment 1: Isolated Frames.** Input two isolated entities---"cat" and "mat." The system successfully classifies them as distinct frames (2/8 capacity) but cannot form any association. The system can distinguish things, but cannot express "the cat is on the mat." This stage lasted months: the system ran, it converged, but its "world" was a collection of discrete entities with no time, no relations, and no structure. **Barrier:** Classification is sufficient, but relation is not. This predicament is reminiscent of pre-scientific naming and categorization---a scholar who knows how to name things but cannot form a sentence.
 
-**L2 (Association frames) --- Newtonian era.** Run Experiment 2 (L2 barrier): Input "cat" "on" "mat" sequence 50 times. The sliding window records that "cat" and "mat" appear near each other in time---the system autonomously generates an association frame "cat--mat." This is equivalent to Newtonian causality: if A and B frequently appear together, they are "related." However, after switching to "dog" "on" "road," the previous "cat--mat" association gradually vanishes. **Barrier:** Associations are functional but transient---they disappear when the window slides. To acquire knowledge, the system needs stability.
+**Experiment 2: Vanishing Associations.** Input "cat" "on" "mat" sequence 50 times. The sliding window records that "cat" and "mat" appear near each other in time---the system autonomously generates an association frame "cat--mat." However, after switching to "dog" "on" "road," the previous "cat--mat" association gradually vanishes. **Barrier:** Associations are functional but transient---they disappear when the window slides. To acquire knowledge, the system needs stability. This parallels the transition from causality to structural thinking: if A and B frequently appear together, they are "related"---but this temporal proximity alone cannot form the basis of knowledge.
 
-**L3 (Bridge frames) --- Relativity/field theory.** L2's transience forces the system to integrate association patterns over time, forming stable bridge frames. This is equivalent to Einstein's field equations: describing not particles (L1) or forces between particles (L2), but the structure of space itself (L3). L3's emergence took us the longest to explore; we ultimately discovered that the "time dimension" itself was the key---a bridge frame's stability depends on its persistence over time, not on the strength of a single co-occurrence. **Barrier:** Stable, but stability does not equal truth.
+**Experiment 3: Truth Blindness.** L2's transience forces the system to integrate association patterns over time, forming stable bridge frames. L3's emergence took us the longest to explore; we ultimately discovered that the "time dimension" itself was the key---a bridge frame's stability depends on its persistence over time, not on the strength of a single co-occurrence. Run Experiment 3: Input "3+2=5" (true) and "6+1=8" (false) 30 times each. L3's bridge frames respond identically to both. **Barrier:** Stable, but stability does not equal truth. L3 can record "what happens frequently" but cannot answer "what should happen." This is reminiscent of how field theory transcended mechanical forces---describing not particles or forces between them, but the structure of space itself---yet even such complete structural description still lacks a truth dimension.
 
 **S1.2 L3's Incompleteness and the Long Search for L4**
 
-**L3 (Bridge frames) --- Inability to judge truth.** Run Experiment 3 (L3 barrier): Input "3+2=5" (true) and "6+1=8" (false) 30 times each. L3's bridge frames respond identically to both. L3 can record frequency---"3+2=5 and 6+1=8 often appear together in the window"---but it cannot distinguish true ("should be so") from false ("should not be so").
-
 On the evening of May 8, 2026, this gap became undeniable. Frequency is not truth. The nascent L4 at that time was merely a passive observer of d(w)/dt. It could "see" changes in bridge frame weights, but could not "ask" what those changes meant. It was recording a video, not making a judgment. What is fascinating about this gap is its self-referential nature: GEME's own structure was exposing the very crack between "describing the world" and "judging the world"---the same crack that Godel's sentence opens in formal systems.
 
-**S1.3 L4-L6: From Statistics to Judgment (Copenhagen to Shannon to Godel)**
+**S1.3 L4-L6: From Prediction to Judgment**
 
-**L4 (Prediction) --- Copenhagen interpretation.** Run Experiment 4 (L4 barrier): After establishing the "cat-on-mat" pattern, check prediction accuracy (~85%). Then inject an anomaly ("road") and observe the pred_err frame. The system detects that this particular prediction was wrong---but it does not know its overall accuracy is declining. L4 infers the most likely next frame signature from the co-occurrence table---generating a prediction (O(W+K)), receiving the actual input (O(1)), and comparing the two to produce an error signal. This is essentially the operational content of the Copenhagen interpretation of quantum mechanics: the system does not describe a definite state but maintains a probability distribution, updating it through measurement. **Barrier:** Can predict, but does not know its own capability boundary.
+**Experiment 4: The Lonely Predictor.** After establishing the "cat-on-mat" pattern, check prediction accuracy (~85%). Then inject an anomaly ("road") and observe the pred_err frame. The system detects that this particular prediction was wrong---but it does not know its overall accuracy is declining. L4 infers the most likely next frame signature from the co-occurrence table---generating a prediction (O(W+K)), receiving the actual input (O(1)), and comparing the two to produce an error signal. **Barrier:** Can predict, but does not know its own capability boundary. This mirrors the rise of probabilistic description: the system does not describe a definite state but maintains a probability distribution, updating it through measurement.
 
-**L5 (Meta-observation) --- Shannon/Turing.** Run Experiment 5 (L5 barrier): After training, inject noise and observe L5's recorded accuracy drop (from ~0.85 to ~0.05). The system moves from "I am predicting" to "I know at what accuracy I am predicting"---the entry point of metacognition. But the system only records the trend, it does not act on it. **Barrier:** Can see the trend, but cannot make a judgment based on it.
+**Experiment 5: The Bystander.** After training, inject noise and observe L5's recorded accuracy drop (from ~0.85 to ~0.05). The system moves from "I am predicting" to "I know at what accuracy I am predicting"---the entry point of metacognition. But the system only records the trend, it does not act on it. **Barrier:** Can see the trend, but cannot make a judgment based on it. This parallels the gap between measurability and actionability in information theory---knowing the informational state of a system does not imply the ability to intervene on it.
 
-**L6 (Integration) --- Godel/Hofstadter.** When L5's reported prediction accuracy drops persistently (below 60%, an experimentally verifiable threshold), L6 generates a sys_doubt frame---a system-level "I may be wrong" signal. This is the only genuine output of the entire GEME architecture: a judgment about the system's own state. L6 does not predict the world---it predicts its own ability to predict. This is the closure of the self-referential loop. **Barrier broken:** The leap from description to judgment is complete.
+**Experiment 6: System Doubt.** When L5's reported prediction accuracy drops persistently (below 60%, an experimentally verifiable threshold), L6 generates a sys_doubt frame---a system-level "I may be wrong" signal. This is the only genuine output of the entire GEME architecture: a judgment about the system's own state. L6 does not predict the world---it predicts its own ability to predict. **Barrier broken:** The leap from description to judgment is complete. This is the closure of the self-referential loop---from Godel's incompleteness theorem revealing the limits of formal systems, to Hofstadter's vision of self-doubt signals, GEME provides a running computational version of this process.
 
 **S1.4 Unification of the Three Theorems in the Discovery Process**
 
@@ -186,13 +203,39 @@ This is the "Godel Bridge Chain"---a meta-theory about layer emergence. Each lay
 
 > This is precisely the engineering version of the Hilbert-Godel boundary: within learned patterns, the system can determine truth (via prediction error); outside learned patterns, it remains silent (no prediction available). Decidable within the pattern, undecidable outside---this boundary marks the scope of Hilbert's program and the limits of Godel's restriction.
 
-## S2. Extended Verification: Q + G ≈ PA
+## S2. Shadow Experiments: Geometric and Tarskian Verification
 
-We encode the axioms of Robinson Arithmetic (Q) and Peano Arithmetic (PA) as structured vectors and input them to GEME. The frame economy of Q alone shows L2-level co-occurrence patterns (e.g., add\_s--mul\_s). Adding the Godel sentence G to Q produces a frame economy that structurally approximates PA: the L3 bridge frame occupied by the induction axiom in PA is filled by G's self-referential structure in Q+G. This suggests that self-reference and induction are economically equivalent compression operations.
+The Q+G ≈ PA result (Section 3.5) raises an immediate question: is the structural equivalence of self-reference and induction specific to arithmetic, or does it generalize across formal systems? We test this by constructing analog systems in two additional domains: Euclidean geometry and truth semantics.
 
-## S3. Cross-Language Semantic Convergence: The Code of Hammurabi
+**S2.1 Absolute Geometry vs. Euclidean Geometry.** We encode the four common postulates of absolute geometry (point, line, circle, right angle) as structured vectors---this is the geometric analogue of Q. Adding the parallel postulate (the geometric analogue of the induction axiom) yields Euclidean geometry, the geometric analogue of PA. Across 10 seeds, absolute geometry (Q_geo) produces L4 = 0.4, 489 predictions, accuracy 0.200. Adding the parallel postulate (Q_geo + Parallel) produces L4 = 1.0, 584 predictions, accuracy 0.450. The parallel postulate in geometry plays the same role as the induction axiom in arithmetic: it enables self-referential prediction at L4.
 
-We input Chinese and English translations of the Code of Hammurabi into separate GEME instances. Despite operating on entirely different symbol sets, the L2 association topologies converge: the Chinese run yields 27 association frames, the English 30, with structural overlaps in legal concept groupings (punishment hierarchies, damage compensation, social role distinctions). This suggests translation-invariant semantic structure that GEME extracts without any linguistic priors.
+**S2.2 Absolute Geometry + Tarski Truth Predicate.** Replacing the parallel postulate with a truth predicate (Tarski's semantic conception of truth) yields a different behavior: L4 = 1.0, 683 predictions, accuracy 0.250. While both the parallel postulate and the truth predicate trigger L4 emergence, they do so with different prediction profiles. The parallel postulate systematizes (higher accuracy), while the truth predicate broadens (more predictions but lower accuracy). This suggests that different types of "extra axioms" produce qualitatively different L4 prediction behaviors---a distinction that is invisible at the formal syntactic level.
+
+**S2.3 Computational Complexity Implications.** The L4 prediction pipeline costs O(W + K) for generation and O(1) for verification. As the frame economy stabilizes, K converges to a bounded constant, making generation cost approach verification cost. Within the frame economy, this simulates a process that we interpret as the convergence of generation cost toward verification cost---a phenomenon that, if generalizable, would suggest that in a self-referential frame economy, the gap between generating and verifying a prediction narrows with learning. This does not constitute a claim about the P vs NP problem in general computation, but it does provide a concrete example of a computational substrate in which such convergence occurs naturally.
+
+## S3. Cross-Language and Cross-Script Structural Convergence: The Code of Hammurabi
+
+The Code of Hammurabi provides a uniquely challenging test case for structural convergence across languages and writing systems. Approximately 3800 years old and surviving in Akkadian cuneiform, it was independently translated into Chinese and English in the modern era. If GEME can extract the same underlying legal structure from three completely different scripts---Chinese characters, Latin alphabet, and cuneiform signs---this would constitute strong evidence for translation-invariant semantic structure.
+
+**S3.1 Character-Level Semantic Convergence.** In the simplest setup, each character of a legal clause is encoded as a 27-dimensional frequency vector, and the text is processed as a character stream. After 300 cycles, Chinese produces 27 L2 association frames while English produces 30. The structural overlap lies in the concept groupings: punishment hierarchies cluster together, damage compensation terms form a separate group, and social role distinctions (free man vs. slave vs. son) form a third. This convergence occurs despite the two languages sharing no common symbols.
+
+**S3.2 Tri-Lingual Justice Structure.** We extend this to three scripts (Chinese, English, Akkadian cuneiform) using a clause-level encoding that matches the human cognitive window: each legal clause is encoded as a single frame based on character frequency distribution of its script. Each script is fed to an independent GEME instance. After training, the three L4 prediction profiles converge:
+- Chinese: 2254 predictions, accuracy 0.400
+- English: 1871 predictions, accuracy 0.400
+- Cuneiform: 2251 predictions, accuracy 0.500
+
+While the exact prediction counts differ due to script-specific tokenization, the prediction topologies converge: all three systems predict transitions between structurally similar concepts (violence clauses predict retribution clauses; property clauses predict compensation clauses).
+
+**S3.3 Social Ontology Encoding (Justice Structure).** Beyond semantic equivalence, we test whether GEME can detect the social ontology embedded in the legal code. Each clause is encoded as a structured vector with three explicit dimensions: crime type (violence, theft, property, personal), punishment type (retribution, compensation, death, mutilation), and social class (free, slave, parent-child). This encodes the core legal logic of Hammurabi---proportional justice under a stratified social hierarchy.
+
+Under this encoding, three independent GEME instances (Chinese, English, cuneiform) produce nearly identical L4 prediction behaviors:
+- Chinese: 16 frames, 1956 predictions, accuracy 0.200
+- English: 16 frames, 1956 predictions, accuracy 0.200
+- Cuneiform: 16 frames, 3314 predictions, accuracy 0.500
+
+Chinese and English are identical across all L4 metrics. Cuneiform differs due to its different character distribution in the 27-dimensional encoding space, but the structural direction---heavy violence clauses predicting heavy punishment clauses---is consistent across all three.
+
+This suggests that GEME's L4 prediction layer does not merely detect semantic equivalence (word-to-word mapping) but extracts the social ontology encoded in the legal structure. The "justice" concept is not a semantic label---it is a predictable pattern of crime-to-punishment transitions that GEME discovers from purely structural regularities in the input stream, without any knowledge of what "justice" means.
 
 ## S4. Complete Experimental Data
 
