@@ -1,0 +1,80 @@
+{
+  "Aristotle_Metaphysics": {
+    "author": "Aristotle_Metaphysics",
+    "clauses": 20,
+    "frames": 16,
+    "L4": 0,
+    "preds": 15,
+    "acc": 0.267,
+    "layers": {
+      "L1": 1,
+      "L2": 12,
+      "L3": 3
+    },
+    "MI": 0.119714
+  },
+  "Aristotle_Categories": {
+    "author": "Aristotle_Categories",
+    "clauses": 12,
+    "frames": 16,
+    "L4": 1,
+    "preds": 13,
+    "acc": 0.077,
+    "layers": {
+      "L1": 1,
+      "L2": 10,
+      "L3": 4,
+      "L4": 1
+    },
+    "MI": 0.136712
+  },
+  "Aristotle_Ethics": {
+    "author": "Aristotle_Ethics",
+    "clauses": 14,
+    "frames": 16,
+    "L4": 1,
+    "preds": 11,
+    "acc": 0.091,
+    "layers": {
+      "L1": 1,
+      "L2": 11,
+      "L3": 3,
+      "L4": 1
+    },
+    "MI": 0.131024
+  },
+  "Plato_Republic": {
+    "author": "Plato_Republic",
+    "clauses": 7,
+    "frames": 16,
+    "L4": 1,
+    "preds": 11,
+    "acc": 0.091,
+    "layers": {
+      "L1": 1,
+      "L2": 10,
+      "L3": 5
+    },
+    "MI": 0.088937
+  },
+  "Plato_Phaedo": {
+    "author": "Plato_Phaedo",
+    "clauses": 9,
+    "frames": 16,
+    "L4": 1,
+    "preds": 12,
+    "acc": 0.083,
+    "layers": {
+      "L1": 1,
+      "L2": 10,
+      "L3": 4,
+      "L4": 1
+    },
+    "MI": 0.138333
+  },
+  "cross_test": {
+    "plato_acc_before": 0.083,
+    "aristotle_acc_after": 0.389,
+    "sys_doubt": false
+  }
+}
