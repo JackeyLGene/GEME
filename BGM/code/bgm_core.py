@@ -43,7 +43,7 @@ class GEMENet:
     """
 
     def __init__(self, n_units=3, mem_cap=16, g0_enabled=True, g0_weight=0.3,
-                 g0_interval=1, seed_base=0):
+                 g0_interval=1, closed_loop=True, seed_base=0):
         """
         Args:
             n_units: Number of parallel GEME units (A, B, C...)
@@ -56,7 +56,9 @@ class GEMENet:
             seed_base: Base random seed for reproducibility
         """
         self.g0_enabled = g0_enabled
+        self.closed_loop = closed_loop
         self.g0_weight = g0_weight if g0_enabled else 0.0
+        self._base_weight = g0_weight  # for closed-loop reset
         self.g0_interval = g0_interval
         self._g0_buffer = []  # accumulates L6 values between G0 steps
 
@@ -127,6 +129,14 @@ class GEMENet:
             self._g0_buffer = []
             self.g0.process_vec(g0_in, 'g0')
             self.g0.memory.self_observe()
+            
+            # L5-L6 closed loop: G0's doubt_mode → modulates g0_weight
+            if self.closed_loop:
+                g0_metrics = self.g0.metrics()
+                if g0_metrics.get('doubt_mode', False):
+                    self.g0_weight = min(0.8, self.g0_weight + 0.05)
+                else:
+                    self.g0_weight = max(0.1, self.g0_weight - 0.02)
 
         # Record tracking data (G0 metrics: last known value if not updated this step)
         if self._track is not None:
