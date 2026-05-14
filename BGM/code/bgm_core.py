@@ -8,6 +8,7 @@ import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
 from geme import GEME
 import random as _qr2
+import statistics
 
 _VEC_DIM = 27
 
@@ -34,19 +35,30 @@ def g0_feedback_vec(g0_geme, dim=_VEC_DIM):
 
 
 class GEMENet:
-    """Manage N GEME units + 1 G0 unit with optional feedback loop."""
+    """Manage N GEME units + 1 G0 unit with optional feedback loop.
 
-    def __init__(self, n_units=3, mem_cap=16, g0_enabled=True, g0_weight=0.3, seed_base=0):
+    G0 operates at a slower timescale (g0_interval) than individual units.
+    This decoupling is the core discovery: cross-scale emergence requires
+    temporal asymmetry between layers.
+    """
+
+    def __init__(self, n_units=3, mem_cap=16, g0_enabled=True, g0_weight=0.3,
+                 g0_interval=1, seed_base=0):
         """
         Args:
             n_units: Number of parallel GEME units (A, B, C...)
             mem_cap: Frame capacity per GEME
             g0_enabled: If False, G0 feedback is disabled (ablation mode)
             g0_weight: Blend ratio for G0 feedback in [0,1]. 0 = no feedback
+            g0_interval: G0 processes aggregated input every N steps.
+                         Default=1 (same frequency as units).
+                         Higher = slower temporal resolution on G0.
             seed_base: Base random seed for reproducibility
         """
         self.g0_enabled = g0_enabled
         self.g0_weight = g0_weight if g0_enabled else 0.0
+        self.g0_interval = g0_interval
+        self._g0_buffer = []  # accumulates L6 values between G0 steps
 
         # Create parallel GEME units
         self.units = []
@@ -70,8 +82,21 @@ class GEMENet:
         self.g0.memory._qrand = _qr2.Random(seed_base + 9999)
 
         self._t = 0
+        self._track = None
 
-    def step(self, ext_vec):
+    def enable_tracking(self):
+        """Enable per-step novelty tracking. Returns list ref for external recording."""
+        self._track = {
+            'g0_pred_err': [],  # G0 pred_err frame count per step (novelty spike)
+            'g0_meta': [],      # G0 L4_meta_active per step (weight derivatives)
+            'g0_doubt': [],     # G0 doubt mode per step
+            'g0_acc': [],       # G0 rolling accuracy (for reference)
+            'unit_acc': [],     # [step_0: [u0_acc, u1_acc, u2_acc], ...]
+            'step_labels': [],  # Musical chord / harmonic label
+        }
+        return self._track
+
+    def step(self, ext_vec, step_label=''):
         """One time step. ext_vec: external input vector.
 
         Order:
@@ -92,11 +117,26 @@ class GEMENet:
                 unit.process_vec(ext_vec, 'input')
             unit.memory.self_observe()
 
-        # Phase 2: G0 processes aggregated L6
+        # Phase 2: Accumulate L6 for G0
         l6_vals = [u.anomaly_score() for u in self.units]
-        g0_in = l6_to_vec(sum(l6_vals) / len(l6_vals))
-        self.g0.process_vec(g0_in, 'g0')
-        self.g0.memory.self_observe()
+        self._g0_buffer.append(sum(l6_vals) / len(l6_vals))
+
+        # Phase 3: G0 processes at its own timescale
+        if self._t % self.g0_interval == 0 and self._g0_buffer:
+            g0_in = l6_to_vec(sum(self._g0_buffer) / len(self._g0_buffer))
+            self._g0_buffer = []
+            self.g0.process_vec(g0_in, 'g0')
+            self.g0.memory.self_observe()
+
+        # Record tracking data (G0 metrics: last known value if not updated this step)
+        if self._track is not None:
+            g0_m = self.g0.metrics()
+            self._track['g0_pred_err'].append(g0_m.get('L4_frame_count', 0))
+            self._track['g0_meta'].append(g0_m.get('L4_meta_active', 0))
+            self._track['g0_doubt'].append(g0_m.get('doubt_mode', False))
+            self._track['g0_acc'].append(g0_m.get('pred_accuracy', 0))
+            self._track['unit_acc'].append([u.metrics().get('pred_accuracy', 0) for u in self.units])
+            self._track['step_labels'].append(step_label)
 
         self._t += 1
 
