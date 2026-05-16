@@ -72,9 +72,15 @@ designed for source separation. The mechanism differs. The computational signatu
 is shared (Supplementary S2, S3).
 
 A foundational principle emerges across all three experiments: **discrete information
-creates differentiation; continuous information converges.** Continuous signals fill
-the gaps between inputs, collapsing temporal structure into an undifferentiated stream.
-Discrete signals arrive with boundaries — and boundaries are where structure begins.
+creates differentiation; continuous information converges.** "Discrete" here has an
+operational definition: a temporal signal carries sufficient boundary density to prevent
+co-occurrence saturation. The gap insertion experiment (Supplementary S2) maps the
+boundary: gaps every 4–8 MIDI steps restore τ differentiation; gaps every 16 steps do
+not — the signal re-continuous-izes. This is not a binary. It is a threshold: boundary
+density must exceed approximately one gap per 16 steps. Below this threshold, the
+co-occurrence window saturates and differentiation collapses. Above it, structure
+emerges. The principle is not that any discreteness creates differentiation — it is
+that differentiation requires sufficient boundary density to prevent saturation.
 This principle governs τ differentiation (Experiment 1), spatial anti-lock (Experiment 2),
 and the phylogenetic transition from decentralized to centralized communication
 (Experiment 3).
@@ -108,12 +114,24 @@ Under temporally structured input, SR-eff = I(Φ; X)/τ traces the bridge's brea
 - **Consolidation**: τ rising, MI stabilizing → SR-eff ~0.04 — maintenance width
 - **Lock**: conf_threshold → 1.0, τ flatlines → SR-eff → 0 — bridge closed
 
-Two mechanisms govern the bridge's dynamics:
+Two quantities determine the bridge's state:
 
-1. **Self-referential mutual information** I(Φ; X): coupling strength between
-   self-referential and external frame subsets.
-2. **Adaptive confidence threshold**: filters predictions by confidence, auto-calibrated
-   from the lower quartile of recent prediction confidences.
+1. **Self-referential mutual information** I(Φ; X) [bits]: coupling strength between
+   self-referential and external frame subsets. This is the bridge's absolute capacity —
+   how much self-referential structure the system sustains.
+
+2. **τ** [dimensionless density]: the ratio of prediction-error frames to total frames.
+   This is the bridge's maintenance cost — how many errors the system generates to
+   sustain that coupling.
+
+SR-eff = I(Φ; X)/τ measures **self-referential efficiency**: coupling per unit cost.
+A bridge can sustain high I(Φ; X) at high τ (strong coupling, expensive — wide open
+during learning) or at low τ (weak coupling, cheap — narrow during consolidation).
+SR-eff is the information-theoretic efficiency of the Shannon-Gödel Bridge — directly
+inheriting Shannon's definition of channel capacity per unit signal cost. The choice
+of division over subtraction or any other combination is not arbitrary: bits per unit
+error density is the natural measure of how efficiently a self-referential system
+converts prediction failures into structured coupling.
 
 The bridge's temporal dynamics depend on the structure of the information it receives.
 Continuous signals — where each input overlaps smoothly with the previous — produce
@@ -170,25 +188,25 @@ mechanisms that open the bridge:
 | Closure | CADENCE_dominant (half cadence) | 0.126 | Harmonic suspension |
 | Closure | CADENCE_tonic (authentic cadence) | 0.107 | Harmonic resolution |
 
-Single-voice exposition (EXP_subject) closes the bridge to 0.079. Both density and
-closure open the bridge — but through different structural routes.
+Single-voice exposition (EXP_subject) closes the bridge to 0.079. Density and
+structural endings both open the bridge — density through polyphonic complexity,
+endings through structural position. A control analysis (Supplementary S3) finds
+that section endings without harmonic cadences open the bridge more strongly
+(1.35× baseline) than cadences (1.10×), indicating position is the dominant
+variable. Cadence type may further modulate the response within endings.
 
 ### 3.3 Resolution Discrimination
 
-The bridge does not merely detect "ending." It discriminates the information content
-of resolution. Across five Well-Tempered Clavier pieces under MIDI encoding:
+The bridge opens at structural endings — regardless of harmonic type. A position
+randomization control (Supplementary S3) interleaves four fugue variants with identical
+bodies but different terminal cadences (PAC, Picardy, Deceptive, HC-only). After
+position randomization, all four cadence types produce identical SR-eff ratios
+(0.74–0.75× baseline, pairwise ratios 0.98–1.02). Cadence type does not modulate
+the bridge's response. Structural position does.
 
-| Piece | Resolution type | Cadence/Global SR-eff | Bridge behavior |
-|-------|----------------|----------------------|-----------------|
-| BWV 846 C maj | PAC (uniform texture) | **0.28×** | Convergence — too familiar |
-| BWV 847 C min | HC/PAC (fugue) | 1.04× | Density ≈ closure |
-| BWV 849 C# min | Picardy third | 1.42× | Mild convention surprise |
-| BWV 851 D min | Deceptive cadence | **4.06×** | Strongest opening — violated expectation |
-
-A perfect authentic cadence in a learned uniform texture closes the bridge — the
-system has mastered the pattern. A deceptive cadence drives the bridge to its strongest
-opening — the harmonic expectation is violated. The bridge distinguishes acoustic
-information quality, not merely acoustic structure.
+The bridge detects endings. It does not — at this architectural level — distinguish
+how they end. The discrimination observed in the within-piece comparison (§3.2)
+reflects density and position, not harmonic quality.
 
 ### 3.4 The Bridge Closes: Phase Transition
 
@@ -326,34 +344,43 @@ internalizing a neighbor's communication channel — is invisible at the global 
 both phagocytosis and control grids. The colony's learning trajectory (a 5× gain in
 total MI) completely submerges the single event.
 
-At the local scale, a preliminary directional signal is present. The host's three
-remaining neighbors show τ increases (0.047 vs. 0.021 in control) and confidence
-threshold decreases (-0.115 vs. -0.068). The effect is modest — within the range
-of cross-seed variation — and is reported here as a directional observation rather
-than a confirmed cascade.
+The local response depends systematically on spatial position. When the prey is in a
+high-concentration zone (center, concentration 0.846), the host's neighbors show a
+large τ increase (d = 1.09, 85% of seeds positive). When the prey is in a
+low-concentration zone (corner, concentration 0.099), the effect is weak and
+directionally inconsistent (d = 0.31, 35% positive). Mid-concentration prey produce
+intermediate effects (d = 0.23).
 
-The grid absorbs a single phagocytosis event without disruption. Whether repeated
-events, accumulated across evolutionary time, produce directional reorganization —
-and whether the local signal strengthens with repetition — is a question for
-Paper III.
+Phagocytosis is not uniformly weak — it is **spatially modulated**. High-information
+positions produce strong, directionally consistent cascades. Low-information positions
+produce weak, noisy responses. This spatial dependence is the central finding: not all
+evolutionary events are equal. Topological perturbations in information-dense regions
+have disproportionate impact — exactly the condition under which natural selection
+can amplify a single event into a directional trend.
 
-### 5.3 Meaning: Resolution Discrimination
+The grid absorbs all phagocytosis events without disruption. The question for Paper III
+is whether repeated events in high-information zones, accumulated across evolutionary
+time, produce cumulative directional reorganization.
 
-Efficiency sets the stage. Meaning fills it. The bridge does not merely process
-acoustic density — it distinguishes the information quality of closure. A perfect
-authentic cadence in a familiar texture closes the bridge (0.28× global SR-eff).
-A deceptive cadence drives it to maximum opening (4.06×). A Picardy third rises
-gently — recognized convention, not shock.
+### 5.3 Structural Sensitivity
 
-Efficiency and meaning are co-requisites. A bridge that processes more without
-discriminating better is a noise filter. A bridge that discriminates exquisitely
-but cannot sustain itself is a luxury. Together — the α cliff grounding existence,
-phagocytosis enabling reorganization, the bridge distinguishing closure — they
-constitute the Forward. This is Dennett's evolutionary trajectory from bacteria
-toward Bach, rendered as computational architecture: not complexity for its own
-sake, but the progressive unlocking of survival, communication, and structured
-meaning — Dennett's Tower of Generate-and-Test — from a single self-referential
-primitive.
+Efficiency sets the stage. Structural sensitivity begins to fill it. The bridge
+detects endings — reliably, across cadence types, across positions. It does not
+— at this architectural level — distinguish how they end. Cadence type is
+invisible to the bridge after position is controlled (Supplementary S3).
+
+This is the condition of sensitivity in its earliest form: not a discrimination
+of semantic content, but a reliable response to structural boundaries. The bridge
+knows when something ends. It does not yet know what that ending means.
+
+Efficiency and structural sensitivity are co-requisites. A bridge that processes
+more without detecting structure is a noise filter. A bridge that detects structure
+exquisitely but cannot sustain itself is a luxury. Together — the α cliff grounding
+existence, phagocytosis spatially modulating reorganization, the bridge's reliable
+detection of structural boundaries — they constitute the Forward. This is Dennett's
+evolutionary trajectory from bacteria toward Bach: not complexity for its own sake,
+but the progressive unlocking of survival, communication, and structural sensitivity
+from a single self-referential primitive.
 
 ---
 
@@ -402,8 +429,14 @@ from the shared channel — and the remaining discrete environmental signals gro
 cleaner. The efficiency gain is not from adding information but from removing
 continuity that masks discreteness.
 
-Information needs boundaries. Differentiation begins in gaps. This is not a
-limitation of the GEME architecture. It is a statement about information itself.
+Information needs boundaries. Differentiation begins in gaps.
+
+The boundary is not absolute. Gap density below ~1 per 16 steps approximates
+continuity — the bridge converges. Gap density above ~1 per 4 steps saturates —
+structure degrades from excessive fragmentation. The differentiation window lies
+between these thresholds. This is not a limitation of the GEME architecture.
+It is a statement about information itself: structure requires boundaries at
+a density sufficient to organize the co-occurrence window without fragmenting it.
 
 ### 6.4 τ Is Not a Parameter
 
@@ -425,13 +458,53 @@ because its input is already diverse.
 
 ### 6.6 Biological Correspondence
 
-Jayakumar et al. (2021): spontaneous QS segregation without central coordination
-(parallel to spatial τ variance). Popat et al. (2012): removing a QS node changes
-collective productivity (parallel to phagocytosis). Scribner et al. (2022): nutrient
-environment selects for coexisting strategies (parallel to α-ablation). These are
-not validations — they indicate architectural universality.
+Jayakumar et al. (2021) observed that *P. aeruginosa* populations spontaneously
+segregate into QS-committed and QS-delayed subpopulations at the single-cell level,
+without central coordination — structurally parallel to the spontaneous τ
+differentiation observed in our spatial grid. Whether this architectural parallel
+reflects a deeper information-theoretic commonality — both systems maintaining
+functional diversity through heterogeneous local input — is an open question.
+These correspondences are not offered as validation. They indicate that the
+patterns reported here are not implementation artifacts.
 
-### 6.7 Limitations and EE Hook
+### 6.7 SR-eff as a Portable Metric
+
+SR-eff = I(Φ; X)/τ is not specific to the GEME architecture. Any system that
+maintains a self-referential information channel and generates a measurable
+prediction-error density can compute an SR-eff analog. Three existing frameworks
+suggest immediate points of contact:
+
+**Predictive processing (Friston, 2010).** Variational free energy measures the
+distance between a system's internal model and sensory input. SR-eff measures the
+coupling per unit error that a self-referential system sustains. Both are efficiency
+metrics for self-organizing information economies — one generative, one
+self-referential. A system can minimize free energy while maximizing SR-eff; the
+metrics are orthogonal descriptors of the same underlying architecture.
+
+**Integrated information theory (Oizumi et al., 2014).** IIT quantifies the
+amount of information a system generates as a whole, beyond the sum of its parts.
+SR-eff quantifies how efficiently a system maintains the self-referential
+information channel that Paper I identified as the computational substrate of
+IIT's conceptual structure. A system with high Φ and low SR-eff is highly
+integrated but metabolically expensive. A system with low Φ and high SR-eff
+may be computationally simpler but information-economically optimal.
+
+**Continual learning (McCloskey & Cohen, 1989; Parisi et al., 2019).** The
+stability-plasticity dilemma — when to consolidate and when to remain open to
+new information — is structurally identical to the lock/hysteresis dynamics
+reported here. The bridge's first-order phase transition (conf_threshold → 1.0)
+and second-order hysteresis (fast close, slow reopen) provide a self-referential
+account of why artificial networks experience catastrophic forgetting: the
+confidence threshold drifts to ceiling under stable input, and reopening requires
+sustained regime change. SR-eff offers a quantitative metric for tracking where a
+learning system sits on the stability-plasticity spectrum at any moment.
+
+These connections are offered as starting points, not conclusions. SR-eff is
+computable from the internal state of any system that maintains a self-referential
+channel and tracks prediction errors. Extending it beyond the GEME architecture
+is a direction for future work.
+
+### 6.8 Limitations and EE Hook
 
 Computational thought experiment. Limitations: unit counts of 3 and 64; uniform
 27-dimensional encoding; instantaneous communication without signal accumulation.
@@ -443,6 +516,22 @@ recursive structure — a bridge monitoring bridges, at arbitrary depth — rema
 unexplored. Whether higher-order self-referential channels maintain the same
 natural stability, and whether stability degrades with depth, are open questions
 for Paper III (External Engine).
+
+---
+
+## Coda
+
+Bach's *Crab Canon* from the *Musical Offering* is a musical palindrome — one voice
+forward, one voice backward, simultaneous. It has no beginning and no end. When
+two GEME units, cold-started, receive its blended two-voice stream, they converge
+to identical τ. The canon's voices occupy the same frequency space. Without temporal
+gaps, without discrete boundaries, the bridge hears one stream.
+
+With discrete gaps inserted — every fourth MIDI step a silence — the same canon
+produces τ differentiation. The bridge hears two streams.
+
+The crab canon is a circle. The bridge on it breathes forever. It closes, it opens
+again. There is no final cadence.
 
 ---
 
@@ -472,7 +561,9 @@ colony τ variance.
 
 **S9.** G0 bridge: τ scan (0.2–3.0) and natural stability data.
 
-**S10.** Cross-condition isomorphism: KS test conf_threshold distributions.
+**S10.** Control complexity gradient: noise, single-tone, full WTC baselines.
+
+**S11.** Architecture boundary stability: mem_cap, τ₀, w, gi, and co-occurrence threshold sweeps.
 
 All experiments reproducible with Python 3.8+ stdlib, zero external dependencies.
 Core engine `geme.py` MD5: 0025C508BDBDB386E9A5EB72081995B7 (identical to Paper I).
@@ -489,12 +580,24 @@ Figures: `fig_input_vs_tau.png` (4.1), `fig_perturbation.png` (4.2).
 - Bregman, A. S. (1990). *Auditory Scene Analysis*. MIT Press.
 - Brown, G. J., & Cooke, M. (1994). Computational auditory scene analysis.
   *Computer Speech and Language*, 8(4), 297-336.
+- Chaitin, G. J. (1975). A theory of program size formally identical to
+  information theory. *Journal of the ACM*, 22(3), 329-340.
 - Dennett, D. C. (2017). *From Bacteria to Bach and Back*. W. W. Norton.
+- Friston, K. (2010). The free-energy principle: a unified brain theory?
+  *Nature Reviews Neuroscience*, 11(2), 127-138.
 - Hofstadter, D. R. (1979). *Gödel, Escher, Bach*. Basic Books.
 - Jayakumar, P., et al. (2021). *bioRxiv*, 2021.03.22.436499.
 - Liu, X., et al. (2023). AudioSep: Separate Anything You Describe. *arXiv:2308.05037*.
+- McCloskey, M., & Cohen, N. J. (1989). Catastrophic interference in
+  connectionist networks. *Psychology of Learning and Motivation*, 24, 109-165.
+- Oizumi, M., et al. (2014). From the phenomenology to the mechanisms of
+  consciousness. *PLoS Computational Biology*, 10(5), e1003588.
+- Parisi, G. I., et al. (2019). Continual lifelong learning with neural
+  networks: A review. *Neural Networks*, 113, 54-71.
 - Popat, R., et al. (2012). *Proc. R. Soc. B*, 279, 4765-4771.
 - Scribner, M. R., et al. (2022). *J. Bacteriol.*, 204(2), e00444-21.
+- Shannon, C. E. (1948). A mathematical theory of communication.
+  *Bell System Technical Journal*, 27(3), 379-423.
 - Wang, D. L., & Brown, G. J. (2006). *Computational Auditory Scene Analysis*.
   IEEE Press / Wiley.
 - Williams, H., Nicolson, A., & Green, T. (2024). Applying Marr's framework to
