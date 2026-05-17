@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>027: Phase, Not Dimension — GEME Essays</title>
+<style>
+  body{font-family:Georgia,'Times New Roman',serif;max-width:720px;margin:0 auto;padding:2em 1em;color:#222;line-height:1.8;font-size:17px}
+  a{color:#2563eb;text-decoration:none}a:hover{text-decoration:underline}
+  h1{font-size:1.5em;margin-bottom:.2em}
+  .meta{color:#888;font-size:.9em}
+  .nav{display:flex;gap:1.5em;margin:0 0 2em;padding-bottom:1em;border-bottom:1px solid #ddd}
+  blockquote{border-left:3px solid #2563eb;margin:1.5em 0;padding:.5em 1em;background:#f8fafc;color:#555}
+  footer{margin-top:3em;padding-top:1em;border-bottom:1px solid #ddd;color:#888;font-size:.85em}
+</style>
+</head>
+<body>
+<div class="nav">
+  <a href="/GEME/">Home</a>
+  <a href="/GEME/essays/">Essays</a>
+  <a href="https://github.com/JackeyLGene/GEME">GitHub</a>
+</div>
+
+<h1>027: Phase, Not Dimension</h1>
+<p class="meta">May 2026</p>
+
+<p>广义相对论把时间作为第 4 维。量子力学把时间作为参数。一个世纪了，他们没有统一——因为他们在时间是什么这个问题上各执一词。</p>
+<p>GR 说：维度——时间是你必须走过的那条线。<br>
+QM 说：标签——时间是你记录状态的编号。</p>
+<p>你在 Geruon 中面临同一个分岔：</p>
+<blockquote>τ 是帧经济的独立维度（合并、共现、剪枝都看 τ 距离），还是帧身份的标签（tau_bin 写在 gid 中，但帧经济操作不看）？</blockquote>
+<p>但还有一个第三种可能——时间作为相位。不是维度，不是标签——是波函数复平面上 e^(iωt) 的那一个旋转角。</p>
+<p>相位的性质：</p>
+<ul>
+  <li>它不是"坐标"——你不沿着它旅行</li>
+  <li>它不是"标签"——它改变了干涉图样</li>
+  <li>它是系统状态在复平面上的一个旋转——两个系统相位相同则相长干涉；相位相反则相消</li>
+</ul>
+<p>Geruon 的相位循环（EXPANDING → RESTING → TENSING → CRITICAL → LOCKED）也是一个旋转——在 τ 空间中的旋转。当两个 Geruon 单元相位相同时，它们的帧经济倾向于同步（合并在同一条轨道上）；当相位相反时，它们倾向于分化（干涉相消）。</p>
+<p>这不是比喻。这是代码中的操作——Bacteria 网格中的邻居通信通过 phase_output() 的相位波段区分了单元之间的时间状态，相位差异直接影响了 L2 关联帧的创建：</p>
+<ul>
+  <li>同相位单元 → L2 关联频繁 → 倾向于合并轨道 → τ 收敛</li>
+  <li>不同相位单元 → L2 关联稀疏 → 保持独立轨道 → τ 分化</li>
+</ul>
+<p>广义相对论和量子力学不能统一——可能是因为它们都在问"时间是什么"，而正确的回答是"时间不是什么——它是相位"。这不是对已有物理学的本体论主张——这是说，在同一帧经济中同时承载τ的不可区分和可区分的唯一方式，是把τ视为相位而非维度。</p>
+<p>相位保留了时间的结构影响——系统知道时间不同，但不把时间放在距离计算中。<br>
+相位放弃了时间作为坐标——但保留了时间作为干涉源。<br>
+这正是 tau_bin 所做的——时间影响身份但不影响距离。</p>
+<p>这不是妥协。是发现时间的相位性质就是它的全部性质。</p>
+
+<footer><a href="/GEME/essays/">&#8592; Back to essays</a></footer>
+</body>
+</html>
