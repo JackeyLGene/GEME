@@ -40,20 +40,24 @@ from geme import (
 )
 
 # ── Geruon-specific constants ──
-VEC_DIM_DEFAULT = 16        # clean power-of-two, no formula-language baggage
-TAU_0 = 0.60                # τ anchor — inherited from GEME
-TAU_ADAPT_RATE = 0.025      # τ inertia — slower than γ (0.05) for momentum
-TAU_HISTORY_LEN = 30        # rolling window for dτ/dt computation
-DTAU_STABLE = GAMMA * 0.15  # |dτ/dt| below this → phase considered stable
+# ALL multipliers follow GEME discipline: small integers or simple fractions
+# (×0.4, ×0.2, ×3, ×4, ×1/4). No arbitrary decimals.
 
-# Precipitation (沉积) thresholds
-PRECIPITATE_MIN_SURVIVAL = 1     # must survive at least one induction cycle
-PRECIPITATE_MIN_ACTIVATIONS = 3  # must appear in prediction path this many times
+VEC_DIM_DEFAULT = 16
+TAU_0 = 0.60                     # τ anchor — from GEME
+TAU_ADAPT_RATE = GAMMA * 0.4     # τ inertia: slower than frame decay (cf. DW_THRESHOLD = γ×0.4)
+TAU_HISTORY_LEN = 30
+DTAU_STABLE = GAMMA * 0.2        # |dτ/dt| stable threshold (cf. META_STABLE = γ×0.2)
 
-# Phase thresholds (expressed relative to τ₀)
-PHASE_RESTING_CEIL = TAU_0 * 0.55   # τ below this → resting/expanding zone
-PHASE_TENSING_CEIL = TAU_0 * 1.05   # τ below this → tensing zone
-PHASE_LOCKED_FLOOR = TAU_0 * 1.25   # τ above this → locked
+# Phase thresholds — integer multiples of γ around τ₀
+# Hysteresis band: ±1γ for resting/tensing, +3γ for locked
+PHASE_RESTING_CEIL = TAU_0 - GAMMA * 1         # 0.55 — τ below = safe zone
+PHASE_TENSING_CEIL = TAU_0 + GAMMA * 1         # 0.65 — τ below = normal
+PHASE_LOCKED_FLOOR  = TAU_0 + GAMMA * 3         # 0.75 — τ above = boundary
+
+# Precipitation — integer counts
+PRECIPITATE_MIN_SURVIVAL = 1
+PRECIPITATE_MIN_ACTIVATIONS = 3
 
 
 class Phase(Enum):
@@ -144,12 +148,18 @@ class StructuralSig:
     Circular reference chains are detectable and tracked.
     """
 
-    __slots__ = ('gid', 'vec_hash', 'weight_bin', 'layer', 'refs', '_ref_gids')
+    __slots__ = ('gid', 'vec_hash', 'weight_bin', 'layer', 'tau_bin', 'refs', '_ref_gids')
 
-    def __init__(self, vec, weight, layer, refs=()):
+    def __init__(self, vec, weight, layer, refs=(), tau=TAU_0):
         self.vec_hash = self._hash_vec(vec)
         self.weight_bin = _log2_bin(weight)
         self.layer = layer
+        # τ_bin: 0=absorbing, 1=normal, 2=elevated, 3=boundary
+        # uses the frame economy's own phase thresholds
+        if tau < PHASE_RESTING_CEIL:       self.tau_bin = 0
+        elif tau < PHASE_TENSING_CEIL:     self.tau_bin = 1
+        elif tau < PHASE_LOCKED_FLOOR:     self.tau_bin = 2
+        else:                              self.tau_bin = 3
         self.refs = tuple(refs) if refs else ()
         self._ref_gids = tuple(r.gid for r in self.refs)
         self.gid = self._compute_gid()
@@ -160,28 +170,25 @@ class StructuralSig:
         h = 5381
         for v in vec:
             h = ((h << 5) + h) ^ int(round(v, 4) * 10000)
-        return h & 0x7FFFFFFF  # positive 31-bit for reasonable exponents
+        return h & 0x7FFFFFFF
 
     def _compute_gid(self) -> int:
-        """Gödel number via prime factorization with bounded exponents.
+        """Gödel number encoding (vec_hash, weight_bin, layer, tau_bin, refs).
 
-        Encodes (vec_hash, weight_bin, layer_int, ref_gids) using consecutive
-        primes. Hash bits are distributed across multiple primes with small
-        exponents (1-8) to keep gid computable while preserving injectivity.
+        τ is part of the structural signature: frames created at different τ
+        have different gids. Time is intrinsic to frame identity.
         """
         p = _GODEL_PRIMES
         g = 1
-        # Spread vec_hash bits across primes 0-4 (5 primes, 3 bits each = 15 bits)
         h = abs(self.vec_hash)
         for i in range(min(5, len(p))):
             g *= p[i] ** ((h & 0x7) + 1)
             h >>= 3
-        # Encode weight_bin and layer on next two primes
         g *= p[5] ** (self.weight_bin + 1)
         g *= p[6] ** (_layer_int(self.layer) + 1)
-        # Encode ref gids on remaining primes (small exponents)
+        g *= p[7] ** (self.tau_bin + 1)     # τ encoded as structural component
         for i, rg in enumerate(self._ref_gids[: _MAX_REFS]):
-            pi = i + 7
+            pi = i + 8
             if pi < len(p):
                 g *= p[pi] ** (abs(rg) % 100 + 1)
         return g
@@ -193,6 +200,17 @@ class StructuralSig:
 
     def __hash__(self):
         return self.gid
+
+    def add_ref(self, other):
+        """Append a reference to another StructuralSig. Recomputes gid.
+
+        This is the operational form of diagonalization: a frame's
+        signature can be extended to reference another frame after
+        creation, enabling true self-referential cycles.
+        """
+        self.refs = self.refs + (other,)
+        self._ref_gids = self._ref_gids + (other.gid,)
+        self.gid = self._compute_gid()
 
     def __repr__(self):
         r = ','.join(str(rg)[:8] for rg in self._ref_gids[:3])
@@ -397,7 +415,9 @@ class BiasField:
     def is_empty(self) -> bool:
         return self._count == 0
 
-    def blend_into(self, vec, weight=0.05):
+    def blend_into(self, vec, weight=None):
+        if weight is None:
+            weight = GAMMA  # default = γ
         """Blend the bias field into an input vector.
 
         Like GABA in the synaptic cleft — always present, continuously
@@ -479,12 +499,12 @@ class GeruonFrame(Frame):
     __slots__ = ('struct_sig', 'survival_cycles', 'activations', 'precipitated')
 
     def __init__(self, vec, weight=1.0, sig="", src="", layer="L1",
-                 struct_sig=None, ref_sigs=()):
+                 struct_sig=None, ref_sigs=(), tau=TAU_0):
         super().__init__(vec, weight, sig, src, layer)
         if struct_sig is not None:
             self.struct_sig = struct_sig
         else:
-            self.struct_sig = StructuralSig(vec, weight, layer, ref_sigs)
+            self.struct_sig = StructuralSig(vec, weight, layer, ref_sigs, tau=tau)
         tag = sig[:16] if sig and not sig.startswith('Σ') else ''
         suffix = f"_{tag}" if tag else ''
         self.sig = f"Σ{self.struct_sig.gid % 1000000:06d}{suffix}"
@@ -587,35 +607,14 @@ class GeruonMemory:
 
     @property
     def phase(self) -> Phase:
-        """Current breathing phase — bidirectional hysteresis oscillator.
+        """Current breathing phase — simple forward mapping from τ and dτ/dt.
 
-        Entry and exit thresholds differ: the system enters a phase at one
-        threshold but exits at another. This creates a relaxation oscillator
-        whose period-doubling cascade may converge to Feigenbaum δ.
+        Phase is a reading, not a parameter. Under temporal input it serves
+        as the operational identity basis (BGM §2.2: τ becomes the signature scheme).
         """
         tau = self.tau
         dt = self.dtaudt
-        current = self._last_phase
 
-        # ── Hysteresis: exit conditions differ from entry ──
-        if current == Phase.LOCKED:
-            # Exit LOCKED at a lower threshold than entry
-            if tau < PHASE_TENSING_CEIL and dt < -DTAU_STABLE:
-                return Phase.CRITICAL  # releasing
-            if tau < PHASE_RESTING_CEIL:
-                return Phase.TENSING   # step down
-            return Phase.LOCKED
-
-        if current == Phase.CRITICAL:
-            if tau >= PHASE_LOCKED_FLOOR and abs(dt) < DTAU_STABLE:
-                return Phase.LOCKED
-            if tau < PHASE_TENSING_CEIL and dt < -DTAU_STABLE:
-                return Phase.TENSING  # backing off from crisis
-            if tau < PHASE_RESTING_CEIL:
-                return Phase.TENSING
-            return Phase.CRITICAL
-
-        # ── Forward (entry) thresholds ──
         if tau >= PHASE_LOCKED_FLOOR and abs(dt) < DTAU_STABLE * 2:
             return Phase.LOCKED
         if tau >= PHASE_TENSING_CEIL and dt > DTAU_STABLE:
@@ -636,7 +635,8 @@ class GeruonMemory:
         if not self.frames:
             return self._win_max
         avg_life = self.total_weight / max(len(self.frames), 1)
-        return max(5, min(200, int(avg_life * 2)))
+        adaptive = max(5, min(200, int(avg_life * 2)))
+        return adaptive
 
     def _adaptive_thresh(self):
         if not self._merge_dists:
@@ -712,10 +712,17 @@ class GeruonMemory:
         if len(self._merge_dists) > 100:
             self._merge_dists.pop(0)
         self._merge_frame(self.frames[bi], vec, sig)
+        # Register merged sig → gid for prediction path
+        ss = getattr(self.frames[bi], 'struct_sig', None)
+        if ss is not None:
+            self._sig_to_gid[sig] = ss.gid
         return True
 
     def _track_cooccurrence(self, sig, vec):
         self._step_counter += 1
+        # Ensure every sig in the window has a gid mapping for prediction path
+        if sig not in self._sig_to_gid:
+            self._sig_to_gid[sig] = hash(sig) & 0x7FFFFFFF
         self._window.append((sig, self._step_counter, tuple(vec)))
         if len(self._window) > self._win_max:
             self._window.pop(0)
@@ -732,36 +739,54 @@ class GeruonMemory:
             for (sa, sb), count in list(self._cooccur.items()):
                 ratio = count / total_steps
                 if ratio >= self.cooccur_thresh and count >= max(5, total_steps * 0.05):
-                    assoc_sig = sa + ASSOC_SEP + sb
+                    # Build L2 sig from STRUCTURAL identities (gids), not external labels
+                    gid_a = self._sig_to_gid.get(sa)
+                    gid_b = self._sig_to_gid.get(sb)
+                    tag_a = f"Σ{gid_a % 1000000:06d}" if gid_a else sa[:20]
+                    tag_b = f"Σ{gid_b % 1000000:06d}" if gid_b else sb[:20]
+                    assoc_sig = tag_a + ASSOC_SEP + tag_b
                     existing = [f for f in self.frames
-                               if (getattr(f, 'sig_full', None) or f.sig) == assoc_sig]
+                               if self._sig_matches(f, assoc_sig)]
                     if existing:
                         for exf in existing:
                             self.total_weight -= exf.weight
                             exf.weight += 0.5
+                            exf.merged += 1
                             self.total_weight += exf.weight
                     else:
-                        base_vecs = [f.vec for f in self.frames
-                                    if (getattr(f, 'sig_full', None) or f.sig) in (sa, sb)]
-                        if len(base_vecs) < 2:
-                            continue
-                        total_w = sum(f.weight for f in self.frames
-                                     if (getattr(f, 'sig_full', None) or f.sig) in (sa, sb))
-                        assoc_vec = tuple(
-                            sum(f.vec[j] * f.weight for f in self.frames
-                                if (getattr(f, 'sig_full', None) or f.sig) in (sa, sb))
-                            / max(total_w, 1)
-                            for j in range(self.vec_dim))
+                        frames_a = [f for f in self.frames if self._sig_matches(f, sa)]
+                        frames_b = [f for f in self.frames if self._sig_matches(f, sb)]
+                        base_frames = frames_a + frames_b
+                        # Create L2 even if one sig has no live frame —
+                        # use existing frames' vectors or fall back to zero vec
+                        if base_frames:
+                            total_w = sum(f.weight for f in base_frames)
+                            assoc_vec = tuple(
+                                sum(f.vec[j] * f.weight for f in base_frames)
+                                / max(total_w, 1)
+                                for j in range(self.vec_dim))
+                        else:
+                            assoc_vec = self._zero_vec()
                         if len(self.frames) >= self.capacity:
-                            self.frames.sort(key=lambda x: x.weight)
+                            self.frames.sort(key=lambda x: x.weight - x.age * GAMMA * 2)
                             r = self.frames.pop(0)
                             self.total_weight -= r.weight
+                        # Build refs to the frames being associated
+                        ref_sigs = []
+                        for bf in base_frames[:4]:  # max 4 refs
+                            ss = getattr(bf, 'struct_sig', None)
+                            if ss is not None:
+                                ref_sigs.append(ss)
                         nf = GeruonFrame(assoc_vec, weight=float(count),
-                                   sig=assoc_sig, layer="L2")
+                                   sig=assoc_sig, layer="L2", ref_sigs=ref_sigs,
+                                   tau=self.tau)
                         self.frames.append(nf)
                         self.total_weight += float(count)
                         self._assoc_frames += 1
                         self._track_frame_sig(nf)
+                        # Register assoc_sig → gid so duplicates can be found
+                        self._sig_to_gid[assoc_sig] = nf.struct_sig.gid
+                        self._sig_to_gid[nf.sig] = nf.struct_sig.gid
 
     def observe(self, vec, sig, src="", layer="L1"):
         if not vec:
@@ -786,8 +811,17 @@ class GeruonMemory:
         if self.quantum_mode and len(candidates) > 0:
             if self._quantum_merge(candidates, vec, sig):
                 return
-        if (thresh is not None and bi >= 0 and bd <= thresh
-                and (not sig or sig[:SIG_LEN] == self.frames[bi].sig)):
+        # Merge condition: vector within threshold AND signature compatible
+        sig_match = False
+        if not sig:
+            sig_match = True
+        elif bi >= 0 and bi < len(self.frames):
+            f_bi = self.frames[bi]
+            sig_match = (
+                sig[:SIG_LEN] == f_bi.sig or  # legacy string match
+                self._sig_to_gid.get(sig) == getattr(
+                    getattr(f_bi, 'struct_sig', None), 'gid', None))
+        if thresh is not None and bi >= 0 and bd <= thresh and sig_match:
             self._merge_dists.append(bd)
             if len(self._merge_dists) > 100:
                 self._merge_dists.pop(0)
@@ -804,7 +838,8 @@ class GeruonMemory:
                 r = self.frames.pop(0)
                 self.total_weight -= r.weight
             nf = GeruonFrame(vec, nw, sig, src, layer=layer,
-                       ref_sigs=getattr(self, '_current_ref_sigs', ()))
+                       ref_sigs=getattr(self, '_current_ref_sigs', ()),
+                       tau=self.tau)
             self.frames.append(nf)
             self.total_weight += nw
             self._last_merge_fid = nf.fid
@@ -835,11 +870,17 @@ class GeruonMemory:
                         continue
                     chain_w = (fa.weight + fb.weight) / 2
                     if len(self.frames) >= self.capacity:
-                        self.frames.sort(key=lambda x: x.weight)
+                        self.frames.sort(key=lambda x: x.weight - x.age * GAMMA * 2)
                         r = self.frames.pop(0)
                         self.total_weight -= r.weight
+                    ref_sigs = []
+                    for bf in (fa, fb):
+                        ss = getattr(bf, 'struct_sig', None)
+                        if ss is not None:
+                            ref_sigs.append(ss)
                     self.frames.append(GeruonFrame(
-                        self._zero_vec(), weight=chain_w, sig=ms, layer="L3"))
+                        self._zero_vec(), weight=chain_w, sig=ms, layer="L3",
+                        ref_sigs=ref_sigs, tau=self.tau))
                     self.total_weight += chain_w
                     self._chain_count += 1
                     self._track_frame_sig(self.frames[-1])
@@ -898,7 +939,10 @@ class GeruonMemory:
         fids = [f.fid for f in active]
         feed_time = self._step_counter
         for fid in fids:
-            self._window.append((f"fid_{fid}", feed_time, self._zero_vec()))
+            fid_sig = f"fid_{fid}"
+            if fid_sig not in self._sig_to_gid:
+                self._sig_to_gid[fid_sig] = hash(fid_sig) & 0x7FFFFFFF
+            self._window.append((fid_sig, feed_time, self._zero_vec()))
             if len(self._window) > self._win_max:
                 self._window.pop(0)
         for i in range(len(fids)):
@@ -950,7 +994,7 @@ class GeruonMemory:
         """
         acc = self._last_accuracy
         target_tau = 1.0 - acc
-        target_tau = max(0.05, min(1.0, target_tau))
+        target_tau = max(GAMMA, min(1.0, target_tau))  # floor = γ, ceiling = 1
 
         self.tau += (target_tau - self.tau) * TAU_ADAPT_RATE
         self._tau_history.append((self._step_counter, self.tau))
@@ -1006,10 +1050,10 @@ class GeruonMemory:
                 dummy_vec = (self.frames[0].vec if self.frames
                             else self._zero_vec())
                 if len(self.frames) >= self.capacity:
-                    self.frames.sort(key=lambda x: x.weight)
+                    self.frames.sort(key=lambda x: x.weight - x.age * GAMMA * 2)
                     r = self.frames.pop(0)
                     self.total_weight -= r.weight
-                nf = GeruonFrame(dummy_vec, weight=5.0, sig=err_str, layer="L4")
+                nf = GeruonFrame(dummy_vec, weight=5.0, sig=err_str, layer="L4", tau=self.tau)
                 self.frames.append(nf)
                 self.total_weight += 5.0
                 self._track_frame_sig(nf)
@@ -1023,10 +1067,15 @@ class GeruonMemory:
         recent_acc = (sum(self._prediction_accuracy[-10:])
                       / len(self._prediction_accuracy[-10:])
                       if self._prediction_accuracy else 1.0)
+        # Track peak accuracy for "was healthy" check
+        if not hasattr(self, '_peak_accuracy'):
+            self._peak_accuracy = 0.0
+        if recent_acc > self._peak_accuracy:
+            self._peak_accuracy = recent_acc
 
         if (not self._doubt_mode and len(self._prediction_accuracy) >= 10
                 and recent_acc < doubt_on_threshold
-                and self._last_accuracy > healthy_acc_threshold):
+                and self._peak_accuracy > healthy_acc_threshold):
             self._doubt_mode = True
             doubt_str = f"sys_doubt_acc_{recent_acc:.2f}"
             match = [f for f in self.frames
@@ -1035,24 +1084,32 @@ class GeruonMemory:
                 dummy_vec = (self.frames[0].vec if self.frames
                             else self._zero_vec())
                 if len(self.frames) >= self.capacity:
-                    self.frames.sort(key=lambda x: x.weight)
+                    self.frames.sort(key=lambda x: x.weight - x.age * GAMMA * 2)
                     r = self.frames.pop(0)
                     self.total_weight -= r.weight
-                nf = GeruonFrame(dummy_vec, weight=10.0, sig=doubt_str, layer="L6")
+                nf = GeruonFrame(dummy_vec, weight=10.0, sig=doubt_str, layer="L6", tau=self.tau)
                 self.frames.append(nf)
                 self.total_weight += 10.0
                 self._track_frame_sig(nf)
         elif self._doubt_mode and recent_acc > doubt_off_threshold:
             self._doubt_mode = False
+            self._peak_accuracy = recent_acc  # reset peak for next cycle
 
         self._last_accuracy = recent_acc
         self._update_tau()
 
         # ── Precipitation: activation tracking ──
-        for gid in self._prediction_path_gids:
-            f = self._sig_index.get(gid)
-            if f is not None:
-                f.activations += 1
+        # L1: activated if its sig appears in recent window
+        # L2/L3: activated if merged (weight increased) — their sigs never enter window
+        recent = set(entry[0] for entry in self._window[-10:])
+        for f in self.frames:
+            ly = getattr(f, 'layer', 'L1')
+            if ly == 'L1':
+                if f.sig in recent or getattr(f, 'sig_full', '') in recent:
+                    f.activations += 1
+            else:
+                # L2+: use merge count as activation proxy
+                f.activations = f.merged
 
         # ── 碰数 detection ──
         self._pengshu_detect()
@@ -1183,26 +1240,31 @@ class GeruonMemory:
             counts[l] = counts.get(l, 0) + 1
         return counts
 
-    def mutual_information_phi_X(self):
-        phi_keys = set()
-        x_keys = set()
-        # Φ = non-L1 frames (L2 assoc, L3 bridge, L4 self-ref, L6 sys)
-        # X = L1 frames (external input)
-        frame_layers = {}
+    def _sig_matches(self, f, sig):
+        """Check if a frame matches a signature string (original or Σ-format)."""
+        if f.sig == sig or getattr(f, 'sig_full', '') == sig:
+            return True
+        gid = self._sig_to_gid.get(sig)
+        ss = getattr(f, 'struct_sig', None)
+        if gid is not None and ss is not None and gid == ss.gid:
+            return True
+        return False
+
+    def _sig_layer(self, sig):
+        gid = self._sig_to_gid.get(sig)
+        if gid and gid in self._sig_index:
+            return getattr(self._sig_index[gid], 'layer', 'L1')
         for f in self.frames:
-            sid = (getattr(f, 'sig_full', None) or f.sig)
-            frame_layers[sid] = getattr(f, 'layer', 'L1')
+            if self._sig_matches(f, sig):
+                return getattr(f, 'layer', 'L1')
+        return 'L1'
+
+    def mutual_information_phi_X(self):
+        phi_keys, x_keys = set(), set()
         for (sa, sb) in self._cooccur:
-            la = frame_layers.get(sa, 'L1')
-            lb = frame_layers.get(sb, 'L1')
-            if la in ('L2', 'L3', 'L4', 'L6'):
-                phi_keys.add(sa)
-            else:
-                x_keys.add(sa)
-            if lb in ('L2', 'L3', 'L4', 'L6'):
-                phi_keys.add(sb)
-            else:
-                x_keys.add(sb)
+            la = self._sig_layer(sa); lb = self._sig_layer(sb)
+            (phi_keys if la in ('L2','L3','L4','L6') else x_keys).add(sa)
+            (phi_keys if lb in ('L2','L3','L4','L6') else x_keys).add(sb)
         if not phi_keys or not x_keys:
             return 0.0
         total_all = sum(c for c in self._cooccur.values())
@@ -1315,6 +1377,7 @@ class GeruonMemory:
             "L4_frame_count": self.count_L4_frames(),
             "top_weights": [round(x, 1) for x in w[:5]],
             "I(phi;X)": round(self.mutual_information_phi_X(), 6),
+            "SR-eff": round(self.mutual_information_phi_X() / max(self.tau, 0.001), 6),
             "assoc_frames": self._assoc_frames,
             "self_observations": self._self_observe_count,
             "pred_total": self._pred_total,
@@ -1362,19 +1425,23 @@ class Geruon:
 
     def __init__(self, vec_dim=VEC_DIM_DEFAULT, memory_cap=10, cooccur_window=50,
                  cooccur_thresh=0.25, max_chains=5, time_window_size=0,
-                 codex=None, bias_field=None, bias_weight=0.03):
+                 codex=None, bias_field=None, bias_weight=None):
+        if bias_weight is None:
+            bias_weight = GAMMA          # default blend = γ
         self.vec_dim = vec_dim
         self.codex = codex
-        self.bias_field = bias_field
-        self.bias_weight = bias_weight  # receptor density for gradient field
+        self.bias_field = bias_field        # content-layer gradient field
+        self.time_field = None               # time-layer gradient field (set separately)
+        self.bias_weight = bias_weight
         self._codex_novelties = []
         self.memory = GeruonMemory(
             vec_dim=vec_dim, capacity=memory_cap,
             cooccur_window=cooccur_window, cooccur_thresh=cooccur_thresh,
             max_chains=max_chains)
-        # Seed initial frames from bias field (structural inheritance)
         if self.bias_field is not None and not self.bias_field.is_empty():
             self.bias_field.seed_frames(self.memory, count=min(5, memory_cap//3))
+        if self.time_field is not None and not self.time_field.is_empty():
+            self.time_field.seed_frames(self.memory, count=min(3, memory_cap//4))
         self._stress_accum = 0.0
         self._induction_threshold = TAU_0
         self.frame_count = 0
@@ -1403,20 +1470,19 @@ class Geruon:
 
     def anomaly_score(self) -> float:
         m = self.metrics()
+        # Anomaly levels anchored to GEME thresholds:
+        # 1−4γ=0.80 healthy, τ₀=0.60 doubt_on, 4γ=0.20 critical floor
         if m.get('doubt_mode', False):
-            return 0.8
+            return TAU_0 + GAMMA * 4        # 0.80 — systemic doubt (= DOUBT_OFF baseline)
         acc = m.get('pred_accuracy', 0.0)
-        healthy_acc = 1.0 - GAMMA * 4.0
-        anomaly_med = TAU_0 - GAMMA * 2
-        anomaly_high = GAMMA * 4
-        if acc > healthy_acc:
-            return 0.1
-        elif acc > anomaly_med:
-            return 0.3
-        elif acc > anomaly_high:
-            return 0.6
+        if acc > 1.0 - GAMMA * 4:           # > 0.80 — healthy
+            return GAMMA * 2                 # 0.10
+        elif acc > TAU_0 - GAMMA * 2:        # > 0.50 — mild anomaly
+            return TAU_0 * 0.5               # 0.30
+        elif acc > GAMMA * 4:                # > 0.20 — elevated
+            return TAU_0                     # 0.60
         else:
-            return 0.9
+            return TAU_0 + GAMMA * 4         # 0.80 — critical (matches doubt threshold)
 
     def arrow_output(self) -> tuple:
         """Fused content-time output — the Geruon's true arrow.
@@ -1467,9 +1533,11 @@ class Geruon:
         return self.process_vec(symbol_vector(formula), sig)
 
     def process_vec(self, vec, sig, src=""):
-        # ── Continuous bias modulation (GABA mode) ──
+        # ── Dual-field continuous modulation ──
         if self.bias_field is not None and not self.bias_field.is_empty():
             vec = self.bias_field.blend_into(vec, weight=self.bias_weight)
+        if self.time_field is not None and not self.time_field.is_empty():
+            vec = self.time_field.blend_into(vec, weight=self.bias_weight * 0.3)
         self.frame_count += 1
         self._input_count += 1
         self.memory.observe(vec, sig, src)
@@ -1617,8 +1685,11 @@ class Geruon:
         for f in self.memory.frames:
             if not f.precipitated:
                 continue
-            # Gradient mode: always deposit into bias field
-            if self.bias_field is not None:
+            # Route: time_obs frames → time_field, others → bias_field
+            is_time = 'time_' in (getattr(f, 'sig_full', '') or f.sig)
+            if is_time and self.time_field is not None:
+                self.time_field.deposit_frame(f)
+            elif self.bias_field is not None:
                 self.bias_field.deposit_frame(f)
             # Symbol mode: also add to codex if available
             if self.codex is not None:
@@ -1735,7 +1806,7 @@ class Geruon:
             if denom == 0:
                 continue
             ratio = len(sp & fp) / denom
-            if ratio >= 0.75:
+            if ratio >= 1.0 - DELTA * 1.3:  # ≈ 0.75 — Jaccard-like threshold
                 return 2
         return 3
 
