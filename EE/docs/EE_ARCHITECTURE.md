@@ -24,6 +24,10 @@ Depth N:  G0^(N)    (reads Depth N-1 output at GI^N, accumulates SR-eff)
 - A single self-referential unit with **endogenous τ**
 - τ evolves with prediction accuracy
 - τ is encoded in frame identity (structural signature includes tau_bin)
+- τ enters the frame economy operations — not just a label, but a lived parameter:
+  - **Merge**: `vec_dist < δ_eff AND |τ_a − τ_b| < ε AND sig_compatible` — frames from distant times do not merge even if content matches
+  - **Co-occurrence**: weighted by τ proximity — `count += 1 − |τ_a − τ_b|` — frames born at similar τ are more likely causal
+  - **Pruning**: `weight − age×γ − |τ_current − τ_frame|×γ_τ` — frames far from current τ are pruned first
 - Phase cycle: EXPANDING → RESTING → TENSING → CRITICAL → LOCKED
 - Outputs: `arrow_output()` — centroid fused with τ-phase signal
 - **No external G0 needed inside the unit.** Geruon is the base cognitive unit — it naturally contains τ.
@@ -79,16 +83,17 @@ Depth N:  G0^(N)    (reads Depth N-1 output at GI^N, accumulates SR-eff)
 
 Geruon keeps τ. In fact, τ is its defining feature. The recursion does NOT clean τ out of the base layer — it distributes τ across layers at different time scales. Each layer's τ is the previous layer's τ trajectory observed at a coarser grain. This is the source of time "misunderstanding" — and the source of cognition.
 
+τ must enter the frame economy operations — merge, co-occur, prune — not just the signature. Without this, τ is a spectator label: the system can distinguish frames by their birth time but does not "feel" time in its day-to-day processing. With τ in the economy, the system lives its time — merge decisions respect temporal distance, co-occurrence weights temporal proximity, and pruning preserves temporal relevance.
+
 ---
 
 ## 6. Implementation Status
 
 | Layer | Code | Status |
 |-------|------|--------|
-| Depth 0 | `geruon.py` (purified — remove tau_bin from sig) | Needs refactoring |
-| Depth 0 | `geruon.py` Geruon (τ, phase, prediction) | ✅ Complete |
-| Depth 1 | `bgm_core.py` G0 (GI=4 observer) | ✅ Exists in BGM |
-| Depth 2 | New: `ee_pengshu.py` (GI²=16, 碰数 detection) | Needs implementation |
+| Depth 0 | `geruon.py` Geruon (τ, phase, prediction, τ in frame economy) | Needs refactoring — add τ distance to merge/cooccur/prune |
+| Depth 1 | `bgm_core.py` G0 (GI=4 observer of Geruon) | ✅ Exists in BGM, needs adaption to Geruon output |
+| Depth 2 | New — detects 碰数 at GI²=16 | Needs implementation |
 
 ---
 

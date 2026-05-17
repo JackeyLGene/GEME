@@ -103,22 +103,15 @@ BGM 已经实现了深度 0 + 深度 1——EE 增加深度 2 及以上：
 
 ## 4. 重构计划
 
-### 4.1 第一阶段：棱镜纯化（从 Geruon 中剥离深度 1 的内容）
+### 4.1 第一阶段：Geruon 核心升级
 
 | 任务 | 当前 | 目标 |
 |------|------|------|
-| GeruonFrame τ 参数 | 构造函数默认 tau=TAU_0 | 移除——Frame 不应携带 τ |
-| StructuralSig tau_bin | 编码在 gid 中 | 移除——签名不应包含时间 |
-| GeruonMemory τ 演化 | `_update_tau()` | 移到 G0 |
-| GeruonMemory 相位循环 | `phase` property | 移到 G0 |
-| GeruonMemory 预测引擎 | `predict_next()` + `process_prediction()` | 移到 G0 |
-| GeruonMemory doubt_mode | 检测逻辑 | 移到 G0 |
-| GeruonMemory 碰数检测 | `_pengshu_detect()` | 移到 G0' |
-| arrow_output() | centroid + τ 调制 | centroid-only——G0 负责添加 τ |
-| enrich() | 沉淀 + BiasField | 移到 G0 |
-| phase_output() | 稀疏相位向量 | 删除 |
-
-**验证标准：** 纯化后的 GEME 应通过 s1_demo.py 全部测试。
+| τ 距离进入合并条件 | `vec_dist < δ_eff` | `vec_dist < δ_eff AND |τ_a − τ_b| < ε` |
+| τ 距离进入共现权重 | `count += 1` | `count += 1 − |τ_a − τ_b|` |
+| τ 距离进入剪枝排序 | `weight − age×γ` | `weight − age×γ − |τ_current − τ_frame|×γ_τ` |
+| depth 参数 | 无 | Geruon.__init__ 增加 depth=N, 观测间隔=GI^N |
+| 输入源切换 | 从环境输入 | depth>0 时从 arrow_output(depth-1) 输入 |
 
 ### 4.2 第二阶段：递归深度 1——G0 层
 
@@ -134,10 +127,9 @@ BGM 已经实现了深度 0 + 深度 1——EE 增加深度 2 及以上：
 
 | 代码 | 处理 |
 |------|------|
-| `geruon.py` | 纯化为无 τ 的棱镜引擎 |
-| `bgm_core.py` G0 | 继承并增强（添加 τ 演化） |
-| 新文件 `ee_g0.py` | 深度 1 G0 |
-| 新文件 `ee_g0prime.py` | 深度 2 G0' + 碰数 |
+| `geruon.py` | 保留全部功能；增加 depth 参数 + τ 距离操作 + 输入源切换 |
+| `bgm_core.py` G0 | 继承——作为 Geruon 递归实例（depth=1, GI=4） |
+| 新文件 `ee_g0prime.py` | 深度 2 G0' + 碰数（depth=2, GI²=16） |
 
 ---
 
