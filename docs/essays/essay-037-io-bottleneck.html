@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>037: IO Bottleneck — GEME Essays</title>
+<style>
+  body{font-family:Georgia,'Times New Roman',serif;max-width:720px;margin:0 auto;padding:2em 1em;color:#222;line-height:1.8;font-size:17px}
+  a{color:#2563eb;text-decoration:none}a:hover{text-decoration:underline}
+  h1{font-size:1.5em;margin-bottom:.2em}
+  .meta{color:#888;font-size:.9em}
+  .nav{display:flex;gap:1.5em;margin:0 0 2em;padding-bottom:1em;border-bottom:1px solid #ddd}
+  footer{margin-top:3em;padding-top:1em;border-bottom:1px solid #ddd;color:#888;font-size:.85em}
+</style>
+</head>
+<body>
+<div class="nav">
+  <a href="/GEME/">Home</a>
+  <a href="/GEME/essays/">Essays</a>
+  <a href="https://github.com/JackeyLGene/GEME">GitHub</a>
+</div>
+
+<h1>037: IO Bottleneck</h1>
+<p class="meta">May 2026</p>
+
+<p>当前代码写了两次文件——worker 写→主进程读——对于每一步来说都是多余的：ProcessPoolExecutor 的 submit().result() 可以直接返回到主进程的内存里。</p>
+<p>Python 的并行原语已经解决了文件 IO 问题。进程之间的通信不需要经过文件系统——multiprocessing.Queue、shared_memory、Pipe 都可以做到零 IO 传输。</p>
+<p>16 个 worker × 3 代 = 96 次文件写入——每代 16 个 JSON。这不是"必要的 IO"——这是"忘了用进程间通信替代文件"。</p>
+<p>M5 的代码是从 M4 的 we_w0.py 演进而来的。M4 是单进程，写 JSON 是为了持久化。M5 是多进程——JSON 不再是持久化工具，而是进程间通信的弯路。</p>
+<p>修复方向：</p>
+<ul>
+  <li>数据预加载（MIDI 编码在主进程完成）——消除 IO</li>
+  <li>返回结果通过 submit().result()——零文件</li>
+  <li>Archive 只在主进程内存中积累——不需要跨进程写入</li>
+</ul>
+<p>IO 瓶颈不是性能问题——是架构迁移的不完整。代码还没有从单进程模式切换到多进程模式的工程范式。</p>
+
+<footer><a href="/GEME/essays/">&#8592; Back to essays</a></footer>
+</body>
