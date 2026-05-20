@@ -42,22 +42,14 @@ def main():
     N_WE = 16; N_GENS = 3; CYCLES = 2
     N_WORKERS = min(N_WE, os.cpu_count() or 8)
     SEEDS = [42+i*17 for i in range(N_WE)]
-    SEG_SIZE = max(1, len(WTC) // (N_WE * 2))
-
-    rng = random.Random(42)
 
     print(f"Archive: {N_WE} We × {N_GENS} gens, {N_WORKERS} workers")
-    print(f"Segment: {SEG_SIZE} pieces each (~{SEG_SIZE*30} MIDI events)")
     print(f"{'='*70}")
 
-    # ── Pre-encode ALL segments in main process (zero IO in workers) ──
-    print("Pre-encoding segments...", end=' ', flush=True)
-    encoded_segments = []
-    for i in range(N_WE):
-        start = rng.randint(0, max(0, len(WTC) - SEG_SIZE))
-        raw = midi_encode(WTC[start:start + SEG_SIZE], passes=1)
-        encoded_segments.append(raw * CYCLES)
-    print(f"done ({N_WE} segments).")
+    # ── Pre-encode full WTC once — no random slicing, no segment issues ──
+    print("Pre-encoding full WTC...", end=' ', flush=True)
+    all_events = midi_encode(WTC, passes=1) * CYCLES
+    print(f"done ({len(all_events)} events).")
 
     archive = Archive()
 
@@ -66,20 +58,31 @@ def main():
             t0 = time.time()
             archive_entries = [(sym, tuple(vec)) for sym, vec in archive.codex._table.items()]
 
-            # Submit all workers — no file IO
-            work_items = []
-            for i in range(N_WE):
-                work_items.append((i, SEEDS[i], encoded_segments[i],
-                                   archive_entries, gen))
+            # Each We processes the same full WTC events
+            work_items = [(i, SEEDS[i], all_events, archive_entries, gen)
+                         for i in range(N_WE)]
 
-            # collect() → returns results to main memory
-            results = pool.map(we_worker, work_items)
-
-            for data in results:
-                entries = data['entries']
-                cx = type('Codex', (), {'_table': {}})()
-                cx._table = {sym: vec for sym, vec in entries}
-                archive.collect(cx, gen)
+            # as_completed — collect each result immediately, not in batch
+            futures = {pool.submit(we_worker, item): i for i, item in enumerate(work_items)}
+            from concurrent.futures import TimeoutError as _CFTimeout
+            completed = 0
+            try:
+                for f in as_completed(futures, timeout=180):
+                    try:
+                        data = f.result()
+                        archive.collect(data['entries'], gen)
+                        completed += 1
+                    except Exception as e:
+                        print(f"  Worker {futures[f]} failed: {e}")
+            except _CFTimeout:
+                for f in futures:
+                    if f.done():
+                        try:
+                            archive.collect(f.result()['entries'], gen)
+                            completed += 1
+                        except:
+                            pass
+                print(f"  Timed out ({completed}/{N_WE} complete)")
 
             elapsed = time.time() - t0
             codes = sorted(archive.codex._table.items(),
